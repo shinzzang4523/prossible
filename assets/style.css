@@ -28,6 +28,11 @@
 
 html { scroll-behavior: smooth; }
 
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+
 body {
   background: var(--bg);
   color: var(--ink);
@@ -50,7 +55,34 @@ code, .kbd {
   background: var(--bg-chip);
   padding: 2px 6px;
   border-radius: 3px;
+  /* Long tokens (Real (PTSL+MTC), STANDBY — LINK LOST) must wrap, not push the page sideways. */
+  overflow-wrap: anywhere;
 }
+
+/* ---------- pre-launch banner ----------
+   PRELAUNCH: temporary — the app is in App Store review and every store link 404s,
+   so the site says so out loud and collects emails instead. Delete this whole block
+   (and the .prelaunch markup on every page) once the app is live.
+   Full revert procedure: homepage/RELAUNCH-CHECKLIST.md */
+
+.prelaunch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  padding: 11px 64px;
+  border-bottom: 1px solid var(--line);
+  background: var(--bg-card);
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.5;
+  color: var(--mut);
+  text-align: center;
+}
+.prelaunch .tag { color: var(--amber); letter-spacing: 0.12em; white-space: nowrap; }
+.prelaunch a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+.prelaunch a:hover { color: var(--ink); }
 
 /* ---------- nav ---------- */
 
@@ -214,7 +246,23 @@ code, .kbd {
   margin-top: 64px;
 }
 .feature { border-top: 1px solid var(--line3); padding-top: 24px; }
-.feature .fno { font-family: var(--mono); font-size: 12px; color: var(--green); }
+.feature .fno {
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--green);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+.feature .fno .tierchip {
+  border: 1px solid var(--line4);
+  border-radius: 3px;
+  padding: 1px 7px;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--mut2);
+}
 .feature h3 { font-weight: 600; font-size: 20px; margin-top: 14px; }
 .feature p { font-size: 15px; line-height: 1.6; color: var(--mut); margin-top: 10px; }
 
@@ -264,6 +312,40 @@ code, .kbd {
 .operator-mock .log .t-green { color: var(--green); }
 .operator-mock .log .t-amber { color: var(--amber); }
 
+/* ---------- price strip (landing) ----------
+   The full table lives on pricing.html; this is the landing's answer to
+   "what does it cost" so nobody has to click to find out it isn't a quote job. */
+
+.price-strip { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 56px; }
+.price-col { border-top: 1px solid var(--line3); padding-top: 24px; }
+.price-col .tier { font-family: var(--mono); font-size: 12px; letter-spacing: 0.1em; color: var(--mut2); }
+.price-col.is-featured .tier { color: var(--green); }
+.price-col .amount { font-weight: 800; font-size: 40px; letter-spacing: -0.01em; margin-top: 14px; }
+.price-col p { font-size: 15px; line-height: 1.6; color: var(--mut); margin-top: 10px; }
+
+.price-actions { display: flex; align-items: center; gap: 24px; flex-wrap: wrap; margin-top: 44px; }
+.price-actions .more {
+  font-family: var(--mono);
+  font-size: 12px;
+  border: 1px solid var(--line4);
+  padding: 11px 18px;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+.price-actions .more:hover { border-color: var(--green); color: var(--green); }
+.price-actions .aside { font-family: var(--mono); font-size: 12px; color: var(--dim); }
+
+/* ---------- proof (landing testimonials) ----------
+   The markup is commented out in index.html on purpose: we have no quotes yet and
+   we do not invent them. Uncomment the section once real, attributed quotes exist
+   (see RELAUNCH-CHECKLIST.md). Styles live here so unblocking is a one-step edit. */
+
+.proof-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 40px; margin-top: 56px; }
+.proof { border-top: 1px solid var(--line3); padding-top: 24px; }
+.proof blockquote { font-size: 17px; line-height: 1.6; color: var(--ink); }
+.proof .who { font-family: var(--mono); font-size: 12px; color: var(--mut2); margin-top: 18px; line-height: 1.7; }
+.proof .who b { display: block; color: var(--ink-nav); font-weight: 400; }
+
 /* ---------- footer ---------- */
 
 .footer {
@@ -281,11 +363,32 @@ code, .kbd {
 .footer .brand .legal { font-family: var(--mono); font-size: 12px; color: var(--dim); margin-left: 16px; }
 .footer .links { display: flex; gap: 28px; font-size: 13px; color: var(--mut2); flex-wrap: wrap; }
 .footer .links a:hover { color: var(--green); }
+/* Own row under brand + links (flex-wrap is already on): the only door for
+   production/rental buyers who need an invoice rather than an App Store receipt. */
+.footer .licensing {
+  flex-basis: 100%;
+  order: 3;
+  border-top: 1px solid var(--line);
+  padding-top: 22px;
+  font-family: var(--mono);
+  font-size: 12px;
+  line-height: 1.7;
+  color: var(--dim);
+}
+.footer .licensing a { color: var(--mut2); text-decoration: underline; text-underline-offset: 3px; }
+.footer .licensing a:hover { color: var(--green); }
 
 /* ---------- page hero (pricing / faq) ---------- */
 
 .page-hero { padding: 88px 64px 40px; text-align: center; }
-.page-hero h1 { font-weight: 800; font-size: 52px; letter-spacing: -0.015em; }
+.page-hero h1 {
+  font-weight: 800;
+  font-size: 52px;
+  letter-spacing: -0.015em;
+  max-width: 900px;
+  margin: 0 auto;
+  text-wrap: balance;
+}
 .page-hero .sub { font-size: 17px; color: var(--mut); margin-top: 16px; }
 
 /* ---------- pricing ---------- */
@@ -336,9 +439,15 @@ code, .kbd {
 .plan .cta:hover { border-color: var(--green); color: var(--green); }
 .plan .cta.solid { background: var(--green); border-color: var(--green); color: var(--green-ink); font-weight: 700; }
 .plan .cta.solid:hover { filter: brightness(1.1); }
+.plan ul li.lock { color: var(--dim); }
 
-.pricing-note { padding: 0 64px 72px; text-align: center; }
-.pricing-note p { font-family: var(--mono); font-size: 12px; color: var(--dim); }
+.pricing-note { padding: 0 120px 72px; text-align: center; }
+/* Direct children only — the support card below carries its own type. */
+.pricing-note > p { font-family: var(--mono); font-size: 12px; line-height: 1.7; color: var(--dim); }
+/* Reuse the FAQ support card: production buyers need a door, not a footnote. */
+.pricing-note .support-card { margin-top: 8px; text-align: left; }
+.pricing-note .support-card > div { max-width: 620px; }
+.pricing-note > .support-card + p { margin-top: 28px; }
 .pricing-note a { color: var(--dim); text-decoration: underline; }
 .pricing-note a:hover { color: var(--green); }
 
@@ -452,18 +561,147 @@ code, .kbd {
 
 .shot { margin-top: 16px; border: 1px solid var(--line2); border-radius: 6px; overflow: hidden; }
 .shot img { width: 100%; }
-.shot-placeholder {
+.shot-caption { font-family: var(--mono); font-size: 11px; color: var(--dim); margin-top: 8px; letter-spacing: 0.04em; line-height: 1.6; }
+
+/* ---------- settings reference diagram ----------
+   Deliberately drawn in our own design language rather than mocked up to look
+   like another vendor's window: the field names are the durable part, the
+   chrome around them changes with every Pro Tools release. */
+
+.ref-diagram {
   margin-top: 16px;
-  height: 220px;
-  border: 1px solid var(--line2);
+  border: 1px solid var(--line3);
   border-radius: 6px;
-  background: repeating-linear-gradient(45deg, #101012, #101012 12px, #0C0C0E 12px, #0C0C0E 24px);
+  background: var(--bg-panel);
+  overflow: hidden;
+}
+.ref-diagram .rd-head {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  padding: 12px 20px;
+  border-bottom: 1px solid var(--line2);
+  background: var(--bg-card);
+  font-family: var(--mono);
+  font-size: 12px;
+}
+.ref-diagram .rd-tag { color: var(--green); letter-spacing: 0.12em; white-space: nowrap; }
+.ref-diagram .rd-path { color: var(--mut2); }
+.ref-diagram .rd-path b { color: var(--dim); font-weight: 400; padding: 0 3px; }
+
+/* The inner block schematises the Pro Tools window: title, tab strip, one group. */
+.rd-window { margin: 20px; border: 1px solid var(--line2); border-radius: 5px; background: var(--bg-card); }
+.rd-title {
+  padding: 10px 16px;
+  border-bottom: 1px solid var(--line2);
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--ink-nav);
+  letter-spacing: 0.06em;
+}
+.rd-tabwrap { position: relative; border-bottom: 1px solid var(--line2); }
+.rd-tabs {
+  display: flex;
+  gap: 4px;
+  padding: 8px 10px;
+  overflow-x: auto;                 /* seven tabs never fit a phone — scroll inside, never the page */
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+}
+.rd-tabs::-webkit-scrollbar { display: none; }
+.rd-tab {
+  flex-shrink: 0;
+  padding: 5px 8px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.01em;
+  color: var(--dim);
+  white-space: nowrap;
+}
+.rd-tab.is-on { border-color: var(--line4); background: var(--bg-chip); color: var(--ink); }
+
+.ref-diagram .rd-body { padding: 26px 16px 18px; }
+
+.rd-group {
+  position: relative;
+  border: 1px dashed var(--line4);
+  border-radius: 5px;
+  padding: 24px 18px 18px;
+}
+.rd-group-label {
+  position: absolute;
+  top: -8px;
+  left: 14px;
+  padding: 0 8px;
+  background: var(--bg-panel);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-nav);
+}
+
+.rd-field {
+  display: grid;
+  grid-template-columns: 168px minmax(0, 1fr) 22px;
+  grid-template-areas: "k c p";
+  align-items: center;
+  gap: 14px;
+}
+.rd-field + .rd-field { margin-top: 14px; }
+.rd-key { grid-area: k; font-family: var(--mono); font-size: 13px; color: var(--ink); }
+.rd-ctl {
+  grid-area: c;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 36px;
+  padding: 8px 12px;
+  border: 1px solid var(--line4);
+  border-radius: 4px;
+  background: var(--bg-chip);
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--ink);
+  overflow-wrap: anywhere;
+}
+.rd-ctl .caret { color: var(--dim); font-size: 10px; flex-shrink: 0; }
+/* The one value you actually change. */
+.rd-ctl.is-target { border-color: var(--green); color: var(--green); }
+.rd-ctl.is-target .caret { color: var(--green); }
+.rd-field .rd-pin { grid-area: p; }
+.rd-pin {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid var(--green);
+  color: var(--green);
+  font-family: var(--mono);
+  font-size: 11px;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.shot-placeholder span { font-family: var(--mono); font-size: 12px; color: var(--dim); text-align: center; padding: 0 16px; }
-.shot-caption { font-family: var(--mono); font-size: 11px; color: var(--dim); margin-top: 8px; letter-spacing: 0.04em; }
+.rd-notes {
+  list-style: none;
+  display: grid;
+  gap: 12px;
+  padding: 18px 20px 20px;
+  border-top: 1px solid var(--line2);
+}
+.rd-notes li {
+  display: grid;
+  grid-template-columns: 20px minmax(0, 1fr);
+  gap: 12px;
+  align-items: start;
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--mut);
+}
 
 .code-block {
   margin-top: 20px;
@@ -496,6 +734,8 @@ code, .kbd {
 /* ---------- mobile (<=768px, per 05 mobile design) ---------- */
 
 @media (max-width: 768px) {
+  .prelaunch { padding: 10px 20px; font-size: 11px; gap: 4px 10px; }
+
   .nav { padding: 0 20px; height: 60px; }
   .nav-brand .name { font-size: 16px; }
   .nav-brand .dot { width: 8px; height: 8px; }
@@ -552,10 +792,22 @@ code, .kbd {
   .sacred { grid-template-columns: 1fr; gap: 32px; }
   .operator-mock { padding: 20px; }
 
+  .price-strip { grid-template-columns: 1fr; gap: 26px; margin-top: 32px; }
+  .price-col { padding-top: 18px; }
+  .price-col .amount { font-size: 34px; margin-top: 10px; }
+  .price-col p { font-size: 14px; }
+  .price-actions { gap: 16px; margin-top: 28px; }
+
+  .proof-grid { grid-template-columns: 1fr; gap: 26px; margin-top: 32px; }
+  .proof { padding-top: 18px; }
+  .proof blockquote { font-size: 15.5px; }
+
   .footer { padding: 32px 24px 40px; flex-direction: column; text-align: center; justify-content: center; }
   .footer .brand { justify-content: center; }
   .footer .brand .legal { margin-left: 0; width: 100%; }
   .footer .links { justify-content: center; gap: 16px; }
+  /* flex-direction:column above collapses the flex-basis row trick — restore the divider. */
+  .footer .licensing { flex-basis: auto; padding-top: 20px; margin-top: 4px; font-size: 11.5px; }
 
   .page-hero { padding: 56px 24px 24px; }
   .page-hero h1 { font-size: 32px; }
@@ -563,6 +815,7 @@ code, .kbd {
 
   .plans { grid-template-columns: 1fr; padding: 24px 24px 32px; gap: 24px; }
   .pricing-note { padding: 0 24px 48px; }
+  .pricing-note .support-card { margin-top: 0; }
 
   .faq-wrap { padding: 56px 24px 64px; }
   .faq-wrap h1 { font-size: 32px; }
@@ -572,7 +825,9 @@ code, .kbd {
   .support-card { padding: 28px 24px; }
   .support-card h2 { font-size: 20px; }
 
-  .guide { flex-direction: column; }
+  /* align-items:flex-start from the desktop rule would let .guide-body size to its
+     800px max-width once stacked, pushing the whole page sideways. Stretch instead. */
+  .guide { flex-direction: column; align-items: stretch; }
   .guide-toc {
     width: 100%;
     position: static;
@@ -586,4 +841,27 @@ code, .kbd {
   .step { gap: 14px; margin-top: 26px; }
   .step .no { width: 26px; }
   .code-block { padding: 18px 16px; font-size: 12.5px; }
+
+  .ref-diagram .rd-head { padding: 10px 14px; font-size: 11px; }
+  .rd-window { margin: 14px; }
+  .rd-title { padding: 9px 12px; font-size: 11px; }
+  .rd-tabs { padding: 7px 8px; }
+  /* The strip always overflows on a phone — fade the cut edge so it reads as scrollable. */
+  .rd-tabwrap::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 1px;
+    right: 0;
+    width: 48px;
+    pointer-events: none;
+    background: linear-gradient(to right, rgba(14, 14, 16, 0), var(--bg-card) 70%);
+  }
+  .ref-diagram .rd-body { padding: 24px 12px 14px; }
+  .rd-group { padding: 24px 12px 14px; }
+  /* Key stacks above its control; the callout pin stays alongside both. */
+  .rd-field { grid-template-columns: minmax(0, 1fr) 20px; grid-template-areas: "k p" "c p"; gap: 7px 12px; }
+  .rd-field .rd-pin { align-self: center; }
+  .rd-notes { padding: 16px 14px 18px; }
+  .rd-notes li { font-size: 13.5px; gap: 10px; }
 }

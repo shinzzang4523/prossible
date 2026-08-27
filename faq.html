@@ -4,10 +4,15 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>FAQ — Prossible</title>
-<meta name="description" content="Questions from the booth — Pro Tools requirements, macOS support, offline operation, transport safety, LAN View limits, and licensing across Macs.">
+<meta name="description" content="Questions from the booth — Pro Tools requirements, macOS support, offline operation, transport safety, marker naming, what the free trial limits, LAN View limits, and licensing across Macs.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Prossible FAQ">
 <meta property="og:description" content="Pro Tools requirements, macOS support, offline operation, transport safety, LAN View limits, and licensing.">
+<meta property="og:url" content="https://prossible.app/faq.html">
+<meta property="og:image" content="https://prossible.app/assets/img/combo-hero.png">
+<meta property="og:image:alt" content="Prossible stage display and Control Panel running a Pro Tools session">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://prossible.app/faq.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -16,6 +21,15 @@
 </head>
 <body>
 <div class="wrap">
+
+  <!-- PRELAUNCH:BANNER . Temporary while the app is in App Store review.
+       Delete this whole block (this comment through /PRELAUNCH:BANNER) once it is live.
+       Full procedure: ../RELAUNCH-CHECKLIST.md (repo, not deployed) -->
+  <div class="prelaunch">
+    <span class="tag">IN APP STORE REVIEW</span>
+    <span>Prossible is launching soon. <a href="mailto:sound.shs@gmail.com?subject=Notify%20me%20when%20Prossible%20launches">Leave your email</a> and we'll tell you the day it's live.</span>
+  </div>
+  <!-- /PRELAUNCH:BANNER -->
 
   <header class="nav">
     <a class="nav-brand" href="./index.html">
@@ -27,9 +41,11 @@
       <a href="./setup.html">Setup Guide</a>
       <a href="./pricing.html">Pricing</a>
       <a class="current" href="./faq.html">FAQ</a>
-      <a class="cta-row" href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+      <!-- PRELAUNCH:CTA revert to: href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener" / label "DOWNLOAD FOR MAC" -->
+      <a class="cta-row" href="mailto:sound.shs@gmail.com?subject=Notify%20me%20when%20Prossible%20launches">NOTIFY ME AT LAUNCH</a>
     </nav>
-    <a class="nav-cta" href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+    <!-- PRELAUNCH:CTA revert to: href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener" / label "DOWNLOAD FOR MAC" -->
+    <a class="nav-cta" href="mailto:sound.shs@gmail.com?subject=Notify%20me%20when%20Prossible%20launches">NOTIFY ME AT LAUNCH</a>
     <button class="nav-burger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span>
     </button>
@@ -40,7 +56,7 @@
 
     <div class="faq-list">
       <div class="faq-item open">
-        <button class="faq-q" aria-expanded="true">
+        <button class="faq-q" type="button" aria-expanded="true">
           <span class="q">Does it work without Pro Tools?</span>
           <span class="mark">–</span>
         </button>
@@ -50,7 +66,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
+        <button class="faq-q" type="button" aria-expanded="false">
           <span class="q">Does it work offline?</span>
           <span class="mark">+</span>
         </button>
@@ -60,7 +76,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
+        <button class="faq-q" type="button" aria-expanded="false">
           <span class="q">Which macOS versions are supported?</span>
           <span class="mark">+</span>
         </button>
@@ -70,7 +86,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
+        <button class="faq-q" type="button" aria-expanded="false">
           <span class="q">Can it accidentally stop playback during a show?</span>
           <span class="mark">+</span>
         </button>
@@ -80,7 +96,7 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
+        <button class="faq-q" type="button" aria-expanded="false">
           <span class="q">How many displays and phones can connect?</span>
           <span class="mark">+</span>
         </button>
@@ -90,12 +106,52 @@
       </div>
 
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
+        <button class="faq-q" type="button" aria-expanded="false">
           <span class="q">Does the license transfer between Macs?</span>
           <span class="mark">+</span>
         </button>
         <div class="faq-a">
           <p>Purchases are tied to your Apple Account, so main and backup rigs signed into the same account are both covered. Redundancy requires the Pro tier.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false">
+          <span class="q">What exactly does the free trial limit?</span>
+          <span class="mark">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Three songs per session, with no time limit and no watermark — enough to run the whole setup end to end and see it follow a real session. LAN View and main/backup redundancy are Pro features and stay locked in the trial. Everything else on the operator panel and stage display is there.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false">
+          <span class="q">Does it install anything into Pro Tools, or change my session?</span>
+          <span class="mark">+</span>
+        </button>
+        <div class="faq-a">
+          <p>No. There is no plug-in, no script and nothing to add to the session. Prossible reads your memory locations over PTSL and follows position over MTC — your marker names, order and colors are the source of truth, and it never writes back to them. Reordering the set happens inside Prossible.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false">
+          <span class="q">Will a resync move my playhead in the middle of a show?</span>
+          <span class="mark">+</span>
+        </button>
+        <div class="faq-a">
+          <p>No. <code>RESYNC</code> reads the memory locations without touching the Pro Tools cursor, counter or playhead, so it's safe between songs. If a marker's position can't be read, Prossible says so and leaves the transport alone rather than guessing.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" type="button" aria-expanded="false">
+          <span class="q">How do I name markers so Prossible reads them?</span>
+          <span class="mark">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Three forms, and nothing else: <code>NN.Song Name/BPM/KEY</code> starts a song (two-digit number and a period; BPM and key optional), a leading <code>&gt;</code> makes a section, and <code>SongEnd</code> marks the end of a song. Anything else is left alone and listed as an Unrecognized warning after a resync. Full rules are in the <a href="./setup.html#marker-syntax">Setup Guide</a>.</p>
         </div>
       </div>
     </div>
@@ -121,6 +177,10 @@
       <a href="./faq.html">FAQ</a>
       <a href="https://shinzzang4523.github.io/prossible-support/privacy.html" target="_blank" rel="noopener">Privacy</a>
       <a href="mailto:sound.shs@gmail.com">sound.shs@gmail.com</a>
+    </div>
+    <div class="licensing">
+      Volume / production licensing &mdash; invoicing, multi-rig, offline activation:
+      <a href="mailto:sound.shs@gmail.com?subject=Prossible%20volume%20licensing">sound.shs@gmail.com</a>
     </div>
   </footer>
 

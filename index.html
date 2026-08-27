@@ -8,6 +8,11 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Prossible — Turn your Pro Tools session into a live show">
 <meta property="og:description" content="A stage display for the band, a guarded operator panel for the booth. Built around Pro Tools, MTC and PTSL. macOS 15+.">
+<meta property="og:url" content="https://prossible.app/">
+<meta property="og:image" content="https://prossible.app/assets/img/combo-hero.png">
+<meta property="og:image:alt" content="Prossible stage display and Control Panel running a Pro Tools session">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://prossible.app/">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -16,6 +21,15 @@
 </head>
 <body>
 <div class="wrap">
+
+  <!-- PRELAUNCH:BANNER . Temporary while the app is in App Store review.
+       Delete this whole block (this comment through /PRELAUNCH:BANNER) once it is live.
+       Full procedure: ../RELAUNCH-CHECKLIST.md (repo, not deployed) -->
+  <div class="prelaunch">
+    <span class="tag">IN APP STORE REVIEW</span>
+    <span>Prossible is launching soon. <a href="mailto:sound.shs@gmail.com?subject=Notify%20me%20when%20Prossible%20launches">Leave your email</a> and we'll tell you the day it's live.</span>
+  </div>
+  <!-- /PRELAUNCH:BANNER -->
 
   <header class="nav">
     <a class="nav-brand" href="./index.html">
@@ -27,9 +41,11 @@
       <a href="./setup.html">Setup Guide</a>
       <a href="./pricing.html">Pricing</a>
       <a href="./faq.html">FAQ</a>
-      <a class="cta-row" href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+      <!-- PRELAUNCH:CTA revert to: href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener" / label "DOWNLOAD FOR MAC" -->
+      <a class="cta-row" href="mailto:sound.shs@gmail.com?subject=Notify%20me%20when%20Prossible%20launches">NOTIFY ME AT LAUNCH</a>
     </nav>
-    <a class="nav-cta" href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+    <!-- PRELAUNCH:CTA revert to: href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener" / label "DOWNLOAD FOR MAC" -->
+    <a class="nav-cta" href="mailto:sound.shs@gmail.com?subject=Notify%20me%20when%20Prossible%20launches">NOTIFY ME AT LAUNCH</a>
     <button class="nav-burger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span>
     </button>
@@ -40,9 +56,10 @@
     <h1>Turn your Pro Tools session into a live show.</h1>
     <p class="sub">Prossible reads your session over MTC and PTSL and puts a stage display in front of the band — bar countdowns, sections, what's next. You run the show from the booth.</p>
     <div class="hero-ctas">
-      <a class="mas-btn" href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener">
-        <span class="small">Download on the</span>
-        <span class="big">Mac App Store</span>
+      <!-- PRELAUNCH:CTA revert to: href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener" / labels "Download on the" + "Mac App Store" -->
+      <a class="mas-btn" href="mailto:sound.shs@gmail.com?subject=Notify%20me%20when%20Prossible%20launches">
+        <span class="small">Coming to the Mac App Store</span>
+        <span class="big">Notify me at launch</span>
       </a>
       <span class="trial-note">FREE TRIAL · 3 SONGS PER SESSION</span>
     </div>
@@ -71,7 +88,7 @@
 
   <section class="section" id="features">
     <h2>Built for the booth.</h2>
-    <p class="lede">Five things it does, and nothing it doesn't.</p>
+    <p class="lede">Six things it does, and nothing it doesn't.</p>
     <div class="feature-grid">
       <div class="feature">
         <div class="fno">F-01</div>
@@ -85,18 +102,23 @@
       </div>
       <div class="feature">
         <div class="fno">F-03</div>
+        <h3>Running order, in the app</h3>
+        <p>Set changed at soundcheck? Drag. Done. Your session never moves — no marker gets renamed, and the new order survives a resync and a restart.</p>
+      </div>
+      <div class="feature">
+        <div class="fno">F-04<span class="tierchip">PRO</span></div>
         <h3>LAN browser view</h3>
-        <p>Every phone and tablet on the network gets the stage display. No app install for the band.</p>
+        <p>Your band opens a browser. That's the whole setup — every phone and tablet on the network gets the stage display, up to 24 at once, with nothing to install.</p>
       </div>
       <div class="feature">
-        <div class="fno">F-04</div>
+        <div class="fno">F-05<span class="tierchip">PRO</span></div>
         <h3>Main / backup redundancy</h3>
-        <p>Two Macs, one show. The backup shadows the main rig and takes over without a visible glitch.</p>
+        <p>If your Mac dies, the show doesn't have to. The backup mirrors your running order and chases its own timecode all night — you promote it by hand when you need it.</p>
       </div>
       <div class="feature">
-        <div class="fno">F-05</div>
+        <div class="fno">F-06</div>
         <h3>Layout editor</h3>
-        <p>Decide what each display shows — countdown, lyrics cues, timecode — per screen, per song.</p>
+        <p>Decide what each display shows — bar countdown, section, tempo, key, timecode, band logo — and where it sits.</p>
       </div>
     </div>
   </section>
@@ -124,6 +146,60 @@
     </div>
   </section>
 
+  <section class="section" id="price">
+    <h2>One time. Then it's yours.</h2>
+    <p class="lede">A perpetual license — no renewal, no card to expire mid-tour.</p>
+    <div class="price-strip">
+      <div class="price-col">
+        <div class="tier">FREE TRIAL</div>
+        <div class="amount">$0</div>
+        <p>Every Stage feature, no time limit, three songs per session — enough to run the whole rig end to end before you decide.</p>
+      </div>
+      <div class="price-col is-featured">
+        <div class="tier">STAGE</div>
+        <div class="amount">$169</div>
+        <p>Unlimited songs and sessions on one Mac. Operator panel, stage display and layout editor in full.</p>
+      </div>
+      <div class="price-col">
+        <div class="tier">PRO</div>
+        <div class="amount">$249</div>
+        <p>Everything in Stage, plus LAN View for up to 24 devices and main / backup redundancy.</p>
+      </div>
+    </div>
+    <div class="price-actions">
+      <a class="more" href="./pricing.html">SEE WHAT'S IN EACH TIER</a>
+      <span class="aside">ONE-TIME PURCHASE · NO SUBSCRIPTION</span>
+    </div>
+  </section>
+
+  <!-- PROOF SECTION . Deliberately commented out: we have no testimonials yet, and we
+       do not write our own. Uncomment the section below and replace every placeholder
+       once 3 to 6 real quotes exist, each with a full name, a job title and the tour,
+       venue or artist it was for, published with that person's permission.
+       Styles are already live in assets/style.css (.proof-grid / .proof).
+       Checklist: homepage/RELAUNCH-CHECKLIST.md
+
+  <section class="section" id="proof">
+    <h2>Who runs it.</h2>
+    <p class="lede">Engineers who put it in front of a paying audience.</p>
+    <div class="proof-grid">
+      <div class="proof">
+        <blockquote>REAL QUOTE, VERBATIM. One or two sentences. Nothing written on their behalf.</blockquote>
+        <div class="who"><b>FULL NAME</b>JOB TITLE, ARTIST / TOUR / VENUE</div>
+      </div>
+      <div class="proof">
+        <blockquote>REAL QUOTE, VERBATIM. One or two sentences. Nothing written on their behalf.</blockquote>
+        <div class="who"><b>FULL NAME</b>JOB TITLE, ARTIST / TOUR / VENUE</div>
+      </div>
+      <div class="proof">
+        <blockquote>REAL QUOTE, VERBATIM. One or two sentences. Nothing written on their behalf.</blockquote>
+        <div class="who"><b>FULL NAME</b>JOB TITLE, ARTIST / TOUR / VENUE</div>
+      </div>
+    </div>
+  </section>
+
+  -->
+
   <footer class="footer">
     <div class="brand">
       <span class="dot"></span>
@@ -136,6 +212,10 @@
       <a href="./faq.html">FAQ</a>
       <a href="https://shinzzang4523.github.io/prossible-support/privacy.html" target="_blank" rel="noopener">Privacy</a>
       <a href="mailto:sound.shs@gmail.com">sound.shs@gmail.com</a>
+    </div>
+    <div class="licensing">
+      Volume / production licensing &mdash; invoicing, multi-rig, offline activation:
+      <a href="mailto:sound.shs@gmail.com?subject=Prossible%20volume%20licensing">sound.shs@gmail.com</a>
     </div>
   </footer>
 

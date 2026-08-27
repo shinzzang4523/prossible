@@ -8,6 +8,11 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Prossible Setup Guide">
 <meta property="og:description" content="IAC driver, Pro Tools MTC &amp; PTSL, marker syntax, LAN View, and main/backup redundancy — step by step.">
+<meta property="og:url" content="https://prossible.app/setup.html">
+<meta property="og:image" content="https://prossible.app/assets/img/combo-hero.png">
+<meta property="og:image:alt" content="Prossible stage display and Control Panel running a Pro Tools session">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://prossible.app/setup.html">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -16,6 +21,15 @@
 </head>
 <body>
 <div class="wrap">
+
+  <!-- PRELAUNCH:BANNER . Temporary while the app is in App Store review.
+       Delete this whole block (this comment through /PRELAUNCH:BANNER) once it is live.
+       Full procedure: ../RELAUNCH-CHECKLIST.md (repo, not deployed) -->
+  <div class="prelaunch">
+    <span class="tag">IN APP STORE REVIEW</span>
+    <span>Prossible is launching soon. <a href="mailto:sound.shs@gmail.com?subject=Notify%20me%20when%20Prossible%20launches">Leave your email</a> and we'll tell you the day it's live.</span>
+  </div>
+  <!-- /PRELAUNCH:BANNER -->
 
   <header class="nav">
     <a class="nav-brand" href="./index.html">
@@ -28,9 +42,11 @@
       <a class="current" href="./setup.html">Setup Guide</a>
       <a href="./pricing.html">Pricing</a>
       <a href="./faq.html">FAQ</a>
-      <a class="cta-row" href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+      <!-- PRELAUNCH:CTA revert to: href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener" / label "DOWNLOAD FOR MAC" -->
+      <a class="cta-row" href="mailto:sound.shs@gmail.com?subject=Notify%20me%20when%20Prossible%20launches">NOTIFY ME AT LAUNCH</a>
     </nav>
-    <a class="nav-cta" href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+    <!-- PRELAUNCH:CTA revert to: href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener" / label "DOWNLOAD FOR MAC" -->
+    <a class="nav-cta" href="mailto:sound.shs@gmail.com?subject=Notify%20me%20when%20Prossible%20launches">NOTIFY ME AT LAUNCH</a>
     <button class="nav-burger" aria-label="Menu" aria-expanded="false">
       <span></span><span></span>
     </button>
@@ -47,6 +63,7 @@
         <a href="#marker-syntax">Marker Syntax</a>
         <a href="#lan-view">LAN View</a>
         <a href="#redundancy">Redundancy</a>
+        <a href="#show-day">Show Day</a>
       </nav>
       <div class="meta">v1.0 · UPDATED AUG 2026<br>MACOS 15+ · PRO TOOLS 2023.6+</div>
     </aside>
@@ -69,7 +86,7 @@
           <div class="body">
             <h3>Meet the two windows</h3>
             <p>Prossible opens <code>Prossible — Control Panel</code> (your operator surface) and <code>Prossible — Stage Display</code> (the screen the band sees). If you don't need the stage window, turn off <code>Open Stage Display at launch</code> in Settings — <code>⌘⇧D</code> reopens it any time.</p>
-            <div class="shot"><img src="./assets/img/combo-hero.png" alt="Prossible stage display and Control Panel side by side" loading="lazy"></div>
+            <div class="shot"><img src="./assets/img/windows.png" alt="Prossible stage display on the left and the Control Panel window on the right" width="1250" height="840" loading="lazy"></div>
             <p class="shot-caption">STAGE DISPLAY (LEFT) · CONTROL PANEL (RIGHT)</p>
           </div>
         </div>
@@ -111,7 +128,7 @@
           <div class="no">03</div>
           <div class="body">
             <h3>Bring the IAC Driver online</h3>
-            <p>Double-click <code>IAC Driver</code> and check <code>Device is online</code>. The icon turns from greyed-out to active.</p>
+            <p>Double-click <code>IAC Driver</code> and check <code>Device is online</code>. The icon turns from grayed-out to active.</p>
           </div>
         </div>
         <div class="step">
@@ -131,8 +148,54 @@
           <div class="no">01</div>
           <div class="body">
             <h3>Point the MTC Generator at the IAC bus</h3>
-            <p>In Pro Tools, open <code>Setup → Peripherals… → Synchronization</code>. In the <code>MTC Generator</code> section, set <code>Port</code> to your IAC bus and check <code>Enable</code>.</p>
-            <div class="shot-placeholder"><span>[ SCREENSHOT · PRO TOOLS SYNCHRONIZATION PANE ]</span></div>
+            <p>In Pro Tools, open <code>Setup → Peripherals…</code> and pick the <code>Synchronization</code> tab. In the <code>MTC Reader And Generator</code> group, set <code>MTC Generator Port</code> to your IAC bus. Leave <code>MTC Reader Port</code> as you find it — that one is Pro Tools listening, and Prossible has no use for it.</p>
+
+            <!-- TO REPLACE WITH A REAL CAPTURE: on a Mac that has Pro Tools installed, shoot the
+                 Peripherals ▸ Synchronization pane, save it as ./assets/img/pt-synchronization.png,
+                 and swap the whole <figure class="ref-diagram"> below for:
+                   <div class="shot"><img src="./assets/img/pt-synchronization.png" alt="..." loading="lazy"></div>
+                 Keep the two callout notes as body copy underneath, and make sure the Generator Port
+                 value in the capture still matches the IAC bus named in the section above. -->
+            <figure class="ref-diagram">
+              <figcaption class="rd-head">
+                <span class="rd-tag">SETTINGS REFERENCE</span>
+                <span class="rd-path">Pro Tools <b>▸</b> Setup <b>▸</b> Peripherals <b>▸</b> Synchronization</span>
+              </figcaption>
+              <div class="rd-window">
+                <div class="rd-title">Peripherals</div>
+                <div class="rd-tabwrap">
+                  <div class="rd-tabs">
+                    <span class="rd-tab is-on">Synchronization</span>
+                    <span class="rd-tab">Machine Control</span>
+                    <span class="rd-tab">MIDI Controllers</span>
+                    <span class="rd-tab">Ethernet Controllers</span>
+                    <span class="rd-tab">Mic Preamps</span>
+                    <span class="rd-tab">Satellites</span>
+                    <span class="rd-tab">VENUE</span>
+                  </div>
+                </div>
+                <div class="rd-body">
+                  <div class="rd-group">
+                    <div class="rd-group-label">MTC READER AND GENERATOR</div>
+                    <div class="rd-field">
+                      <span class="rd-key">MTC Reader Port:</span>
+                      <span class="rd-ctl">Any<span class="caret">▼</span></span>
+                      <span class="rd-pin">1</span>
+                    </div>
+                    <div class="rd-field">
+                      <span class="rd-key">MTC Generator Port:</span>
+                      <span class="rd-ctl is-target">IAC Driver, Bus 1<span class="caret">▼</span></span>
+                      <span class="rd-pin">2</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <ol class="rd-notes">
+                <li><span class="rd-pin">1</span><span>Pro Tools' MTC input. Prossible never uses it — leave it alone.</span></li>
+                <li><span class="rd-pin">2</span><span>The only value you change. Pick the IAC bus you brought online in the previous section; Pro Tools names it device-then-port, so <code>Bus 1</code> reads as <code>IAC Driver, Bus 1</code>. Prossible's own <code>MIDI Input</code> has to point at the same bus.</span></li>
+              </ol>
+            </figure>
+            <p class="shot-caption">DIAGRAM, NOT A SCREENSHOT — DRAWN FROM PRO TOOLS ON MACOS.<br>THE WINDOW LAYOUT VARIES BY PRO TOOLS VERSION, AND THE IAC PORT NAME APPEARS IN YOUR MAC'S SYSTEM LANGUAGE.</p>
           </div>
         </div>
         <div class="step">
@@ -153,8 +216,9 @@
           <div class="no">04</div>
           <div class="body">
             <h3>Check the connection card</h3>
-            <p>The status card should read <code>Pro Tools: Connected</code> and <code>MTC: Normal</code>, both green.</p>
-            <div class="shot"><img src="./assets/img/connection.png" alt="Prossible connection card showing Pro Tools: Connected and MTC: Normal" loading="lazy"></div>
+            <p>The status card should read <code>Pro Tools: Connected</code> and <code>MTC: Normal</code>, both green. <code>MTC: Normal</code> only appears once Pro Tools is actually rolling — stopped, the generator sends nothing but locates.</p>
+            <div class="shot"><img src="./assets/img/connection-card.png" alt="Prossible CONNECTION card showing Pro Tools: Connected and MTC: Normal, both with green indicators" width="752" height="376" loading="lazy"></div>
+            <p class="shot-caption">CONNECTION CARD · CONTROL PANEL</p>
           </div>
         </div>
         <div class="step">
@@ -168,7 +232,10 @@
           <div class="no">06</div>
           <div class="body">
             <h3>If something doesn't light up</h3>
-            <p><code>Pro Tools: Connected</code> but <code>MTC: Stale</code> — recheck step 01: the MTC Generator's <code>Port</code> and <code>Enable</code>. No connection at all — make sure a session is open and Prossible runs on the same Mac as Pro Tools.</p>
+            <p><code>Pro Tools: Connected</code> but <code>MTC: Stale</code> — recheck step 01: <code>MTC Generator Port</code> has to name the same IAC bus Prossible is listening on. Then confirm Pro Tools is actually rolling; stopped, it only emits MTC when you locate.</p>
+            <p><code>Disconnected</code> after <code>Reconnect</code> — a session has to be open (PTSL attaches to the live session, not a file), and Prossible has to be on the same Mac as Pro Tools.</p>
+            <p>No IAC port in the <code>MIDI Input</code> list — press <code>Refresh</code>. If it's still missing, the IAC driver's <code>Device is online</code> box is the usual culprit.</p>
+            <p>Nothing responds to <code>RESYNC</code>, <code>SOURCE</code>, or Settings — the header reads <code>SHOW MODE</code>. Switch the <code>MODE</code> card at the top of Settings back to <code>REHEARSAL</code>; SHOW mode locks all of it on purpose.</p>
           </div>
         </div>
       </section>
@@ -182,6 +249,7 @@
           <div><span>&gt;Verse 1</span><span class="c-dim">                → section within the song</span></div>
           <div><span>&gt;Chorus 1</span><span class="c-dim">               → section within the song</span></div>
           <div><span class="c-amber">SongEnd</span><span class="c-dim">                 → arms auto-stop on this downbeat</span></div>
+          <div><span class="c-dim">End · ENC. · +STOP      → not parsed; listed as Unrecognized</span></div>
         </div>
 
         <div class="step">
@@ -210,6 +278,15 @@
           <div class="body">
             <h3>Everything else</h3>
             <p>Any other naming is not parsed — it shows up as an Unrecognized warning on the session sync card so you can spot typos. For talk breaks or notes between songs, use <code>Add Note Below</code> from the setlist's right-click menu instead of a marker.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">05</div>
+          <div class="body">
+            <h3>Read the warnings after a resync</h3>
+            <p>The session sync card counts what it parsed and collects the rest behind a warnings chip — click it to expand the list. Most entries are typos in a marker name. Two are worth knowing by sight:</p>
+            <p><code>Marker excluded during resync</code> usually clears on a second <code>RESYNC</code>; if it doesn't, the marker was renamed in Pro Tools but the session was never saved.</p>
+            <p>A warning that a marker's position could not be resolved means Pro Tools is reporting positions in a format Prossible can't place on a timeline. Set the main counter in the Pro Tools edit window to <code>Samples</code> or <code>Bars|Beats</code> and resync. Prossible never moves your counter back on its own.</p>
           </div>
         </div>
 
@@ -319,6 +396,54 @@
         </div>
       </section>
 
+      <section id="show-day">
+        <h2>Show Day</h2>
+        <p class="intro">One-time setup is behind you. This is the part you repeat — soundcheck to downbeat, in the order you'd actually do it.</p>
+
+        <div class="step">
+          <div class="no">01</div>
+          <div class="body">
+            <h3>Soundcheck — connect and resync</h3>
+            <p>Open the session in Pro Tools, open Prossible, confirm <code>Pro Tools: Connected</code> and <code>MTC: Normal</code>, press <code>RESYNC</code>. Check the song count on the sync card against the set on paper, and open the warnings chip if there is one. If you use LAN View, switch <code>LAN view server</code> on now — it does not survive a quit.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">02</div>
+          <div class="body">
+            <h3>Build the running order</h3>
+            <p>Drag the handle at the front of each setlist row until the order matches tonight, and set each song's end behavior on the right — <code>■</code> to stop at <code>SongEnd</code>, <code>↓</code> to run on into the next song. The order is Prossible's own; your Pro Tools markers are untouched, and it survives a restart.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">03</div>
+          <div class="body">
+            <h3>Rehearse the transitions, not the whole set</h3>
+            <p>Stopped, clicking a song jumps straight to it — cheap to spot-check an entry. Playing, clicking a song does nothing but flash a reminder; the transport only moves on <code>PLAY</code>, <code>STOP</code>, <code>NEXT</code>, or an armed <code>SongEnd</code>. That asymmetry is deliberate.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">04</div>
+          <div class="body">
+            <h3>Switch to SHOW mode before doors</h3>
+            <p>Settings → <code>MODE</code> → <code>SHOW</code>. Drag handles disappear, reordering and resync lock, and the LAN server and PIN settings freeze — the panel keeps only the controls you need mid-show. <code>REHEARSAL</code> gives it all back.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">05</div>
+          <div class="body">
+            <h3>Running the set</h3>
+            <p><code>PLAY</code> starts the song that's standing by. <code>NEXT</code> queues the following song with a blue <code>NEXT</code> badge, and the next <code>STOP</code> leaves that song ready. A song set to <code>■</code> stops itself on its <code>SongEnd</code> downbeat, every pass, and the next song comes up ready — no finger on the spacebar.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">06</div>
+          <div class="body">
+            <h3>If a marker changes mid-run</h3>
+            <p>Edit it in Pro Tools, save, drop back to <code>REHEARSAL</code>, and press <code>RESYNC</code>. Resync reads the memory locations without moving the Pro Tools cursor, counter, or playhead — safe to do between songs. Your running order and per-song settings are reconciled onto the new markers, not thrown away.</p>
+          </div>
+        </div>
+      </section>
+
     </div>
   </div>
 
@@ -334,6 +459,10 @@
       <a href="./faq.html">FAQ</a>
       <a href="https://shinzzang4523.github.io/prossible-support/privacy.html" target="_blank" rel="noopener">Privacy</a>
       <a href="mailto:sound.shs@gmail.com">sound.shs@gmail.com</a>
+    </div>
+    <div class="licensing">
+      Volume / production licensing &mdash; invoicing, multi-rig, offline activation:
+      <a href="mailto:sound.shs@gmail.com?subject=Prossible%20volume%20licensing">sound.shs@gmail.com</a>
     </div>
   </footer>
 
