@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Prossible — Turn your Pro Tools session into a live show</title>
+<meta name="description" content="Prossible reads your Pro Tools session over MTC and PTSL and puts a stage display in front of the band — bar countdowns, sections, what's next. You run the show from the booth.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Prossible — Turn your Pro Tools session into a live show">
+<meta property="og:description" content="A stage display for the band, a guarded operator panel for the booth. Built around Pro Tools, MTC and PTSL. macOS 15+.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%2334D97B'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="nav">
+    <a class="nav-brand" href="./index.html">
+      <span class="dot"></span>
+      <span class="name">Prossible</span>
+    </a>
+    <nav class="nav-links">
+      <a href="#features">Features</a>
+      <a href="./setup.html">Setup Guide</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="./faq.html">FAQ</a>
+      <a class="cta-row" href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+    </nav>
+    <a class="nav-cta" href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <section class="hero">
+    <div class="eyebrow">FOR PRO TOOLS · MACOS 15+</div>
+    <h1>Turn your Pro Tools session into a live show.</h1>
+    <p class="sub">Prossible reads your session over MTC and PTSL and puts a stage display in front of the band — bar countdowns, sections, what's next. You run the show from the booth.</p>
+    <div class="hero-ctas">
+      <a class="mas-btn" href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener">
+        <span class="small">Download on the</span>
+        <span class="big">Mac App Store</span>
+      </a>
+      <span class="trial-note">FREE TRIAL · 3 SONGS PER SESSION</span>
+    </div>
+  </section>
+
+  <div class="stage-mock-frame">
+    <div class="stage-mock">
+      <div class="bar">
+        <span class="lock"><span class="dot"></span>MTC LOCKED</span>
+        <span class="tc">00:14:32:11</span>
+        <span class="bpm">120 BPM · Am</span>
+      </div>
+      <div class="body">
+        <div class="song">01 · MIDNIGHT RUN</div>
+        <div class="section">CHORUS 1</div>
+        <div class="count">4</div>
+        <div class="to">BARS TO ›VERSE 2</div>
+      </div>
+      <div class="foot">
+        <span class="autostop">■ AUTO-STOP ARMED · SongEnd</span>
+        <span class="prog"><i></i></span>
+        <span class="next">NEXT · 02 GLASS HOUSES</span>
+      </div>
+    </div>
+  </div>
+
+  <section class="section" id="features">
+    <h2>Built for the booth.</h2>
+    <p class="lede">Five things it does, and nothing it doesn't.</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <div class="fno">F-01</div>
+        <h3>Live session tracking</h3>
+        <p>Markers and memory locations become songs and sections automatically. No re-entry, no second source of truth.</p>
+      </div>
+      <div class="feature">
+        <div class="fno">F-02</div>
+        <h3>Operator panel</h3>
+        <p>A control surface for the playback engineer. Transport is guarded — nothing fires unless you arm it.</p>
+      </div>
+      <div class="feature">
+        <div class="fno">F-03</div>
+        <h3>LAN browser view</h3>
+        <p>Every phone and tablet on the network gets the stage display. No app install for the band.</p>
+      </div>
+      <div class="feature">
+        <div class="fno">F-04</div>
+        <h3>Main / backup redundancy</h3>
+        <p>Two Macs, one show. The backup shadows the main rig and takes over without a visible glitch.</p>
+      </div>
+      <div class="feature">
+        <div class="fno">F-05</div>
+        <h3>Layout editor</h3>
+        <p>Decide what each display shows — countdown, lyrics cues, timecode — per screen, per song.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section sacred">
+    <div class="copy">
+      <h2>Playback is sacred.</h2>
+      <p>The operator panel never sends a transport command you didn't ask for. Play is confirmed, stop is armed, and everything you press is logged with timecode.</p>
+      <div class="autostop-title">■ It stops itself at song end.</div>
+      <p class="autostop-body">A SongEnd marker arms an automatic stop — the session halts cleanly on the downbeat, every night, without a human finger on the spacebar.</p>
+    </div>
+    <div class="operator-mock">
+      <div class="head">
+        <span>OPERATOR · MAIN</span><span class="ok">PTSL CONNECTED</span>
+      </div>
+      <div class="btns">
+        <div class="play">▶ PLAY 01</div>
+        <div class="stop">■ STOP — ARMED</div>
+      </div>
+      <div class="log">
+        <div><span class="t-green">00:14:28:00</span>&nbsp;&nbsp;PLAY · 01 Midnight Run</div>
+        <div><span class="t-amber">00:18:04:12</span>&nbsp;&nbsp;AUTO-STOP · SongEnd</div>
+        <div><span class="t-green">00:18:09:00</span>&nbsp;&nbsp;LOCATE · 02 Glass Houses</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="brand">
+      <span class="dot"></span>
+      <span class="name">Prossible</span>
+      <span class="legal">© 2026 Prossible · MADE FOR THE BOOTH</span>
+    </div>
+    <div class="links">
+      <a href="./setup.html">Setup Guide</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="https://shinzzang4523.github.io/prossible-support/privacy.html" target="_blank" rel="noopener">Privacy</a>
+      <a href="mailto:sound.shs@gmail.com">sound.shs@gmail.com</a>
+    </div>
+  </footer>
+
+</div>
+<script src="./assets/site.js"></script>
+</body>
+</html>

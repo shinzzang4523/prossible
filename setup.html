@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Setup Guide — Prossible</title>
+<meta name="description" content="From a fresh install to a synced stage display in about ten minutes. IAC driver, Pro Tools MTC &amp; PTSL, marker syntax, LAN View, and main/backup redundancy.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Prossible Setup Guide">
+<meta property="og:description" content="IAC driver, Pro Tools MTC &amp; PTSL, marker syntax, LAN View, and main/backup redundancy — step by step.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%2334D97B'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="nav">
+    <a class="nav-brand" href="./index.html">
+      <span class="dot"></span>
+      <span class="name">Prossible</span>
+      <span class="crumb">/ SETUP GUIDE</span>
+    </a>
+    <nav class="nav-links">
+      <a href="./index.html#features">Features</a>
+      <a class="current" href="./setup.html">Setup Guide</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="./faq.html">FAQ</a>
+      <a class="cta-row" href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+    </nav>
+    <a class="nav-cta" href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="guide">
+
+    <aside class="guide-toc">
+      <div class="label">CONTENTS</div>
+      <nav>
+        <a class="active" href="#getting-started">Getting Started</a>
+        <a href="#iac-driver">IAC Driver Setup</a>
+        <a href="#mtc-ptsl">Pro Tools MTC &amp; PTSL</a>
+        <a href="#marker-syntax">Marker Syntax</a>
+        <a href="#lan-view">LAN View</a>
+        <a href="#redundancy">Redundancy</a>
+      </nav>
+      <div class="meta">v1.0 · UPDATED AUG 2026<br>MACOS 15+ · PRO TOOLS 2023.6+</div>
+    </aside>
+
+    <div class="guide-body">
+
+      <section id="getting-started">
+        <h1>Getting Started</h1>
+        <p class="intro">From a fresh install to a synced stage display in about ten minutes. Prossible runs on the same Mac as Pro Tools — it talks to it locally over PTSL and follows position over MTC.</p>
+
+        <div class="step">
+          <div class="no">01</div>
+          <div class="body">
+            <h3>Install and open Prossible</h3>
+            <p>Download from the Mac App Store. On first launch, grant Local Network access when prompted — LAN View depends on it.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">02</div>
+          <div class="body">
+            <h3>Meet the two windows</h3>
+            <p>Prossible opens <code>Prossible — Control Panel</code> (your operator surface) and <code>Prossible — Stage Display</code> (the screen the band sees). If you don't need the stage window, turn off <code>Open Stage Display at launch</code> in Settings — <code>⌘⇧D</code> reopens it any time.</p>
+            <div class="shot"><img src="./assets/img/combo-hero.png" alt="Prossible stage display and Control Panel side by side" loading="lazy"></div>
+            <p class="shot-caption">STAGE DISPLAY (LEFT) · CONTROL PANEL (RIGHT)</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">03</div>
+          <div class="body">
+            <h3>Open your session in Pro Tools</h3>
+            <p>Open the show session — the one with your song and section markers — in Pro Tools on this same Mac. Prossible builds its setlist straight from those markers; there is nothing to export and no second file to maintain.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">04</div>
+          <div class="body">
+            <h3>Work through the next two sections</h3>
+            <p>One-time setup is two short jobs: an IAC bus so Pro Tools can send MTC, and pointing Pro Tools at it. After that, connecting is a two-click routine at every soundcheck.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="iac-driver">
+        <h2>IAC Driver Setup</h2>
+        <p class="intro">MTC travels from Pro Tools to Prossible over a virtual MIDI bus built into macOS — the IAC driver. You set it up once per Mac.</p>
+
+        <div class="step">
+          <div class="no">01</div>
+          <div class="body">
+            <h3>Open Audio MIDI Setup</h3>
+            <p>Press <code>⌘Space</code>, type <code>Audio MIDI Setup</code>, and hit Return. It ships with macOS.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">02</div>
+          <div class="body">
+            <h3>Show the MIDI Studio</h3>
+            <p>In the menu bar, choose <code>Window → Show MIDI Studio</code>. A grid of MIDI devices appears.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">03</div>
+          <div class="body">
+            <h3>Bring the IAC Driver online</h3>
+            <p>Double-click <code>IAC Driver</code> and check <code>Device is online</code>. The icon turns from greyed-out to active.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">04</div>
+          <div class="body">
+            <h3>Confirm a bus exists</h3>
+            <p>The default <code>IAC Driver Bus 1</code> is all you need. If the ports list is empty, add one with the <code>+</code> button. A dedicated port named <code>Prossible MTC</code> also works if you prefer labeled routing.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="mtc-ptsl">
+        <h2>Pro Tools MTC &amp; PTSL</h2>
+        <p class="intro">Two connections, two jobs: MTC carries the playback position, PTSL carries markers and guarded transport. Requires Pro Tools 2023.6 or later with PTSL — verified on the latest releases.</p>
+
+        <div class="step">
+          <div class="no">01</div>
+          <div class="body">
+            <h3>Point the MTC Generator at the IAC bus</h3>
+            <p>In Pro Tools, open <code>Setup → Peripherals… → Synchronization</code>. In the <code>MTC Generator</code> section, set <code>Port</code> to your IAC bus and check <code>Enable</code>.</p>
+            <div class="shot-placeholder"><span>[ SCREENSHOT · PRO TOOLS SYNCHRONIZATION PANE ]</span></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">02</div>
+          <div class="body">
+            <h3>Switch Prossible to the real source</h3>
+            <p>In the Control Panel, set <code>SOURCE</code> to <code>Real (PTSL+MTC)</code>. A <code>MIDI Input</code> dropdown appears next to it.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">03</div>
+          <div class="body">
+            <h3>Pick the IAC port and reconnect</h3>
+            <p>Choose the same IAC port (<code>IAC Driver Bus 1</code> or your named port) in <code>MIDI Input</code>, then press <code>Reconnect</code>. Pro Tools must be running with the session open — PTSL connects to the live session, not a file.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">04</div>
+          <div class="body">
+            <h3>Check the connection card</h3>
+            <p>The status card should read <code>Pro Tools: Connected</code> and <code>MTC: Normal</code>, both green.</p>
+            <div class="shot"><img src="./assets/img/connection.png" alt="Prossible connection card showing Pro Tools: Connected and MTC: Normal" loading="lazy"></div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">05</div>
+          <div class="body">
+            <h3>Resync the markers</h3>
+            <p>Press <code>RESYNC</code> in the <code>SESSION SYNC</code> card. Prossible reads every memory location and builds the setlist — without moving the Pro Tools cursor, counter, or playhead. Resync again any time you edit markers.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">06</div>
+          <div class="body">
+            <h3>If something doesn't light up</h3>
+            <p><code>Pro Tools: Connected</code> but <code>MTC: Stale</code> — recheck step 01: the MTC Generator's <code>Port</code> and <code>Enable</code>. No connection at all — make sure a session is open and Prossible runs on the same Mac as Pro Tools.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="marker-syntax">
+        <h2>Marker Syntax</h2>
+        <p class="intro">Prossible parses memory location names. A two-digit number and a period start a song; a leading <code>&gt;</code> marks a section; <code>SongEnd</code> arms the auto-stop. Everything else is left alone and listed as an Unrecognized warning after resync.</p>
+
+        <div class="code-block">
+          <div><span class="c-green">01.Midnight Run/120/Am</span><span class="c-dim">  → song 01, 120 BPM, key of Am</span></div>
+          <div><span>&gt;Verse 1</span><span class="c-dim">                → section within the song</span></div>
+          <div><span>&gt;Chorus 1</span><span class="c-dim">               → section within the song</span></div>
+          <div><span class="c-amber">SongEnd</span><span class="c-dim">                 → arms auto-stop on this downbeat</span></div>
+        </div>
+
+        <div class="step">
+          <div class="no">01</div>
+          <div class="body">
+            <h3>Song markers</h3>
+            <p><code>NN.Song Name/BPM/KEY</code> — a two-digit number, a period, the title, then optional BPM and key separated by slashes. <code>07.Ballad/96</code> and <code>12.Jam</code> are both valid; empty slots are allowed, as in <code>12.Jam//Am</code>.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">02</div>
+          <div class="body">
+            <h3>Section markers</h3>
+            <p>Start the name with <code>&gt;</code> — <code>&gt;Verse 1</code>, <code>&gt;Chorus 2</code>. Sections drive the stage display's bar countdown and the "what's next" line.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">03</div>
+          <div class="body">
+            <h3>SongEnd markers</h3>
+            <p>A marker named <code>SongEnd</code> (case doesn't matter) marks the end of the song. Per song, the setlist row's right-hand toggle decides what happens there: <code>■</code> stop cleanly (default) or <code>↓</code> continue into the next song.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">04</div>
+          <div class="body">
+            <h3>Everything else</h3>
+            <p>Any other naming is not parsed — it shows up as an Unrecognized warning on the session sync card so you can spot typos. For talk breaks or notes between songs, use <code>Add Note Below</code> from the setlist's right-click menu instead of a marker.</p>
+          </div>
+        </div>
+
+        <div class="note"><span class="tag">NOTE</span> — tempo and key are optional. <code>01.Song Name</code> alone is valid; omitted fields simply don't appear on the displays. Reordering the set happens in Prossible (drag the handle at the front of each row) — your Pro Tools markers are never touched.</div>
+      </section>
+
+      <section id="lan-view">
+        <h2>LAN View</h2>
+        <p class="intro">The stage display, served to every phone and tablet on the local network — no app install for the band. LAN View is part of the Pro unlock and works entirely offline; a router with no uplink is fine.</p>
+
+        <div class="step">
+          <div class="no">01</div>
+          <div class="body">
+            <h3>Turn on the server</h3>
+            <p>In Settings, open the <code>LAN VIEW</code> card and enable <code>LAN view server</code>. The server stops when the app quits, so switch it on as part of your show-day routine.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">02</div>
+          <div class="body">
+            <h3>Read the card</h3>
+            <p>The card shows the port, Bonjour status, a QR code, and the plain address. If the Mac isn't on any network you'll see <code>No usable network address</code> — join Wi-Fi or Ethernet first. On networks that block Bonjour, the QR and address still work.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">03</div>
+          <div class="body">
+            <h3>Connect a phone</h3>
+            <p>On a phone connected to the same network, scan the QR with Safari or Chrome. With <code>Require PIN</code> on (the default), the QR carries the PIN — scanning is enough. Typing the address by hand asks for the PIN once.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">04</div>
+          <div class="body">
+            <h3>Keep it as a browser tab</h3>
+            <p>Leave the page open in the browser rather than saving it to the home screen — some iOS versions don't keep the screen awake reliably from a home-screen icon.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">05</div>
+          <div class="body">
+            <h3>Approve one controller (optional)</h3>
+            <p>Viewers are read-only, but you can approve a single device — typically your own phone — for transport control. When it asks, a <code>LAN Controller Request</code> alert appears on the Mac; press <code>Approve</code> within 60 seconds. The phone then gets the same guarded <code>PLAY / STOP / NEXT</code> buttons as the Control Panel — same rules, same logging. One controller at a time; approving a new one demotes the old.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">06</div>
+          <div class="body">
+            <h3>Manage access</h3>
+            <p>The card lists connected devices — the controller wears a <code>CONTROLLER</code> badge, and <code>Revoke</code> works even mid-show. <code>Regenerate PIN</code> disconnects everyone at once. In SHOW mode the server toggle and PIN settings are locked so nothing gets switched off by accident.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="redundancy">
+        <h2>Redundancy</h2>
+        <p class="intro">Two Macs, one show. Each Mac runs its own Pro Tools and chases its own MTC — the pairing syncs the operator state (order, colors, skips, mode, dimmer) so the backup mirrors your decisions, not your playback. Audio and MIDI redundancy stay with your existing failover rig. Part of the Pro unlock.</p>
+
+        <div class="step">
+          <div class="no">01</div>
+          <div class="body">
+            <h3>Meet the prerequisites — all of them</h3>
+            <p>Both Macs on the same network, both running the same Pro Tools session with identical markers, both with <code>SOURCE = Real</code> showing <code>Pro Tools: Connected / MTC: Normal</code>, and both with the LAN view server on — pairing and reconnection run over it. The backup follows its own Pro Tools; it never borrows the main's screen.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">02</div>
+          <div class="body">
+            <h3>Show a pairing code on the main Mac</h3>
+            <p>Settings → <code>REDUNDANCY</code> card → <code>Pair Consoles…</code> → <code>Show Code</code>. You get a one-time six-digit code, valid for five minutes.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">03</div>
+          <div class="body">
+            <h3>Enter it on the backup Mac</h3>
+            <p>Same card → <code>Pair Consoles…</code> → <code>Enter Code</code> — pick the main Mac from the list, type the six digits, press <code>Pair</code>. Both cards now show each other's name and <code>CONNECTED</code>, and role badges appear: <code>ACTIVE</code> on the main, <code>STANDBY (linked)</code> on the backup. If the roles land backwards, fix them with the <code>PRIMARY / BACKUP</code> segment.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">04</div>
+          <div class="body">
+            <h3>Run the show from the ACTIVE console</h3>
+            <p>Reorders, colors, skips, dimmer, and mode changes on the ACTIVE Mac appear on the standby within a second. On the standby, editing is locked — but its own <code>PLAY / STOP / NEXT</code> and <code>RESYNC</code> keep working, because its playback is its own.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">05</div>
+          <div class="body">
+            <h3>Failover: promote by hand</h3>
+            <p>If the main Mac dies, the backup's badge flips to <code>STANDBY — LINK LOST</code> within five seconds — music and stage display never stop, since it chases its own MTC. Press <code>Promote to Active</code> to unlock editing and take the lead. Promotion is always a human decision, never automatic.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">06</div>
+          <div class="body">
+            <h3>Recovery is silent</h3>
+            <p>When the old main comes back, it reconnects automatically and settles into <code>STANDBY (linked)</code> without a single popup, inheriting whatever changed while it was gone. If both consoles ever claim ACTIVE (both were promoted while split), a red <code>SPLIT BRAIN</code> badge appears on both — press <code>Promote to Active</code> once more on the console that should lead.</p>
+          </div>
+        </div>
+        <div class="step">
+          <div class="no">07</div>
+          <div class="body">
+            <h3>Leave it paired</h3>
+            <p>Pairing survives reboots and re-finds the partner over Bonjour even if IP addresses change. <code>Push State Now</code> forces a full resync without touching playback; <code>Unpair</code> requires confirmation and is locked during SHOW mode.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="brand">
+      <span class="dot"></span>
+      <span class="name">Prossible</span>
+      <span class="legal">© 2026 Prossible · MADE FOR THE BOOTH</span>
+    </div>
+    <div class="links">
+      <a href="./setup.html">Setup Guide</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="https://shinzzang4523.github.io/prossible-support/privacy.html" target="_blank" rel="noopener">Privacy</a>
+      <a href="mailto:sound.shs@gmail.com">sound.shs@gmail.com</a>
+    </div>
+  </footer>
+
+</div>
+<script src="./assets/site.js"></script>
+</body>
+</html>

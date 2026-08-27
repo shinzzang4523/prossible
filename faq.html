@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FAQ — Prossible</title>
+<meta name="description" content="Questions from the booth — Pro Tools requirements, macOS support, offline operation, transport safety, LAN View limits, and licensing across Macs.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Prossible FAQ">
+<meta property="og:description" content="Pro Tools requirements, macOS support, offline operation, transport safety, LAN View limits, and licensing.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%2334D97B'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="nav">
+    <a class="nav-brand" href="./index.html">
+      <span class="dot"></span>
+      <span class="name">Prossible</span>
+    </a>
+    <nav class="nav-links">
+      <a href="./index.html#features">Features</a>
+      <a href="./setup.html">Setup Guide</a>
+      <a href="./pricing.html">Pricing</a>
+      <a class="current" href="./faq.html">FAQ</a>
+      <a class="cta-row" href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+    </nav>
+    <a class="nav-cta" href="https://apps.apple.com/app/id6805782861" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="faq-wrap">
+    <h1>Questions from the booth.</h1>
+
+    <div class="faq-list">
+      <div class="faq-item open">
+        <button class="faq-q" aria-expanded="true">
+          <span class="q">Does it work without Pro Tools?</span>
+          <span class="mark">–</span>
+        </button>
+        <div class="faq-a">
+          <p>No — Prossible is purpose-built around Pro Tools. It reads MTC for position and PTSL for markers and transport. It requires Pro Tools 2023.6 or later with PTSL, and is verified on the latest releases.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Does it work offline?</span>
+          <span class="mark">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Yes. Everything runs locally — sync, stage display, operator panel. No internet is required at the venue. LAN View only needs a local network (a router with no uplink is fine).</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Which macOS versions are supported?</span>
+          <span class="mark">+</span>
+        </button>
+        <div class="faq-a">
+          <p>macOS 15 Sequoia and later, on Apple silicon. The stage display and LAN View render on any modern browser or external display.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Can it accidentally stop playback during a show?</span>
+          <span class="mark">+</span>
+        </button>
+        <div class="faq-a">
+          <p>No. The operator panel never sends transport commands on its own — stops must be armed by you or by a SongEnd marker you placed in the session. Every command is logged with timecode.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">How many displays and phones can connect?</span>
+          <span class="mark">+</span>
+        </button>
+        <div class="faq-a">
+          <p>As many external displays as the Mac drives, and up to 24 simultaneous LAN View clients on the Pro tier. Each display gets its own layout.</p>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          <span class="q">Does the license transfer between Macs?</span>
+          <span class="mark">+</span>
+        </button>
+        <div class="faq-a">
+          <p>Purchases are tied to your Apple Account, so main and backup rigs signed into the same account are both covered. Redundancy requires the Pro tier.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="support-card">
+      <div>
+        <h2>Show week? We answer fast.</h2>
+        <p>Include your macOS and Pro Tools versions, and a session file if you can.</p>
+      </div>
+      <a class="mail" href="mailto:sound.shs@gmail.com">sound.shs@gmail.com</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="brand">
+      <span class="dot"></span>
+      <span class="name">Prossible</span>
+      <span class="legal">© 2026 Prossible · MADE FOR THE BOOTH</span>
+    </div>
+    <div class="links">
+      <a href="./setup.html">Setup Guide</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="https://shinzzang4523.github.io/prossible-support/privacy.html" target="_blank" rel="noopener">Privacy</a>
+      <a href="mailto:sound.shs@gmail.com">sound.shs@gmail.com</a>
+    </div>
+  </footer>
+
+</div>
+<script src="./assets/site.js"></script>
+</body>
+</html>
