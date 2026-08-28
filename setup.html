@@ -150,52 +150,9 @@
             <h3>Point the MTC Generator at the IAC bus</h3>
             <p>In Pro Tools, open <code>Setup → Peripherals…</code> and pick the <code>Synchronization</code> tab. In the <code>MTC Reader And Generator</code> group, set <code>MTC Generator Port</code> to your IAC bus. Leave <code>MTC Reader Port</code> as you find it — that one is Pro Tools listening, and Prossible has no use for it.</p>
 
-            <!-- TO REPLACE WITH A REAL CAPTURE: on a Mac that has Pro Tools installed, shoot the
-                 Peripherals ▸ Synchronization pane, save it as ./assets/img/pt-synchronization.png,
-                 and swap the whole <figure class="ref-diagram"> below for:
-                   <div class="shot"><img src="./assets/img/pt-synchronization.png" alt="..." loading="lazy"></div>
-                 Keep the two callout notes as body copy underneath, and make sure the Generator Port
-                 value in the capture still matches the IAC bus named in the section above. -->
-            <figure class="ref-diagram">
-              <figcaption class="rd-head">
-                <span class="rd-tag">SETTINGS REFERENCE</span>
-                <span class="rd-path">Pro Tools <b>▸</b> Setup <b>▸</b> Peripherals <b>▸</b> Synchronization</span>
-              </figcaption>
-              <div class="rd-window">
-                <div class="rd-title">Peripherals</div>
-                <div class="rd-tabwrap">
-                  <div class="rd-tabs">
-                    <span class="rd-tab is-on">Synchronization</span>
-                    <span class="rd-tab">Machine Control</span>
-                    <span class="rd-tab">MIDI Controllers</span>
-                    <span class="rd-tab">Ethernet Controllers</span>
-                    <span class="rd-tab">Mic Preamps</span>
-                    <span class="rd-tab">Satellites</span>
-                    <span class="rd-tab">VENUE</span>
-                  </div>
-                </div>
-                <div class="rd-body">
-                  <div class="rd-group">
-                    <div class="rd-group-label">MTC READER AND GENERATOR</div>
-                    <div class="rd-field">
-                      <span class="rd-key">MTC Reader Port:</span>
-                      <span class="rd-ctl">Any<span class="caret">▼</span></span>
-                      <span class="rd-pin">1</span>
-                    </div>
-                    <div class="rd-field">
-                      <span class="rd-key">MTC Generator Port:</span>
-                      <span class="rd-ctl is-target">IAC Driver, Bus 1<span class="caret">▼</span></span>
-                      <span class="rd-pin">2</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <ol class="rd-notes">
-                <li><span class="rd-pin">1</span><span>Pro Tools' MTC input. Prossible never uses it — leave it alone.</span></li>
-                <li><span class="rd-pin">2</span><span>The only value you change. Pick the IAC bus you brought online in the previous section; Pro Tools names it device-then-port, so <code>Bus 1</code> reads as <code>IAC Driver, Bus 1</code>. Prossible's own <code>MIDI Input</code> has to point at the same bus.</span></li>
-              </ol>
-            </figure>
-            <p class="shot-caption">DIAGRAM, NOT A SCREENSHOT — DRAWN FROM PRO TOOLS ON MACOS.<br>THE WINDOW LAYOUT VARIES BY PRO TOOLS VERSION, AND THE IAC PORT NAME APPEARS IN YOUR MAC'S SYSTEM LANGUAGE.</p>
+            <div class="shot"><img src="./assets/img/pt-sync-capture.png" alt="Pro Tools Peripherals window, Synchronization tab — MTC Reader Port set to Any, MTC Generator Port set to IAC Driver, Bus 1" width="1440" height="306" loading="lazy"></div>
+            <p class="shot-caption">PRO TOOLS ▸ SETUP ▸ PERIPHERALS ▸ SYNCHRONIZATION (CROPPED).<br>THE WINDOW LAYOUT VARIES BY PRO TOOLS VERSION, AND THE IAC PORT NAME APPEARS IN YOUR MAC'S SYSTEM LANGUAGE.</p>
+            <p><code>MTC Reader Port</code> is Pro Tools' own MTC input — Prossible never uses it, so leave it alone. <code>MTC Generator Port</code> is the only value you change: pick the IAC bus you brought online in the previous section. Pro Tools names it device-then-port, so <code>Bus 1</code> reads as <code>IAC Driver, Bus 1</code>. Prossible's own <code>MIDI Input</code> has to point at the same bus.</p>
           </div>
         </div>
         <div class="step">
