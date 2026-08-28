@@ -560,7 +560,7 @@ code, .kbd {
 .step p + p { margin-top: 10px; }
 
 .shot { margin-top: 16px; border: 1px solid var(--line2); border-radius: 6px; overflow: hidden; }
-.shot img { width: 100%; }
+.shot img { width: 100%; height: auto; display: block; }
 .shot-caption { font-family: var(--mono); font-size: 11px; color: var(--dim); margin-top: 8px; letter-spacing: 0.04em; line-height: 1.6; }
 
 /* ---------- settings reference diagram ----------
