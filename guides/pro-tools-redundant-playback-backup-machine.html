@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Main and backup: redundancy for Pro Tools playback — Prossible Guides</title>
+<meta name="description" content="Redundancy for a Pro Tools playback rig, layer by layer: audio switching, the second machine, staying in sync, the operator state everyone forgets, and a failover drill.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Main and backup: redundancy for Pro Tools playback — Prossible Guides">
+<meta property="og:description" content="Redundancy for a Pro Tools playback rig, layer by layer: audio switching, the second machine, staying in sync, the operator state everyone forgets, and a failover drill.">
+<meta property="og:url" content="https://prossible.app/guides/pro-tools-redundant-playback-backup-machine.html">
+<meta property="og:image" content="https://prossible.app/assets/img/combo-hero.png">
+<meta property="og:image:alt" content="Prossible stage display and Control Panel running a Pro Tools session">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://prossible.app/guides/pro-tools-redundant-playback-backup-machine.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%2334D97B'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Main and backup: redundancy for Pro Tools playback",
+  "description": "Redundancy for a Pro Tools playback rig, layer by layer: audio switching, the second machine, staying in sync, the operator state everyone forgets, and a failover drill.",
+  "datePublished": "2026-09-01",
+  "dateModified": "2026-09-01",
+  "author": { "@type": "Organization", "name": "Prossible" },
+  "publisher": { "@type": "Organization", "name": "Prossible" },
+  "mainEntityOfPage": "https://prossible.app/guides/pro-tools-redundant-playback-backup-machine.html",
+  "image": "https://prossible.app/assets/img/combo-hero.png"
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="nav">
+    <a class="nav-brand" href="../index.html">
+      <span class="dot"></span>
+      <span class="name">Prossible</span>
+      <span class="crumb">/ GUIDES</span>
+    </a>
+    <nav class="nav-links">
+      <a href="../index.html#features">Features</a>
+      <a href="../setup.html">Setup Guide</a>
+      <a class="current" href="./index.html">Guides</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../faq.html">FAQ</a>
+      <a class="cta-row" href="https://apps.apple.com/us/app/prossible/id6805782861?mt=12" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+    </nav>
+    <a class="nav-cta" href="https://apps.apple.com/us/app/prossible/id6805782861?mt=12" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <article class="article">
+    <div class="kicker"><a href="./index.html">PROSSIBLE GUIDES</a> · FOR PRO TOOLS</div>
+    <h1>Main and backup: redundancy for Pro Tools playback</h1>
+
+      <p class="standfirst">There is a sentence that gets repeated in this trade because it is true: <em>if my laptop dies, there is no show.</em> That is the whole argument for redundancy, and it is why productions with real budgets treat a backup machine as a line item rather than a nicety.</p>
+      <p>The trouble is that "we have a backup" is four different claims wearing one coat, and most rigs have some of them and not others. This is how to tell which ones you actually have.</p>
+
+      <h2>Redundancy is four layers, not one</h2>
+      <p>Separate them before you buy anything.</p>
+      <p><strong>Layer 1 &mdash; Audio.</strong> If the main machine stops producing sound, does sound keep coming out of the same console inputs? This is the layer that determines whether the audience hears a failure.</p>
+      <p><strong>Layer 2 &mdash; The machine.</strong> Is there a second computer, already running, already loaded, already in the right place in the session? Not "in the case." Running.</p>
+      <p><strong>Layer 3 &mdash; Sync.</strong> When you switch, is the backup at the same position in the same song? A backup two bars behind is not a backup.</p>
+      <p><strong>Layer 4 &mdash; Operator state.</strong> Tonight's running order, the songs you cut at soundcheck, which songs stop at the end and which run on, the screen dimmer setting. This is the layer nobody plans, because it lives in one person's screen and one person's head.</p>
+      <p>Most rigs solve 1 and 2, half-solve 3, and completely ignore 4. Layer 4 is the one that makes a failover <em>look</em> wrong to the band even when the audio was flawless: the music kept playing, but the screen on stage is now showing last night's set order.</p>
+
+      <h2>Layer 1: switching the audio</h2>
+      <p>This is a hardware problem and it should stay a hardware problem. The standard answer in touring playback is a dedicated redundancy audio interface &mdash; a box that takes outputs from both machines, feeds one set of outputs to the console, and switches from main to backup when the main stops sending a heartbeat. Expert Sleepers' PlayAUDIO12 is the widely used example of the category.</p>
+      <p>Two things about it are worth stating plainly:</p>
+      <ul>
+        <li><strong>It switches audio, and only audio.</strong> It knows nothing about your session, your setlist or your screens.</li>
+        <li><strong>The switch is only as good as the heartbeat.</strong> A machine that has locked up while still outputting audio will not trigger a switch. Rehearse the ugly failure (frozen but alive), not just the clean one (power cut).</li>
+      </ul>
+      <p>If a hardware switcher is out of budget, the manual version is a console with both machines patched to separate input banks and a rehearsed "swap to backup inputs" move. That is a real plan. Time it and write the number down.</p>
+
+      <h2>Layer 2: the second machine</h2>
+      <p>The backup is a machine with the same Pro Tools version, the same session, the same I/O setup, the same plug-ins, the same OS-level hygiene, running, from the top of the show. Not asleep. Not on the last song's project.</p>
+      <p>Things that quietly break this:</p>
+      <ul>
+        <li>Session opened on the backup <strong>before</strong> the last round of marker edits. Now the two machines disagree about where song 9 is.</li>
+        <li>Different Pro Tools versions. Sessions open, but something behaves differently under pressure.</li>
+        <li>A plug-in authorised on one machine and not the other, and the difference is discovered at the moment you switch.</li>
+        <li>The backup's display asleep because nobody has touched it in two hours.</li>
+      </ul>
+      <p>The cure is a written build sheet for the show machine and a rule that any change made to one is made to both, the same day, before you leave.</p>
+      <div class="seealso">
+        <span class="tag">SEE ALSO</span>
+        <a href="./pro-tools-live-playback.html">Show machine hygiene</a> &mdash; the build-sheet items that belong on both Macs.
+      </div>
+
+      <h2>Layer 3: staying in the same place</h2>
+      <p>Two independent machines drifting apart is the failure that makes redundancy useless.</p>
+      <p>The clean approach: <strong>both machines chase the same timecode.</strong> One master source, both Pro Tools rigs locked to it, so the backup's playhead is where the main's playhead is at all times. If they are locked, a switch is a switch and nothing else happens.</p>
+      <p>The pragmatic approach many shows actually use: <strong>both machines run their own transport, started together, on stable clocks</strong>, and the operator accepts a small drift and switches at a song boundary rather than mid-song. This is fine and honest as long as everyone knows that mid-song failover means a musical bump.</p>
+      <p>The dangerous middle: a backup that <em>looks</em> synced because it is following something derived from the main machine. If the backup's position ultimately comes from the main, then when the main dies, the backup freezes with it &mdash; and it will look perfect in every test you ran while the main was alive. This is a genuine, easy-to-make wiring mistake. The diagnostic is simple: <strong>stop the main machine only, and confirm the backup's position keeps moving on its own.</strong> If it stalls a second or two later, your backup was never independent.</p>
+
+      <h2>Layer 4: the operator state everyone forgets</h2>
+      <p>You cut two songs at soundcheck. You moved the encore. Song 6 is set to run straight into song 7 tonight because the band asked. The screen dimmer is at 40% because the LD asked.</p>
+      <p>None of that is in the Pro Tools session. It is in the operator's app, or on a piece of paper, or in the operator's memory. When the main machine dies at song 11, the person who takes over has the audio, has the timeline, and has none of tonight's decisions.</p>
+      <p>The manual mitigation, and it is a decent one: <strong>a printed running order in the backup position, updated after soundcheck, initialled.</strong> Cheap, offline, and unavailable to nobody. Do it regardless of what software you run.</p>
+      <div class="seealso">
+        <span class="tag">READ NEXT</span>
+        <a href="./pro-tools-setlist.html">Keeping the running order out of your markers</a> &mdash; why the session and tonight's order have to be two documents.
+      </div>
+
+      <h2>The drill</h2>
+      <p>Redundancy that has not been drilled is a belief, not a system. Run this once per tour, and again after any rig change. Twenty minutes with the band, or at the end of soundcheck.</p>
+      <ol>
+        <li><strong>Clean kill.</strong> Mid-song, cut power to the main machine. Did the audio continue? How many seconds of anything? Who noticed on stage?</li>
+        <li><strong>Dirty kill.</strong> Mid-song, freeze the main machine without killing its outputs (hold it in a modal state, pull its network, whatever your rig allows). Did the switcher do anything? This is the failure that catches rigs out.</li>
+        <li><strong>Position check.</strong> After the switch, is the backup in the same bar? Write down the offset.</li>
+        <li><strong>State check.</strong> Does the backup have tonight's running order, or last rehearsal's?</li>
+        <li><strong>Recovery.</strong> Bring the main back. Does anything switch back unexpectedly? An automatic switch-back mid-song is worse than the original failure.</li>
+        <li><strong>Who decides.</strong> State out loud who is allowed to declare a failover and who does the promoting. One person.</li>
+      </ol>
+      <p>Note point 6 carefully. There is a reason serious systems favour <strong>manual promotion</strong>: automatic failover means a machine gets to make a show-stopping decision on incomplete information, and the classic result is both machines deciding they are in charge. A human who can see the room takes about two seconds and is right far more often.</p>
+
+      <h2>Where our tool sits &mdash; and where it does not</h2>
+      <p><strong>Prossible</strong> works on layer 4, and on nothing else. It is worth being blunt about that, because redundancy is exactly the wrong place for marketing vagueness.</p>
+      <p>What it does: pair a main and a backup Mac over the local network. Each Mac runs <strong>its own</strong> Pro Tools and follows <strong>its own</strong> MTC &mdash; the backup is never watching the main's screen, which is precisely the dangerous middle described above, and we designed against it deliberately. What syncs between them is the operator state: running order, per-song colours, skips, end-of-song behaviour (stop or run on), mode and dimmer. Changes on the active console appear on the standby within about a second.</p>
+      <p>When the main disappears, the backup's badge changes to <code>STANDBY — LINK LOST</code> within five seconds. Its music and stage display do not stop, because they were never dependent on the main. You then press <strong>Promote to Active</strong> &mdash; a person, deliberately, never automatically. If the old main comes back, it reconnects and settles quietly into standby without a single popup, inheriting whatever changed while it was gone. If both consoles were promoted while separated, both show a red <code>SPLIT BRAIN</code> badge rather than silently picking a winner; you resolve it by promoting the one that should lead.</p>
+      <p>What it does <strong>not</strong> do, and will not claim to: switch your audio, mirror your Pro Tools transport, or replace layers 1 through 3. Your audio and MIDI redundancy stay exactly where they are.</p>
+      <p>Requirements: macOS 15 or later on Apple silicon, Pro Tools 2023.6 or later with PTSL, on each machine. Redundancy is part of the <strong>Pro</strong> tier ($249, one time, no subscription); the free tier's three-song limit and the Pro-only features mean you should evaluate this one on a rehearsal day, not a show day.</p>
+      <div class="seealso">
+        <span class="tag">SEE ALSO</span>
+        <a href="../setup.html#redundancy">Redundancy setup, step by step</a> · <a href="../faq.html">FAQ</a>
+      </div>
+  </article>
+
+  <section class="article-cta">
+    <div class="tier">PROSSIBLE · MAC APP STORE</div>
+    <div class="head">Redundancy is part of the Pro tier.</div>
+    <p>Prossible is on the Mac App Store. Redundancy is part of the <strong>Pro</strong> tier &mdash; $249, one time, no subscription. <strong>Buying for a production?</strong> Invoicing, multi-rig licensing and offline activation are things an App Store receipt cannot cover. Write to us and we will set it up directly &mdash; <a href="mailto:sound.shs@gmail.com?subject=Prossible%20volume%20licensing">sound.shs@gmail.com</a>.</p>
+    <div class="acts">
+      <a class="mas-btn" href="https://apps.apple.com/us/app/prossible/id6805782861?mt=12" target="_blank" rel="noopener">
+        <span class="small">Download on the</span>
+        <span class="big">Mac App Store</span>
+      </a>
+      <a class="more" href="../pricing.html">SEE WHAT'S IN EACH TIER</a>
+    </div>
+  </section>
+
+  <div class="article-foot">
+    <div class="label">MORE GUIDES</div>
+    <div class="row">
+      <a href="./pro-tools-setlist.html">How to run a setlist from a Pro Tools session</a>
+      <a href="./pro-tools-live-playback.html">Running live playback from Pro Tools: a practical setup</a>
+      <a href="./pro-tools-stage-display-for-band.html">Giving the band a stage display from your Pro Tools rig</a>
+      <a href="./pro-tools-memory-locations-setlist.html">Turning memory locations into a live setlist</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="brand">
+      <span class="dot"></span>
+      <span class="name">Prossible</span>
+      <span class="legal">© 2026 Prossible · MADE FOR THE BOOTH</span>
+    </div>
+    <div class="links">
+      <a href="../setup.html">Setup Guide</a>
+      <a href="./index.html">Guides</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../faq.html">FAQ</a>
+      <a href="https://shinzzang4523.github.io/prossible-support/privacy.html" target="_blank" rel="noopener">Privacy</a>
+      <a href="mailto:sound.shs@gmail.com">sound.shs@gmail.com</a>
+    </div>
+    <div class="licensing">
+      Volume / production licensing &mdash; invoicing, multi-rig, offline activation:
+      <a href="mailto:sound.shs@gmail.com?subject=Prossible%20volume%20licensing">sound.shs@gmail.com</a>
+    </div>
+  </footer>
+
+</div>
+<script src="../assets/site.js"></script>
+</body>
+</html>

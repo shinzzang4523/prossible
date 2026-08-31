@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to run a setlist from a Pro Tools session — Prossible Guides</title>
+<meta name="description" content="A working method for running a live setlist out of one Pro Tools session: marker conventions, safe recall, running-order changes at soundcheck, and where it breaks.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to run a setlist from a Pro Tools session — Prossible Guides">
+<meta property="og:description" content="A working method for running a live setlist out of one Pro Tools session: marker conventions, safe recall, running-order changes at soundcheck, and where it breaks.">
+<meta property="og:url" content="https://prossible.app/guides/pro-tools-setlist.html">
+<meta property="og:image" content="https://prossible.app/assets/img/combo-hero.png">
+<meta property="og:image:alt" content="Prossible stage display and Control Panel running a Pro Tools session">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://prossible.app/guides/pro-tools-setlist.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%2334D97B'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "How to run a setlist from a Pro Tools session",
+  "description": "A working method for running a live setlist out of one Pro Tools session: marker conventions, safe recall, running-order changes at soundcheck, and where it breaks.",
+  "datePublished": "2026-09-01",
+  "dateModified": "2026-09-01",
+  "author": { "@type": "Organization", "name": "Prossible" },
+  "publisher": { "@type": "Organization", "name": "Prossible" },
+  "mainEntityOfPage": "https://prossible.app/guides/pro-tools-setlist.html",
+  "image": "https://prossible.app/assets/img/combo-hero.png"
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="nav">
+    <a class="nav-brand" href="../index.html">
+      <span class="dot"></span>
+      <span class="name">Prossible</span>
+      <span class="crumb">/ GUIDES</span>
+    </a>
+    <nav class="nav-links">
+      <a href="../index.html#features">Features</a>
+      <a href="../setup.html">Setup Guide</a>
+      <a class="current" href="./index.html">Guides</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../faq.html">FAQ</a>
+      <a class="cta-row" href="https://apps.apple.com/us/app/prossible/id6805782861?mt=12" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+    </nav>
+    <a class="nav-cta" href="https://apps.apple.com/us/app/prossible/id6805782861?mt=12" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <article class="article">
+    <div class="kicker"><a href="./index.html">PROSSIBLE GUIDES</a> · FOR PRO TOOLS</div>
+    <h1>How to run a setlist from a Pro Tools session</h1>
+
+      <p class="standfirst">Pro Tools has no setlist. It has a timeline, and a list of memory locations, and an operator who has learned to read one as the other. That works &mdash; plenty of shows run this way every night &mdash; but it is a skill held in one person's head, and it fails in a specific and predictable way: the night the set changes at 4pm and nobody re-reads the markers.</p>
+      <p>This is how to build a setlist inside a Pro Tools session that survives that night. No plug-in, nothing to buy, nothing you can't do this afternoon.</p>
+
+      <h2>First: pick one session, not one session per song</h2>
+      <p>Three layouts show up in the wild.</p>
+      <p><strong>One session, all songs on one timeline.</strong> Every song laid end to end, separated by markers. Load once at soundcheck, never load again. Jumping between songs is a locate, which is instant.</p>
+      <p><strong>One session per song.</strong> Clean to edit, terrible live: opening a session takes seconds you do not have, closes your outputs, and drops your hardware inserts and I/O for the duration. It also means your click routing and stem outputs have to be identical across dozens of files, and one wrong I/O setup is a silent song.</p>
+      <p><strong>One session, playlists per song.</strong> Occasionally used for shows with alternate arrangements, but it multiplies the number of places a mistake can hide.</p>
+      <p>For live playback, use the first one. Everything below assumes it.</p>
+      <p>Leave the songs in a fixed order on the timeline. Resist the urge to physically drag audio around when the running order changes &mdash; you will do it at 5pm with the band waiting, and you will nudge something. The running order is a decision about <em>what you locate to next</em>, not about where the audio lives.</p>
+
+      <h2>The marker convention is the whole job</h2>
+      <p>The markers are the setlist. If they are readable at a glance under pressure, you have a setlist. If they say <code>Marker 47</code>, you have a liability.</p>
+      <p>A convention that works, in order of how much it buys you:</p>
+      <ol>
+        <li><strong>A number, a title.</strong> <code>01. Midnight Run</code>. Two digits, always &mdash; <code>1.</code> and <code>10.</code> sort differently in every list you will ever look at, and two digits keeps them aligned. The number is also how the band and MD will talk to you: "start from seven."</li>
+        <li><strong>Tempo and key, if the band uses them.</strong> <code>01. Midnight Run / 120 / Am</code>. Cheap to add, and it means the one screen you look at during a talk break has the answer to the question you are about to be asked.</li>
+        <li><strong>Section markers inside the song.</strong> <code>&gt;Verse 1</code>, <code>&gt;Chorus 2</code>. Prefixed with a symbol so they visually collapse away from song starts when you scan the list.</li>
+        <li><strong>An explicit end marker per song.</strong> <code>SongEnd</code>, right on the downbeat where playback should stop. This one gets skipped most often and costs the most. Without it, "where does this song end" is a judgement call made live.</li>
+      </ol>
+      <p>The important property is not the exact punctuation &mdash; it is that a machine, or a stranger covering your shift, could parse it without asking you. Pick a convention, write it at the top of the session notes, and never mix two.</p>
+      <p>Since Pro Tools 2023.6 you can also colour memory locations. Use it as a second channel, not the primary one: songs one colour, sections another. Colour is fast to scan and impossible to search, so it should confirm the naming, never replace it.</p>
+      <div class="seealso">
+        <span class="tag">READ NEXT</span>
+        <a href="./pro-tools-memory-locations-setlist.html">A machine-readable version of exactly this convention</a> &mdash; what each part of the name is for, and the seven-point audit that catches a half-migrated session.
+      </div>
+
+      <h2>Recall, and the properties that will bite you</h2>
+      <p>Every memory location stores more than a position. When you create one, Pro Tools offers to capture zoom settings, pre/post-roll, track visibility, track heights, group enables and a window configuration.</p>
+      <p>For a show session, capture <strong>none of them</strong>. A marker that also recalls track heights will rearrange your edit window in front of you mid-show, and the first time it happens you will think the session is corrupt. Make your show markers position-only, and audit the ones you inherited from the production session &mdash; those almost always carry properties from someone's editing setup.</p>
+      <p>For recall itself, get comfortable with the numeric keypad rather than the mouse. The exact keystroke depends on <code>Setup → Preferences → Operation → Numeric Keypad Mode</code>, so check which mode the show Mac is in, set it once, and rehearse it.</p>
+
+      <h2>Three settings that stop the session moving when you don't want it to</h2>
+      <p>These are the ones that separate a show session from an edit session.</p>
+      <p><strong>Unlink the timeline and edit selections.</strong> With <code>Options → Link Timeline and Edit Selection</code> off, clicking in the edit window to look at something no longer moves where playback will start. This single toggle prevents a whole family of accidents.</p>
+      <p><strong>Decide about Dynamic Transport before the show, not during it.</strong> It is genuinely useful for jumping between songs, and genuinely confusing if half the crew doesn't know it's on. Pick one and put it in the session notes.</p>
+      <p><strong>Turn off anything that writes.</strong> Auto-backup during a show buys you nothing &mdash; the session isn't changing &mdash; and costs you a disk hiccup at a random moment. Save your show state at the end of soundcheck and stop saving.</p>
+
+      <h2>The part nobody has a good answer for: the running order changed</h2>
+      <p>This is where the paper setlist and the session diverge, and it is the actual failure mode.</p>
+      <p>The set changes at soundcheck. Song 9 moves to the encore, two songs get cut, one gets added back from last tour. Your options in stock Pro Tools:</p>
+      <ul>
+        <li><strong>Renumber the markers.</strong> You now have <code>01…</code>, <code>02…</code> that no longer match the printed setlist the band is holding, or you renumber those too. Twenty minutes, in the dark, while someone waits.</li>
+        <li><strong>Leave them and keep a paper cheat sheet</strong> taped to the desk mapping "printed 4 = marker 09." This is what most people actually do. It works until you look up.</li>
+        <li><strong>Rebuild nothing and just remember.</strong> Works for three shows. Does not work on the fourth, at the end of a long run, when you are covering for someone.</li>
+      </ul>
+      <p>Whatever you choose, adopt one rule: <strong>the Pro Tools markers are the source of truth for where the audio is, and the running order is a separate document.</strong> The moment you start editing marker names to express the running order, you have two sources of truth that will disagree, and one of them will be right in the dark.</p>
+
+      <h2>An honest pre-show audit, in five minutes</h2>
+      <p>Do this every load-in, out loud, before you switch to show discipline:</p>
+      <ol>
+        <li>Song count in the Memory Locations window against the count on the printed setlist.</li>
+        <li>Every song has an end marker. This is the one that gets missed.</li>
+        <li>No duplicate numbers, no duplicate titles.</li>
+        <li>Every section marker sits between a song start and that song's end &mdash; an orphan section is a sign a marker got dragged.</li>
+        <li>Tempo written on the marker matches the tempo the band actually plays. If a marker says 120 and the track measures 95, one of them is a typo, and it is usually the marker.</li>
+      </ol>
+      <p>Five minutes. It catches almost everything that would otherwise be discovered at the downbeat.</p>
+
+      <h2>Automating it</h2>
+      <p>Everything above is manual, and it is meant to be &mdash; a rig you can run by hand is a rig you can rescue by hand.</p>
+      <p>The part that does not automate well by hand is the last two sections: keeping the running order separate from the markers, and re-auditing after every change.</p>
+      <p>That is the specific job we built <strong>Prossible</strong> for. It reads your memory locations over PTSL, builds a setlist from exactly the convention above, and lets you drag the running order into tonight's shape <strong>inside the app</strong> &mdash; your markers, numbering and colours are never touched and nothing is written back to the session. It re-runs the audit above on every resync and lists what it found: missing end markers, duplicate numbers, orphan sections, tempo that doesn't match the measured length. It does not install anything into Pro Tools; there is no plug-in and no script.</p>
+      <p>Requirements are narrow on purpose: macOS 15 or later on Apple silicon, on the same Mac as Pro Tools 2023.6 or later with PTSL.</p>
+      <div class="seealso">
+        <span class="tag">SEE ALSO</span>
+        <a href="../setup.html#marker-syntax">Marker syntax reference</a> · <a href="../setup.html#mtc-ptsl">Connecting Prossible to Pro Tools</a> · <a href="../faq.html">Does it change my session?</a>
+      </div>
+  </article>
+
+  <section class="article-cta">
+    <div class="tier">PROSSIBLE · MAC APP STORE</div>
+    <div class="head">Free tier: the first three songs of any session.</div>
+    <p>Prossible is on the Mac App Store. The free tier shows the first three songs of any session &mdash; enough to wire the whole rig up and watch it follow a real session before deciding. Stage is $169 and Pro is $249, one time, no subscription.</p>
+    <div class="acts">
+      <a class="mas-btn" href="https://apps.apple.com/us/app/prossible/id6805782861?mt=12" target="_blank" rel="noopener">
+        <span class="small">Download on the</span>
+        <span class="big">Mac App Store</span>
+      </a>
+      <a class="more" href="../pricing.html">SEE WHAT'S IN EACH TIER</a>
+    </div>
+  </section>
+
+  <div class="article-foot">
+    <div class="label">MORE GUIDES</div>
+    <div class="row">
+      <a href="./pro-tools-live-playback.html">Running live playback from Pro Tools: a practical setup</a>
+      <a href="./pro-tools-stage-display-for-band.html">Giving the band a stage display from your Pro Tools rig</a>
+      <a href="./pro-tools-redundant-playback-backup-machine.html">Main and backup: redundancy for Pro Tools playback</a>
+      <a href="./pro-tools-memory-locations-setlist.html">Turning memory locations into a live setlist</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="brand">
+      <span class="dot"></span>
+      <span class="name">Prossible</span>
+      <span class="legal">© 2026 Prossible · MADE FOR THE BOOTH</span>
+    </div>
+    <div class="links">
+      <a href="../setup.html">Setup Guide</a>
+      <a href="./index.html">Guides</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../faq.html">FAQ</a>
+      <a href="https://shinzzang4523.github.io/prossible-support/privacy.html" target="_blank" rel="noopener">Privacy</a>
+      <a href="mailto:sound.shs@gmail.com">sound.shs@gmail.com</a>
+    </div>
+    <div class="licensing">
+      Volume / production licensing &mdash; invoicing, multi-rig, offline activation:
+      <a href="mailto:sound.shs@gmail.com?subject=Prossible%20volume%20licensing">sound.shs@gmail.com</a>
+    </div>
+  </footer>
+
+</div>
+<script src="../assets/site.js"></script>
+</body>
+</html>

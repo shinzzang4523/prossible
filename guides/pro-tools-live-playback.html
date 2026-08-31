@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Running live playback from Pro Tools: a practical setup — Prossible Guides</title>
+<meta name="description" content="Session template, output routing, machine hygiene, MTC sync and transport discipline for running backing tracks live from Pro Tools — plus the failure modes to rehearse.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Running live playback from Pro Tools: a practical setup — Prossible Guides">
+<meta property="og:description" content="Session template, output routing, machine hygiene, MTC sync and transport discipline for running backing tracks live from Pro Tools — plus the failure modes to rehearse.">
+<meta property="og:url" content="https://prossible.app/guides/pro-tools-live-playback.html">
+<meta property="og:image" content="https://prossible.app/assets/img/combo-hero.png">
+<meta property="og:image:alt" content="Prossible stage display and Control Panel running a Pro Tools session">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://prossible.app/guides/pro-tools-live-playback.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%2334D97B'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/style.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TechArticle",
+  "headline": "Running live playback from Pro Tools: a practical setup",
+  "description": "Session template, output routing, machine hygiene, MTC sync and transport discipline for running backing tracks live from Pro Tools — plus the failure modes to rehearse.",
+  "datePublished": "2026-09-01",
+  "dateModified": "2026-09-01",
+  "author": { "@type": "Organization", "name": "Prossible" },
+  "publisher": { "@type": "Organization", "name": "Prossible" },
+  "mainEntityOfPage": "https://prossible.app/guides/pro-tools-live-playback.html",
+  "image": "https://prossible.app/assets/img/combo-hero.png"
+}
+</script>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="nav">
+    <a class="nav-brand" href="../index.html">
+      <span class="dot"></span>
+      <span class="name">Prossible</span>
+      <span class="crumb">/ GUIDES</span>
+    </a>
+    <nav class="nav-links">
+      <a href="../index.html#features">Features</a>
+      <a href="../setup.html">Setup Guide</a>
+      <a class="current" href="./index.html">Guides</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../faq.html">FAQ</a>
+      <a class="cta-row" href="https://apps.apple.com/us/app/prossible/id6805782861?mt=12" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+    </nav>
+    <a class="nav-cta" href="https://apps.apple.com/us/app/prossible/id6805782861?mt=12" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <article class="article">
+    <div class="kicker"><a href="./index.html">PROSSIBLE GUIDES</a> · FOR PRO TOOLS</div>
+    <h1>Running live playback from Pro Tools: a practical setup</h1>
+
+      <p class="standfirst">Most touring playback rigs are built on Ableton Live. That is not a matter of opinion &mdash; the training, the freelance labour pool and most of the published workflow material are all built around it, and if you are choosing a platform from zero with no other constraints, that is the well-lit road.</p>
+      <p>But a large number of shows run playback out of Pro Tools anyway, for good reasons: the stems were mixed there, the MD works there, the house engineer knows it, the session already exists and re-conforming it into another DAW is a week of work and a new set of mistakes. If that is your situation, Pro Tools is a perfectly capable playback machine. It just doesn't ship with the show-shaped conveniences the other road has.</p>
+      <p>This is the practical version: what to build, what to turn off, and what to rehearse.</p>
+
+      <h2>What the rig actually has to do</h2>
+      <p>Strip the job to its four outputs and it gets much easier to reason about:</p>
+      <ol>
+        <li><strong>Stems to the console</strong> &mdash; however many the mix needs, on fixed, labelled outputs.</li>
+        <li><strong>Click to the band</strong> &mdash; usually the drummer and MD, never anywhere near the house.</li>
+        <li><strong>Cues and utility audio</strong> &mdash; count-ins, intro voiceovers, samples that must not be mistaken for a stem.</li>
+        <li><strong>Sync out</strong> &mdash; timecode to whatever else needs to follow: lighting, video, an operator display.</li>
+      </ol>
+      <p>Everything below exists to make those four things happen at the right time and never at the wrong time.</p>
+
+      <h2>The session template</h2>
+      <p>Build it once, use it for the tour.</p>
+      <p><strong>One session, all songs on one timeline</strong>, songs separated by markers. Loading a session mid-show is not a plan.</p>
+      <p><strong>Fixed track order and fixed outputs.</strong> Stems in a stable order with stable output assignments, and the assignments written down somewhere that isn't the session. When a track shows up muted or silent on show day, you want to be able to compare against a written record rather than your memory of last week.</p>
+      <p><strong>Click and cues live outside the stem block</strong>, visually separated, ideally in a different track colour, with output paths that physically cannot reach the main console feed. If a routing mistake can send click to the PA, it eventually will.</p>
+      <p><strong>Sensible headroom on the stems.</strong> Playback stems arriving hot leaves the house engineer nothing to work with and makes every song a fight.</p>
+      <p><strong>A count-in convention.</strong> Whether it is bars of click, a spoken count or a visual count, pick one and use it on every song. Drummers do not adapt well to a convention that changes at song 11.</p>
+      <div class="seealso">
+        <span class="tag">READ NEXT</span>
+        <a href="./pro-tools-setlist.html">Building the setlist itself</a> &mdash; the marker convention that turns that one timeline into a running order.
+      </div>
+
+      <h2>Machine hygiene: the boring list that prevents most incidents</h2>
+      <p>A show Mac is not a work Mac. Before the first show, and after every macOS update:</p>
+      <ul>
+        <li><strong>A dedicated user account</strong> for shows. No mail, no messaging, no cloud sync clients logged in.</li>
+        <li><strong>Notifications off.</strong> A full-screen banner over your session at the top of the encore is a real thing that happens.</li>
+        <li><strong>Sleep and screen saver off</strong> for both display and system, on both battery and mains.</li>
+        <li><strong>Automatic updates off.</strong> Not deferred &mdash; off.</li>
+        <li><strong>Cloud sync paused</strong> for whatever folder the session lives in. A sync client re-indexing your audio files mid-show is a documented way to get dropouts.</li>
+        <li><strong>Spotlight excluded</strong> from the audio drive.</li>
+        <li><strong>Auto-backup off in the session</strong> for show day. The session is not changing; you gain nothing and risk a disk stall at a random moment.</li>
+        <li><strong>Buffer size raised.</strong> A playback-only rig has no live monitoring path to protect, so trade latency for stability.</li>
+        <li><strong>Battery and power.</strong> Mains, with the laptop battery healthy enough to survive a power blip. This is your real UPS.</li>
+      </ul>
+      <p>None of this is exotic. All of it is on the incident list of anyone who has run playback for more than a season.</p>
+
+      <h2>Sync: getting timecode out of Pro Tools</h2>
+      <p>If anything else in the show has to follow the session &mdash; lighting, video, an operator display, a second machine &mdash; you need Pro Tools to generate timecode. The standard, free path on a Mac is MIDI Time Code over a virtual MIDI bus.</p>
+      <p><strong>1. Bring the IAC driver online.</strong> Open <strong>Audio MIDI Setup</strong> (it ships with macOS), then <code>Window → Show MIDI Studio</code>, double-click <strong>IAC Driver</strong>, and tick <strong>Device is online</strong>. The default <code>Bus 1</code> is enough. You do this once per Mac; it is the single most commonly forgotten step, because a MIDI bus that is offline looks identical to one that is online in every list except this window.</p>
+      <p><strong>2. Point Pro Tools' generator at it.</strong> <code>Setup → Peripherals… → Synchronization</code>, and in the <strong>MTC Reader And Generator</strong> group set <strong>MTC Generator Port</strong> to the IAC bus. Leave <strong>MTC Reader Port</strong> alone &mdash; that is Pro Tools listening to the outside world, which is the opposite of what you want here.</p>
+      <p><strong>3. Set the session start time and frame rate deliberately.</strong> <code>Session Setup</code> &mdash; give the session a start time that means something (many shows use <code>01:00:00:00</code>) and a frame rate that everyone downstream agrees on.</p>
+      <p><strong>4. Remember when MTC actually flows.</strong> Pro Tools generates timecode while the transport is rolling. Stopped, you get nothing but the occasional locate. A receiving device reading "stale" while you are stopped is normal, not a fault &mdash; which is worth knowing before you spend soundcheck debugging a working rig.</p>
+      <div class="seealso">
+        <span class="tag">SEE ALSO</span>
+        The same three steps with screenshots: <a href="../setup.html#iac-driver">IAC driver setup</a> · <a href="../setup.html#mtc-ptsl">Pro Tools MTC &amp; PTSL</a>
+      </div>
+
+      <h2>Transport discipline</h2>
+      <p>The rig is now capable. The remaining risk is you.</p>
+      <p><strong>One person touches the transport.</strong> Not "one person at a time" &mdash; one person.</p>
+      <p><strong>Decide what the spacebar means.</strong> In a session where an edit window click can move the playhead, the spacebar is a loaded weapon. Turn off <code>Options → Link Timeline and Edit Selection</code> so that looking at something is not the same as arming it.</p>
+      <p><strong>Know where you stop.</strong> The end of a song is a position, and it should be a marker, not a feel. Stopping "about there" every night is how you end up with a two-bar tail of the next song's count-in in the house.</p>
+      <p><strong>Have a rule for the moment it goes wrong.</strong> Not a plan &mdash; a rule, one sentence, agreed with the MD in daylight. Something like: <em>if playback stops mid-song, we do not restart that song; we go to the top of the next one on the MD's cue.</em> Deciding this at 200 people-deep is not deciding, it is guessing.</p>
+
+      <h2>Rehearse the rig, not just the songs</h2>
+      <p>The things that break in a playback rig are rarely musical. Run these once, before the first show, with the band in the room:</p>
+      <ul>
+        <li>Pull the sync cable / disable the MIDI bus mid-song. What did the downstream devices do? Did anyone on stage notice?</li>
+        <li>Stop in the wrong place and recover. How long does it take, in seconds?</li>
+        <li>Move a song in the running order and run the transition either side of it.</li>
+        <li>Hard-quit the playback app (not Pro Tools) mid-song. Did the audio survive?</li>
+        <li>Unplug the display feeding the stage. Does the screen go black, or does it hold the last frame? A black screen on stage is worse than a stale one &mdash; musicians read a frozen screen as "unchanged", and a black one as "we are on our own".</li>
+      </ul>
+      <p>Write down the times. "We recover from a mid-song stop in eleven seconds" is the kind of fact that makes a production director relax.</p>
+      <div class="seealso">
+        <span class="tag">READ NEXT</span>
+        <a href="./pro-tools-redundant-playback-backup-machine.html">The redundancy drill</a> &mdash; the four layers of "we have a backup", and how to find out which ones you actually have.
+      </div>
+
+      <h2>Where a tool comes in</h2>
+      <p>Everything above is the rig. What Pro Tools does not give you is the <em>show layer</em>: a setlist with tonight's running order, a screen the band can read, and a stop that happens at the end of the song without a human finger on the spacebar.</p>
+      <p><strong>Prossible</strong> is the piece we built for that layer. It runs on the same Mac as Pro Tools, reads memory locations over PTSL and follows position over MTC &mdash; the exact sync path described above, so if you have done this section you have already done most of its setup. It turns the markers into a setlist, drives a stage display with sections and bar countdowns, and arms an automatic stop on the song-end marker you placed yourself. The operator panel never sends a transport command you didn't ask for, and everything it does send is logged with timecode.</p>
+      <p>On the Pro tier it also serves that stage display to phones and tablets over the local network &mdash; up to 24 devices at once, browser only, nothing to install &mdash; and pairs a main and a backup Mac so your running order and per-song settings exist in both places. Promotion of the backup is a button someone presses, never automatic.</p>
+      <p>Requirements: macOS 15 or later on Apple silicon, Pro Tools 2023.6 or later with PTSL, on the same Mac.</p>
+      <div class="seealso">
+        <span class="tag">SEE ALSO</span>
+        <a href="../setup.html">The full setup guide</a> &mdash; every step above, with screenshots, plus LAN View and redundancy.
+      </div>
+  </article>
+
+  <section class="article-cta">
+    <div class="tier">PROSSIBLE · MAC APP STORE</div>
+    <div class="head">Free tier: the first three songs of any session.</div>
+    <p>Prossible is on the Mac App Store. The free tier shows the first three songs of any session &mdash; enough to wire it up and watch it follow a real one. Stage $169, Pro $249, one time, no subscription.</p>
+    <div class="acts">
+      <a class="mas-btn" href="https://apps.apple.com/us/app/prossible/id6805782861?mt=12" target="_blank" rel="noopener">
+        <span class="small">Download on the</span>
+        <span class="big">Mac App Store</span>
+      </a>
+      <a class="more" href="../pricing.html">SEE WHAT'S IN EACH TIER</a>
+    </div>
+  </section>
+
+  <div class="article-foot">
+    <div class="label">MORE GUIDES</div>
+    <div class="row">
+      <a href="./pro-tools-setlist.html">How to run a setlist from a Pro Tools session</a>
+      <a href="./pro-tools-stage-display-for-band.html">Giving the band a stage display from your Pro Tools rig</a>
+      <a href="./pro-tools-redundant-playback-backup-machine.html">Main and backup: redundancy for Pro Tools playback</a>
+      <a href="./pro-tools-memory-locations-setlist.html">Turning memory locations into a live setlist</a>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="brand">
+      <span class="dot"></span>
+      <span class="name">Prossible</span>
+      <span class="legal">© 2026 Prossible · MADE FOR THE BOOTH</span>
+    </div>
+    <div class="links">
+      <a href="../setup.html">Setup Guide</a>
+      <a href="./index.html">Guides</a>
+      <a href="../pricing.html">Pricing</a>
+      <a href="../faq.html">FAQ</a>
+      <a href="https://shinzzang4523.github.io/prossible-support/privacy.html" target="_blank" rel="noopener">Privacy</a>
+      <a href="mailto:sound.shs@gmail.com">sound.shs@gmail.com</a>
+    </div>
+    <div class="licensing">
+      Volume / production licensing &mdash; invoicing, multi-rig, offline activation:
+      <a href="mailto:sound.shs@gmail.com?subject=Prossible%20volume%20licensing">sound.shs@gmail.com</a>
+    </div>
+  </footer>
+
+</div>
+<script src="../assets/site.js"></script>
+</body>
+</html>

@@ -23,24 +23,9 @@ body { background: #0B0B0C; color: #F0EFEA; font-family: 'Archivo', sans-serif; 
 .notfound .elsewhere a { color: inherit; text-decoration: none; }
 .notfound .elsewhere a:hover { color: #34D97B; }
 @media (max-width: 768px) { .notfound { padding: 96px 24px; } .notfound h1 { font-size: 36px; } .notfound .elsewhere { gap: 16px; } }
-/* PRELAUNCH: banner styles, duplicated here because 404.html is self-contained. Delete with the markup. */
-.prelaunch { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 6px 14px; padding: 11px 64px; border-bottom: 1px solid #1C1C1F; background: #0E0E10; font-family: 'IBM Plex Mono', monospace; font-size: 12px; line-height: 1.5; color: #9A9AA0; text-align: center; }
-.prelaunch .tag { color: #E8A33D; letter-spacing: 0.12em; white-space: nowrap; }
-.prelaunch a { color: #34D97B; text-decoration: underline; text-underline-offset: 3px; }
-.prelaunch a:hover { color: #F0EFEA; }
-@media (max-width: 768px) { .prelaunch { padding: 10px 20px; font-size: 11px; gap: 4px 10px; } }
 </style>
 </head>
 <body>
-  <!-- PRELAUNCH:BANNER . Temporary while the app is in App Store review.
-       Delete this whole block (this comment through /PRELAUNCH:BANNER) once it is live.
-       Full procedure: ../RELAUNCH-CHECKLIST.md (repo, not deployed) -->
-  <div class="prelaunch">
-    <span class="tag">IN APP STORE REVIEW</span>
-    <span>Prossible is launching soon. <a href="mailto:sound.shs@gmail.com?subject=Notify%20me%20when%20Prossible%20launches">Leave your email</a> and we'll tell you the day it's live.</span>
-  </div>
-  <!-- /PRELAUNCH:BANNER -->
-
   <div class="notfound">
     <div class="code">404 · NOT FOUND</div>
     <h1>This cue isn't in the session.</h1>
@@ -49,6 +34,7 @@ body { background: #0B0B0C; color: #F0EFEA; font-family: 'Archivo', sans-serif; 
     <a class="home" href="/">BACK TO PROSSIBLE</a>
     <div class="elsewhere">
       <a href="/setup.html">Setup Guide</a>
+      <a href="/guides/">Guides</a>
       <a href="/pricing.html">Pricing</a>
       <a href="/faq.html">FAQ</a>
       <a href="mailto:sound.shs@gmail.com">sound.shs@gmail.com</a>
