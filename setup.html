@@ -4,10 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Setup Guide — Prossible</title>
-<meta name="description" content="From a fresh install to a synced stage display in about ten minutes. IAC driver, Pro Tools MTC &amp; PTSL, marker syntax, LAN View, and main/backup redundancy.">
+<meta name="description" content="From a fresh install to a synced stage display in about ten minutes. IAC driver, Pro Tools MTC &amp; PTSL, markers and the Sections track, LAN View, and main/backup redundancy.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Prossible Setup Guide">
-<meta property="og:description" content="IAC driver, Pro Tools MTC &amp; PTSL, marker syntax, LAN View, and main/backup redundancy — step by step.">
+<meta property="og:description" content="IAC driver, Pro Tools MTC &amp; PTSL, markers and the Sections track, LAN View, and main/backup redundancy — step by step.">
 <meta property="og:url" content="https://prossible.app/setup.html">
 <meta property="og:image" content="https://prossible.app/assets/img/combo-hero.png">
 <meta property="og:image:alt" content="Prossible stage display and Control Panel running a Pro Tools session">
@@ -32,6 +32,7 @@
       <a href="./index.html#features">Features</a>
       <a class="current" href="./setup.html">Setup Guide</a>
       <a href="./guides/index.html">Guides</a>
+      <a href="./manual.html">Manual</a>
       <a href="./pricing.html">Pricing</a>
       <a href="./faq.html">FAQ</a>
       <a class="cta-row" href="https://apps.apple.com/us/app/prossible/id6805782861?mt=12" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
@@ -50,12 +51,12 @@
         <a class="active" href="#getting-started">Getting Started</a>
         <a href="#iac-driver">IAC Driver Setup</a>
         <a href="#mtc-ptsl">Pro Tools MTC &amp; PTSL</a>
-        <a href="#marker-syntax">Marker Syntax</a>
+        <a href="#marker-syntax">Markers &amp; Sections</a>
         <a href="#lan-view">LAN View</a>
         <a href="#redundancy">Redundancy</a>
         <a href="#show-day">Show Day</a>
       </nav>
-      <div class="meta">v1.0 · UPDATED AUG 2026<br>MACOS 15+ · PRO TOOLS 2023.6+</div>
+      <div class="meta">v1.1 · UPDATED SEP 2026<br>MACOS 15+ · PRO TOOLS 2023.6+</div>
     </aside>
 
     <div class="guide-body">
@@ -84,7 +85,7 @@
           <div class="no">03</div>
           <div class="body">
             <h3>Open your session in Pro Tools</h3>
-            <p>Open the show session — the one with your song and section markers — in Pro Tools on this same Mac. Prossible builds its setlist straight from those markers; there is nothing to export and no second file to maintain.</p>
+            <p>Open the show session — the one with your song markers — in Pro Tools on this same Mac. Prossible builds its setlist straight from those markers; there is nothing to export and no second file to maintain.</p>
           </div>
         </div>
         <div class="step">
@@ -188,14 +189,14 @@
       </section>
 
       <section id="marker-syntax">
-        <h2>Marker Syntax</h2>
-        <p class="intro">Prossible parses memory location names. A two-digit number and a period start a song; a leading <code>&gt;</code> marks a section; <code>SongEnd</code> arms the auto-stop. Everything else is left alone and listed as an Unrecognized warning after resync.</p>
+        <h2>Markers &amp; the Sections Track</h2>
+        <p class="intro">Prossible reads two things out of your session. <strong>Markers</strong> name the songs and their ends: a two-digit number and a period start a song, <code>SongEnd</code> arms the auto-stop. <strong>Sections</strong> come from a separate audio track named <code>Sections</code> — one short silent clip per section, clip name = section name.</p>
 
         <div class="code-block">
           <div><span class="c-green">01.Midnight Run/120/Am</span><span class="c-dim">  → song 01, 120 BPM, key of Am</span></div>
-          <div><span>&gt;Verse 1</span><span class="c-dim">                → section within the song</span></div>
-          <div><span>&gt;Chorus 1</span><span class="c-dim">               → section within the song</span></div>
           <div><span class="c-amber">SongEnd</span><span class="c-dim">                 → arms auto-stop on this downbeat</span></div>
+          <div><span class="c-green">02.Glass Houses/128</span><span class="c-dim">     → next song</span></div>
+          <div><span class="c-amber">SongEnd</span></div>
           <div><span class="c-dim">End · ENC. · +STOP      → not parsed; listed as Unrecognized</span></div>
         </div>
 
@@ -209,35 +210,54 @@
         <div class="step">
           <div class="no">02</div>
           <div class="body">
-            <h3>Section markers</h3>
-            <p>Start the name with <code>&gt;</code> — <code>&gt;Verse 1</code>, <code>&gt;Chorus 2</code>. Sections drive the stage display's bar countdown and the "what's next" line.</p>
+            <h3>SongEnd markers</h3>
+            <p>A marker named <code>SongEnd</code> (case doesn't matter) marks the end of the song. Per song, the setlist row's right-hand toggle decides what happens there: <code>■</code> stop cleanly (default) or <code>↓</code> continue into the next song.</p>
           </div>
         </div>
         <div class="step">
           <div class="no">03</div>
           <div class="body">
-            <h3>SongEnd markers</h3>
-            <p>A marker named <code>SongEnd</code> (case doesn't matter) marks the end of the song. Per song, the setlist row's right-hand toggle decides what happens there: <code>■</code> stop cleanly (default) or <code>↓</code> continue into the next song.</p>
+            <h3>Build the Sections track</h3>
+            <p>Sections are clips, not markers. Two dozen section markers in one Memory Locations window is a show incident waiting for the one that gets dragged — so the section map lives on its own track, where you can see it, drag it and rename it like any other audio.</p>
+            <p>Add one <strong>audio</strong> track and name it <code>Sections</code>. Drop a short silent clip at the start of every section, and rename each clip to the section name. That's the whole convention: <strong>clip name = section name, clip start = section start</strong>. Clip length doesn't matter — a section runs until the next one starts.</p>
+
+            <div class="code-block">
+              <div><span class="c-dim">TRACK  </span><span class="c-green">Sections</span><span class="c-dim">   (audio — not MIDI)</span></div>
+              <div><span class="c-dim">  │</span></div>
+              <div><span class="c-dim">  ├─</span> Intro<span class="c-dim">      ← clip at the top of song 01</span></div>
+              <div><span class="c-dim">  ├─</span> Verse 1</div>
+              <div><span class="c-dim">  ├─</span> Chorus 1</div>
+              <div><span class="c-dim">  └─</span> Outro<span class="c-dim">      ← last clip before SongEnd</span></div>
+            </div>
+
+            <p>The track name match ignores case and any leading or trailing spaces, so <code>sections</code> and <code>SECTIONS</code> both count — but it has to be that one word, and it has to be an audio track. Pro Tools' session-info export never lists MIDI tracks, so a MIDI <code>Sections</code> track reads to Prossible as no track at all.</p>
+            <p>Every clip has to sit between a song marker and that song's <code>SongEnd</code> (or, with no <code>SongEnd</code>, the next song marker). Clips in the gap between songs belong to no song, so they're dropped — and counted in a warning rather than vanishing quietly.</p>
+            <p>No <code>Sections</code> track is not an error. The setlist, transport, auto-stop and the whole stage display keep working at song level; you just don't get section names and bar countdowns, and the sync card says so once.</p>
           </div>
         </div>
         <div class="step">
           <div class="no">04</div>
           <div class="body">
             <h3>Everything else</h3>
-            <p>Any other naming is not parsed — it shows up as an Unrecognized warning on the session sync card so you can spot typos. For talk breaks or notes between songs, use <code>Add Note Below</code> from the setlist's right-click menu instead of a marker.</p>
+            <p>Any other marker naming is not parsed — it shows up as an Unrecognized warning on the session sync card so you can spot typos. For talk breaks or notes between songs, use <code>Add Note Below</code> from the setlist's right-click menu instead of a marker.</p>
           </div>
         </div>
         <div class="step">
           <div class="no">05</div>
           <div class="body">
             <h3>Read the warnings after a resync</h3>
-            <p>The session sync card counts what it parsed and collects the rest behind a warnings chip — click it to expand the list. Most entries are typos in a marker name. Two are worth knowing by sight:</p>
+            <p>The session sync card counts what it parsed and collects the rest behind a warnings chip — click it to expand the list. Most entries are typos in a marker name. These are the ones worth knowing by sight:</p>
+            <p><code>'&gt;' markers are no longer used for sections</code> — an old session, carried over. Prossible ignores those markers now; rebuild the sections as clips on a <code>Sections</code> track and delete them.</p>
+            <p><code>No 'Sections' track found</code> — the session has no audio track by that name. Expected, and harmless, if you don't use sections.</p>
+            <p><code>Track data unavailable from this session export</code> — Prossible could not read the track list at all, so whether a <code>Sections</code> track exists is unknown. Resync; if it persists, check the session actually has audio tracks.</p>
+            <p><code>N clips outside any song range</code> — a section clip is sitting in a gap, or a few samples ahead of its song marker. Nudge it back between the song marker and its <code>SongEnd</code>.</p>
+            <p><code>N unnamed clips skipped</code> — a clip on the <code>Sections</code> track with no name has no section name to show. Rename it, or delete it.</p>
             <p><code>Marker excluded during resync</code> usually clears on a second <code>RESYNC</code>; if it doesn't, the marker was renamed in Pro Tools but the session was never saved.</p>
             <p>A warning that a marker's position could not be resolved means Pro Tools is reporting positions in a format Prossible can't place on a timeline. Set the main counter in the Pro Tools edit window to <code>Samples</code> or <code>Bars|Beats</code> and resync. Prossible never moves your counter back on its own.</p>
           </div>
         </div>
 
-        <div class="note"><span class="tag">NOTE</span> — tempo and key are optional. <code>01.Song Name</code> alone is valid; omitted fields simply don't appear on the displays. Reordering the set happens in Prossible (drag the handle at the front of each row) — your Pro Tools markers are never touched.</div>
+        <div class="note"><span class="tag">NOTE</span> — tempo and key are optional. <code>01.Song Name</code> alone is valid; omitted fields simply don't appear on the displays. Reordering the set happens in Prossible (drag the handle at the front of each row) — your Pro Tools markers and clips are never touched.</div>
       </section>
 
       <section id="lan-view">
@@ -403,6 +423,7 @@
     <div class="links">
       <a href="./setup.html">Setup Guide</a>
       <a href="./guides/index.html">Guides</a>
+      <a href="./manual.html">Manual</a>
       <a href="./pricing.html">Pricing</a>
       <a href="./faq.html">FAQ</a>
       <a href="https://shinzzang4523.github.io/prossible-support/privacy.html" target="_blank" rel="noopener">Privacy</a>

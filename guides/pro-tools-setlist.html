@@ -46,6 +46,7 @@
       <a href="../index.html#features">Features</a>
       <a href="../setup.html">Setup Guide</a>
       <a class="current" href="./index.html">Guides</a>
+      <a href="../manual.html">Manual</a>
       <a href="../pricing.html">Pricing</a>
       <a href="../faq.html">FAQ</a>
       <a class="cta-row" href="https://apps.apple.com/us/app/prossible/id6805782861?mt=12" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
@@ -77,11 +78,15 @@
       <ol>
         <li><strong>A number, a title.</strong> <code>01. Midnight Run</code>. Two digits, always &mdash; <code>1.</code> and <code>10.</code> sort differently in every list you will ever look at, and two digits keeps them aligned. The number is also how the band and MD will talk to you: "start from seven."</li>
         <li><strong>Tempo and key, if the band uses them.</strong> <code>01. Midnight Run / 120 / Am</code>. Cheap to add, and it means the one screen you look at during a talk break has the answer to the question you are about to be asked.</li>
-        <li><strong>Section markers inside the song.</strong> <code>&gt;Verse 1</code>, <code>&gt;Chorus 2</code>. Prefixed with a symbol so they visually collapse away from song starts when you scan the list.</li>
         <li><strong>An explicit end marker per song.</strong> <code>SongEnd</code>, right on the downbeat where playback should stop. This one gets skipped most often and costs the most. Without it, "where does this song end" is a judgement call made live.</li>
       </ol>
       <p>The important property is not the exact punctuation &mdash; it is that a machine, or a stranger covering your shift, could parse it without asking you. Pick a convention, write it at the top of the session notes, and never mix two.</p>
-      <p>Since Pro Tools 2023.6 you can also colour memory locations. Use it as a second channel, not the primary one: songs one colour, sections another. Colour is fast to scan and impossible to search, so it should confirm the naming, never replace it.</p>
+      <p>Since Pro Tools 2023.6 you can also colour memory locations. Use it as a second channel, not the primary one: songs one colour, encores another. Colour is fast to scan and impossible to search, so it should confirm the naming, never replace it.</p>
+
+      <h2>Keep the sections off the marker list</h2>
+      <p>The instinct is to add a marker for every verse and chorus too. Resist it. A twenty-song set is twenty song markers and twenty end markers; add sections and you have two hundred rows in a scrolling window, where the one marker that got dragged is invisible until the downbeat.</p>
+      <p>Put the section map on a track instead. Add one audio track, call it <code>Sections</code>, and drop a short silent clip at the start of every section named for that section &mdash; <code>Intro</code>, <code>Verse 1</code>, <code>Chorus 1</code>. You now read the shape of a song the way you read everything else in the edit window: horizontally, in place, at the position it actually occupies. Renaming a clip is a double-click, moving one is a drag, and a clip that ends up in the wrong place is visible from across the room instead of being row 143 of a list.</p>
+      <p>The rule that keeps it honest: every section clip belongs strictly between a song's start marker and that song's end marker. A clip stranded in the gap between two songs belongs to neither.</p>
       <div class="seealso">
         <span class="tag">READ NEXT</span>
         <a href="./pro-tools-memory-locations-setlist.html">A machine-readable version of exactly this convention</a> &mdash; what each part of the name is for, and the seven-point audit that catches a half-migrated session.
@@ -114,7 +119,7 @@
         <li>Song count in the Memory Locations window against the count on the printed setlist.</li>
         <li>Every song has an end marker. This is the one that gets missed.</li>
         <li>No duplicate numbers, no duplicate titles.</li>
-        <li>Every section marker sits between a song start and that song's end &mdash; an orphan section is a sign a marker got dragged.</li>
+        <li>Every clip on the <code>Sections</code> track sits between a song start and that song's end &mdash; a clip stranded in a gap is a sign something got dragged.</li>
         <li>Tempo written on the marker matches the tempo the band actually plays. If a marker says 120 and the track measures 95, one of them is a typo, and it is usually the marker.</li>
       </ol>
       <p>Five minutes. It catches almost everything that would otherwise be discovered at the downbeat.</p>
@@ -122,11 +127,11 @@
       <h2>Automating it</h2>
       <p>Everything above is manual, and it is meant to be &mdash; a rig you can run by hand is a rig you can rescue by hand.</p>
       <p>The part that does not automate well by hand is the last two sections: keeping the running order separate from the markers, and re-auditing after every change.</p>
-      <p>That is the specific job we built <strong>Prossible</strong> for. It reads your memory locations over PTSL, builds a setlist from exactly the convention above, and lets you drag the running order into tonight's shape <strong>inside the app</strong> &mdash; your markers, numbering and colours are never touched and nothing is written back to the session. It re-runs the audit above on every resync and lists what it found: missing end markers, duplicate numbers, orphan sections, tempo that doesn't match the measured length. It does not install anything into Pro Tools; there is no plug-in and no script.</p>
+      <p>That is the specific job we built <strong>Prossible</strong> for. It reads your memory locations and your <code>Sections</code> track over PTSL, builds a setlist from exactly the convention above, and lets you drag the running order into tonight's shape <strong>inside the app</strong> &mdash; your markers, clips, numbering and colours are never touched and nothing is written back to the session. It re-runs the audit above on every resync and lists what it found: missing end markers, duplicate numbers, section clips outside any song, tempo that doesn't match the measured length. It does not install anything into Pro Tools; there is no plug-in and no script.</p>
       <p>Requirements are narrow on purpose: macOS 15 or later on Apple silicon, on the same Mac as Pro Tools 2023.6 or later with PTSL.</p>
       <div class="seealso">
         <span class="tag">SEE ALSO</span>
-        <a href="../setup.html#marker-syntax">Marker syntax reference</a> · <a href="../setup.html#mtc-ptsl">Connecting Prossible to Pro Tools</a> · <a href="../faq.html">Does it change my session?</a>
+        <a href="../setup.html#marker-syntax">Marker &amp; Sections reference</a> · <a href="../setup.html#mtc-ptsl">Connecting Prossible to Pro Tools</a> · <a href="../faq.html">Does it change my session?</a>
       </div>
   </article>
 
@@ -162,6 +167,7 @@
     <div class="links">
       <a href="../setup.html">Setup Guide</a>
       <a href="./index.html">Guides</a>
+      <a href="../manual.html">Manual</a>
       <a href="../pricing.html">Pricing</a>
       <a href="../faq.html">FAQ</a>
       <a href="https://shinzzang4523.github.io/prossible-support/privacy.html" target="_blank" rel="noopener">Privacy</a>

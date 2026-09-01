@@ -504,6 +504,11 @@ code, .kbd {
   border-left-color: var(--green);
   color: var(--ink);
 }
+/* The manual's contents list is twelve chapters — taller than a laptop viewport
+   with the sticky column pinned, so it scrolls inside itself instead of clipping. */
+.guide-toc.is-long { max-height: 100vh; overflow-y: auto; padding-top: 40px; padding-bottom: 32px; }
+.guide-toc.is-long nav a { padding: 7px 12px; }
+.guide-toc.is-long .meta { margin-top: 28px; }
 .guide-toc .meta {
   margin-top: 40px;
   padding-top: 20px;
@@ -533,6 +538,61 @@ code, .kbd {
 .step h3 { font-weight: 600; font-size: 17px; }
 .step p { font-size: 15px; line-height: 1.6; color: var(--mut); margin-top: 8px; }
 .step p + p { margin-top: 10px; }
+
+/* ---------- manual prose (manual.html reuses the .guide shell but is reference
+   material rather than a step flow, so it needs running lists, tables and two
+   more callout tones. Scoped under .guide-body: setup.html has no ul/ol/table,
+   so nothing there changes.) ---------- */
+
+/* `> section >` on purpose: .step h3 / .step p must keep their own rules above. */
+.guide-body > section > h3 { font-weight: 600; font-size: 17px; margin-top: 32px; }
+.guide-body > section > p { font-size: 15px; line-height: 1.7; color: var(--mut); margin-top: 14px; }
+.guide-body ul, .guide-body ol { margin-top: 14px; padding-left: 22px; }
+.guide-body li { font-size: 15px; line-height: 1.7; color: var(--mut); margin-top: 8px; padding-left: 4px; }
+.guide-body li::marker { color: var(--dim); }
+.guide-body strong { color: var(--ink); font-weight: 600; }
+.guide-body a { color: var(--green); text-decoration: underline; text-underline-offset: 3px; }
+.guide-body a:hover { color: var(--ink); }
+.guide-body .step a { color: var(--green); }
+
+/* Reference tables. The wrapper scrolls, never the page. */
+.tablewrap { margin-top: 18px; overflow-x: auto; border: 1px solid var(--line2); border-radius: 6px; }
+.guide-body table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+.guide-body th, .guide-body td {
+  text-align: left;
+  vertical-align: top;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--line2);
+  line-height: 1.6;
+  color: var(--mut);
+}
+.guide-body thead th {
+  background: var(--bg-panel);
+  color: var(--ink-nav);
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  font-weight: 500;
+  white-space: nowrap;
+}
+.guide-body tbody tr:last-child td { border-bottom: 0; }
+.guide-body td:first-child { color: var(--ink); }
+
+/* Callouts. .note (amber) already exists; these are the neutral and cautionary tones. */
+.tip, .warn {
+  margin-top: 20px;
+  border-radius: 6px;
+  padding: 16px 20px;
+  font-size: 14.5px;
+  line-height: 1.65;
+  color: var(--mut);
+}
+.tip { border: 1px solid var(--line3); background: var(--bg-panel); }
+.warn { border: 1px solid #4A2A1A; background: #17100A; }
+.tip .tag, .warn .tag, .note .tag { font-family: var(--mono); font-size: 12px; letter-spacing: 0.06em; }
+.tip .tag { color: var(--dim); }
+.warn .tag { color: var(--amber); }
+.tip strong, .warn strong { color: var(--ink); }
 
 .shot { margin-top: 16px; border: 1px solid var(--line2); border-radius: 6px; overflow: hidden; }
 .shot img { width: 100%; height: auto; display: block; }
@@ -891,12 +951,23 @@ code, .kbd {
     border-bottom: 1px solid var(--line);
     padding: 32px 24px;
   }
+  /* Stacked, the contents list is just a block at the top of the page — the
+     desktop self-scroll would trap the finger inside it. */
+  .guide-toc.is-long { max-height: none; overflow-y: visible; padding: 32px 24px; }
   .guide-body { padding: 40px 24px 56px; }
   .guide-body h1 { font-size: 30px; }
   .guide-body h2 { font-size: 24px; margin-top: 48px; padding-top: 32px; }
   .step { gap: 14px; margin-top: 26px; }
   .step .no { width: 26px; }
   .code-block { padding: 18px 16px; font-size: 12.5px; }
+  .guide-body h3 { font-size: 16px; margin-top: 26px; }
+  .guide-body > section > p, .guide-body li { font-size: 14.5px; }
+  .guide-body ul, .guide-body ol { padding-left: 20px; }
+  /* Reference tables are two prose columns; below ~600px they'd force the page
+     sideways, so the wrapper scrolls and the cells stop shrink-wrapping. */
+  .guide-body table { font-size: 13.5px; min-width: 460px; }
+  .guide-body th, .guide-body td { padding: 10px 12px; }
+  .tip, .warn { padding: 14px 16px; font-size: 13.5px; }
 
   .ref-diagram .rd-head { padding: 10px 14px; font-size: 11px; }
   .rd-window { margin: 14px; }
@@ -946,10 +1017,11 @@ code, .kbd {
   .article-foot .row { gap: 10px 16px; }
 }
 
-/* The nav grows to five links on guide pages; between the mobile breakpoint and
-   ~1000px that row and the store button would otherwise fight for the same space. */
-@media (min-width: 769px) and (max-width: 1000px) {
+/* The nav carries six links since the Manual was added (v1.1); between the mobile
+   breakpoint and ~1100px that row and the store button would otherwise fight for
+   the same space. */
+@media (min-width: 769px) and (max-width: 1100px) {
   .nav { padding: 0 28px; }
-  .nav-links { gap: 22px; font-size: 13.5px; }
+  .nav-links { gap: 20px; font-size: 13.5px; }
   .nav-cta { font-size: 11px; padding: 8px 12px; }
 }

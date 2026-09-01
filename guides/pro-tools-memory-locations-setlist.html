@@ -46,6 +46,7 @@
       <a href="../index.html#features">Features</a>
       <a href="../setup.html">Setup Guide</a>
       <a class="current" href="./index.html">Guides</a>
+      <a href="../manual.html">Manual</a>
       <a href="../pricing.html">Pricing</a>
       <a href="../faq.html">FAQ</a>
       <a class="cta-row" href="https://apps.apple.com/us/app/prossible/id6805782861?mt=12" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
@@ -86,8 +87,6 @@
       <p>Here is a convention that survives a stranger, a change of operator, and a machine reading it. Every element is there for a reason.</p>
       <div class="code-block">
         <div><span class="c-green">01.Midnight Run/120/Am</span>     <span class="c-dim">← song start</span></div>
-        <div><span class="c-amber">&gt;Verse 1</span>                   <span class="c-dim">← section</span></div>
-        <div><span class="c-amber">&gt;Chorus 1</span>                  <span class="c-dim">← section</span></div>
         <div>SongEnd                    <span class="c-dim">← end of that song</span></div>
         <div><span class="c-green">02.Glass Houses/128</span>        <span class="c-dim">← next song start</span></div>
         <div>SongEnd</div>
@@ -95,17 +94,32 @@
       <p><strong>Two digits, always.</strong> <code>01.</code> not <code>1.</code>. Sorted lists put <code>10</code> before <code>2</code> otherwise, and a one-digit number breaks alignment in every window you will read at speed. Two digits also gives you the vocabulary everyone on the show uses out loud &mdash; "from seven", "top of twelve".</p>
       <p><strong>A period, not a space or a dash.</strong> You need one unambiguous character that separates "this is a song number" from "this is part of the title". A period is the one nobody's song title contains at the front.</p>
       <p><strong>Slashes for tempo and key, in that order.</strong> <code>120/Am</code>. Slashes because titles contain spaces, dashes and brackets, so those cannot be delimiters. Order fixed so you never have to think about which field you are reading. Both optional &mdash; <code>12.Jam</code> is a perfectly good marker.</p>
-      <p><strong>A leading <code>&gt;</code> for sections.</strong> One character, visually distinct, sorts and scans away from song starts. Sections belong strictly between a song start and that song's end marker.</p>
       <p><strong>An explicit end marker per song.</strong> This is the item most sessions are missing and the one that pays most. Without it, "where does this song end" is a judgement made live, every night, by a tired person. With it, the end of the song is a fact in the session.</p>
+      <p><strong>Nothing else.</strong> Two names per song is the whole marker map. Everything smaller than a song belongs somewhere other than this list &mdash; which is the next section.</p>
       <p>Whatever you actually adopt, adopt <em>one</em>. The failure mode is not a bad convention; it is two conventions in one session, half-migrated, with the old ones looking plausible.</p>
+
+      <h2>Sections belong on a track, not in the marker list</h2>
+      <p>The obvious next step is a marker for every verse and chorus. It is also the step that quietly ruins the window you just made readable.</p>
+      <p>Count it: twenty songs is forty markers, which fits on a screen and can be audited in a minute. Add six sections per song and it is a hundred and sixty rows in a scrolling list, where every song start is buried between two chorus markers and the one location that got dragged in an edit session is invisible until the band is playing over it. Memory locations have no visible extent &mdash; they are points in a list, which is precisely the wrong shape for "the second half of this song".</p>
+      <p>Map the sections on a track instead. Add an <strong>audio</strong> track named <code>Sections</code> and place a short silent clip at the start of each section, named for it:</p>
+      <div class="code-block">
+        <div><span class="c-dim">TRACK  </span><span class="c-green">Sections</span></div>
+        <div><span class="c-dim">  ├─</span> <span class="c-amber">Intro</span><span class="c-dim">        ← inside song 01</span></div>
+        <div><span class="c-dim">  ├─</span> <span class="c-amber">Verse 1</span></div>
+        <div><span class="c-dim">  ├─</span> <span class="c-amber">Chorus 1</span></div>
+        <div><span class="c-dim">  └─</span> <span class="c-amber">Outro</span><span class="c-dim">        ← last clip before SongEnd</span></div>
+      </div>
+      <p>Clip name is the section name; clip start is the section start; clip length does not matter, because a section runs until the next one begins. What you get back is the thing a list could never give you: the sections sit at their real positions, on their own lane, under the audio &mdash; visible, draggable, renameable with a double-click, and wrong in a way you can <em>see</em> rather than deduce.</p>
+      <p>The one rule: a section clip belongs strictly between a song's start marker and that song's end marker. A clip left in the gap between two songs belongs to neither, and that is exactly what a dragged clip looks like.</p>
+      <p>Audio, incidentally, not MIDI &mdash; and not only as an aesthetic preference. Pro Tools' session-info export lists audio clips and omits MIDI ones entirely, so any tool reading your session over PTSL sees a MIDI <code>Sections</code> track as no track at all.</p>
 
       <h2>Colour, and using more than one ruler</h2>
       <p>Since Pro Tools 2023.6, memory locations can be coloured from a fixed palette. Use it as confirmation, not as meaning:</p>
       <ul>
-        <li>Songs one colour, sections another. At that point the timeline ruler alone tells you the shape of the set from across the room.</li>
+        <li>Songs one colour, song ends another. At that point the timeline ruler alone tells you the shape of the set from across the room.</li>
         <li>Never encode information <em>only</em> in colour. Colour cannot be searched, cannot be read aloud, cannot be read at all by roughly one man in twelve, and does not survive a printout.</li>
       </ul>
-      <p>Recent Pro Tools versions also support more than one marker ruler, which lets you keep song markers on one lane and sections on another &mdash; worth checking on your version, because if you have it, it is the single biggest readability upgrade available for free.</p>
+      <p>Recent Pro Tools versions also support more than one marker ruler, which lets you keep song starts on one lane and ends on another &mdash; worth checking on your version, because if you have it, it is the single biggest readability upgrade available for free.</p>
 
       <h2>Recalling them live</h2>
       <p>Get off the mouse. The Memory Locations window is fine for auditing and wrong for operating &mdash; it is a scrolling list, and scrolling lists are how you click the wrong row.</p>
@@ -123,7 +137,7 @@
         <li><strong>Every song has an end marker.</strong> The most-skipped check.</li>
         <li><strong>No duplicate numbers.</strong> Two <code>03.</code> markers means the spoken shorthand "song three" is now ambiguous, which is a real hazard in a dark room on comms.</li>
         <li><strong>No duplicate titles.</strong> Same reason.</li>
-        <li><strong>No orphan sections.</strong> A <code>&gt;</code> marker sitting before any song start, or in the gap between one song's end and the next song's start, means a marker got dragged. Find out which.</li>
+        <li><strong>No stranded section clips.</strong> A clip on the <code>Sections</code> track sitting before any song start, or in the gap between one song's end and the next song's start, means something got dragged. Find out which.</li>
         <li><strong>Tempo sanity.</strong> If a marker says 120 and the distance between that marker and the song's end implies something far off, one of the two is wrong. Usually the marker was copy-pasted from the song before it.</li>
         <li><strong>Nothing unparseable.</strong> Old-convention leftovers &mdash; <code>End</code>, <code>ENC.</code>, decorative markers, a bare title with no number &mdash; are how half-migrated sessions announce themselves.</li>
       </ol>
@@ -142,12 +156,12 @@
       <h2>Automating the mechanical parts</h2>
       <p>Everything above works with no software beyond Pro Tools, and you should be able to run your show that way. That is not a throwaway line: a rig you can operate by hand is a rig you can rescue by hand.</p>
       <p>But the audit is seven checks against a scrolling list, repeated after every change, by a person who has been awake since six. That is the part a machine should do.</p>
-      <p><strong>Prossible</strong> reads your memory locations over PTSL &mdash; no plug-in, no script, nothing added to the session, and it never writes back to your markers &mdash; and does exactly the above. It parses the convention described in this article (<code>NN.Title/BPM/KEY</code>, <code>&gt;Section</code>, <code>SongEnd</code>), builds a setlist from it, and reports the audit on every resync: missing end markers, duplicate numbers, duplicate titles, orphan sections, tempo that disagrees with the measured length, and anything it could not parse. Resync reads the session <strong>without moving your cursor, counter or playhead</strong>, so it is safe between songs.</p>
+      <p><strong>Prossible</strong> reads your memory locations and your <code>Sections</code> track over PTSL &mdash; no plug-in, no script, nothing added to the session, and it never writes back to your markers or clips &mdash; and does exactly the above. It parses the convention described in this article (<code>NN.Title/BPM/KEY</code> and <code>SongEnd</code> as markers, sections as named clips on the <code>Sections</code> track), builds a setlist from it, and reports the audit on every resync: missing end markers, duplicate numbers, duplicate titles, section clips outside any song, unnamed clips, tempo that disagrees with the measured length, and anything it could not parse. Resync reads the session <strong>without moving your cursor, counter or playhead</strong>, so it is safe between songs.</p>
       <p>The running order lives in the app, not in your markers: drag tonight's order into shape, and the session stays exactly as it was. The order survives a resync and a restart.</p>
       <p>Requirements: macOS 15 or later on Apple silicon, on the same Mac as Pro Tools 2023.6 or later with PTSL.</p>
       <div class="seealso">
         <span class="tag">SEE ALSO</span>
-        <a href="../setup.html#marker-syntax">Marker syntax reference</a> · <a href="../faq.html">Does it change my session?</a>
+        <a href="../setup.html#marker-syntax">Marker &amp; Sections reference</a> · <a href="../faq.html">Does it change my session?</a>
       </div>
   </article>
 
@@ -183,6 +197,7 @@
     <div class="links">
       <a href="../setup.html">Setup Guide</a>
       <a href="./index.html">Guides</a>
+      <a href="../manual.html">Manual</a>
       <a href="../pricing.html">Pricing</a>
       <a href="../faq.html">FAQ</a>
       <a href="https://shinzzang4523.github.io/prossible-support/privacy.html" target="_blank" rel="noopener">Privacy</a>

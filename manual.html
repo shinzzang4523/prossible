@@ -1,0 +1,768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manual — Prossible</title>
+<meta name="description" content="The complete Prossible reference: every window, card, warning and shortcut. Songs and the Sections track, running a show, the layout editor, LAN View, main/backup redundancy and troubleshooting.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Prossible Manual">
+<meta property="og:description" content="Every window, card, warning and shortcut in Prossible — the full reference for the operator.">
+<meta property="og:url" content="https://prossible.app/manual.html">
+<meta property="og:image" content="https://prossible.app/assets/img/combo-hero.png">
+<meta property="og:image:alt" content="Prossible stage display and Control Panel running a Pro Tools session">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://prossible.app/manual.html">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Ccircle cx='8' cy='8' r='6' fill='%2334D97B'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="./assets/style.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="nav">
+    <a class="nav-brand" href="./index.html">
+      <span class="dot"></span>
+      <span class="name">Prossible</span>
+      <span class="crumb">/ MANUAL</span>
+    </a>
+    <nav class="nav-links">
+      <a href="./index.html#features">Features</a>
+      <a href="./setup.html">Setup Guide</a>
+      <a href="./guides/index.html">Guides</a>
+      <a class="current" href="./manual.html">Manual</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="./faq.html">FAQ</a>
+      <a class="cta-row" href="https://apps.apple.com/us/app/prossible/id6805782861?mt=12" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+    </nav>
+    <a class="nav-cta" href="https://apps.apple.com/us/app/prossible/id6805782861?mt=12" target="_blank" rel="noopener">DOWNLOAD FOR MAC</a>
+    <button class="nav-burger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span>
+    </button>
+  </header>
+
+  <div class="guide">
+
+    <aside class="guide-toc is-long">
+      <div class="label">CONTENTS</div>
+      <nav>
+        <a class="active" href="#what-it-is">01 — What Prossible Is</a>
+        <a href="#install">02 — Install</a>
+        <a href="#pro-tools">03 — Pro Tools (PTSL)</a>
+        <a href="#mtc">04 — MTC</a>
+        <a href="#songs-sections">05 — Songs &amp; Sections</a>
+        <a href="#running-a-show">06 — Running a Show</a>
+        <a href="#setlist-appearance">07 — Setlist Appearance</a>
+        <a href="#edit-layout">08 — Edit Layout</a>
+        <a href="#licensing">09 — Purchase &amp; Licensing</a>
+        <a href="#lan-view">10 — LAN View</a>
+        <a href="#redundancy">11 — Redundancy</a>
+        <a href="#troubleshooting">12 — Troubleshooting</a>
+      </nav>
+      <div class="meta">v1.1 · SEP 2026<br>MACOS 15+ · APPLE SILICON<br>PRO TOOLS 2023.6+</div>
+    </aside>
+
+    <div class="guide-body">
+
+      <!-- ═══════════ 01 ═══════════ -->
+      <section id="what-it-is">
+        <h1>Manual</h1>
+        <p class="intro">The complete reference — every window, card, warning and shortcut. If you are setting the rig up for the first time, start with the <a href="./setup.html">Setup Guide</a> instead: it is the same material as chapters 2 to 4, arranged as a ten-minute run-through. This page is what you come back to.</p>
+
+        <h2>01 — What Prossible Is</h2>
+        <p>Prossible follows a Pro Tools live playback session in real time and puts a stage display in front of the band. It reads the memory locations you already have — song number, title, tempo, key, song end — and the clips on a track named <code>Sections</code>, builds a setlist from them, and shows the players which song is running, which section they are in, and how many bars are left before the next one.</p>
+        <p>It adds nothing to your session. No plug-in, no script, no file to keep in sync, and it never writes back.</p>
+
+        <h3>Two windows</h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th style="width:34%">Window</th><th>What it is for</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><code>Prossible — Stage Display</code></td>
+              <td><strong>The screen the band sees.</strong> Song title, song-form timeline, bars remaining, next song. Send it to an external monitor and run it full screen. Players look at this and nothing else.</td>
+            </tr>
+            <tr>
+              <td><code>Prossible — Control Panel</code></td>
+              <td><strong>Your surface.</strong> A narrow window that stands next to the Pro Tools session: connection status, <code>PLAY / STOP / NEXT</code>, the setlist, quick messages and Settings. Settings and Setlist Appearance replace the contents of this same window — they never open a second one.</td>
+            </tr>
+          </tbody>
+        </table></div>
+        <p>Both windows share one engine, so anything you do in the Control Panel lands on the stage immediately.</p>
+
+        <div class="tip"><span class="tag">MOCK ENGINE</span> — on a fresh install Prossible starts on a simulated session so you can look around without Pro Tools running. Switch <code>SOURCE</code> to <code>Real (PTSL+MTC)</code> once chapters 3 and 4 are done.</div>
+
+        <div class="tip"><span class="tag">TRIAL</span> — before purchase the setlist shows the first 3 songs of each session. Every safety and operating feature works in full; see <a href="#licensing">chapter 9</a>.</div>
+      </section>
+
+      <!-- ═══════════ 02 ═══════════ -->
+      <section id="install">
+        <h2>02 — Install</h2>
+
+        <h3>Requirements</h3>
+        <ul>
+          <li><strong>macOS 15 or later</strong> on <strong>Apple silicon</strong>.</li>
+          <li><strong>Pro Tools 2023.6 or later</strong> with PTSL, running on the <strong>same Mac</strong>. (The one exception is the backup console in <a href="#redundancy">chapter 11</a>, which runs its own Pro Tools on its own Mac.)</li>
+          <li>An external display for the stage screen — optional, but that is the point of the app.</li>
+        </ul>
+
+        <h3>Installing</h3>
+        <p>Download from the <a href="https://apps.apple.com/us/app/prossible/id6805782861?mt=12" target="_blank" rel="noopener">Mac App Store</a>. There is nothing else to install: PTSL communication is built into the app over gRPC, and no helper, sidecar or Python environment is involved.</p>
+        <p>On first launch, allow <strong>Local Network</strong> access when macOS asks. LAN View and console pairing both need it; the rest of the app works without it.</p>
+      </section>
+
+      <!-- ═══════════ 03 ═══════════ -->
+      <section id="pro-tools">
+        <h2>03 — Pro Tools (PTSL)</h2>
+        <p class="intro">PTSL is Pro Tools' own scripting interface. Prossible uses it to read the memory locations and the track list, and to send guarded transport commands.</p>
+
+        <h3>On the Pro Tools side</h3>
+        <ul>
+          <li>Pro Tools running, with the <strong>show session open</strong>. PTSL attaches to a live session, not to a file — with no session open there is nothing to connect to.</li>
+          <li>MTC output configured as in <a href="#mtc">chapter 4</a>, so position follows as well as structure.</li>
+        </ul>
+
+        <h3>Switching to the real source</h3>
+        <ol>
+          <li>Control Panel → <strong>⚙</strong> (top right) to open Settings.</li>
+          <li><code>CONNECTION</code> card → <code>SOURCE</code> → <code>Real (PTSL+MTC)</code>.</li>
+          <li>Pick your IAC port in the <code>MIDI Input</code> dropdown that appears. Not listed? Press <code>Refresh</code>.</li>
+          <li>Press <code>Reconnect</code>.</li>
+          <li><code>SESSION SYNC</code> card → <code>RESYNC</code>. The card reports how many markers it parsed.</li>
+        </ol>
+
+        <h3>Reading the status</h3>
+        <p>Two dots sit in the Control Panel status bar at all times; the <code>CONNECTION</code> card carries the detail.</p>
+        <div class="tablewrap"><table>
+          <thead><tr><th style="width:36%">Indicator</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td><code>Pro Tools: Connected</code> (green)</td><td>PTSL is attached. The session name and the time of the last poll appear underneath.</td></tr>
+            <tr><td><code>Pro Tools: Disconnected</code> (red)</td><td>Pro Tools is not running, or no session is open. Work through <a href="#troubleshooting">chapter 12</a>.</td></tr>
+            <tr><td><code>MTC: Normal</code> (green)</td><td>Timecode is arriving.</td></tr>
+            <tr><td><code>MTC: Stale</code></td><td>No timecode for a while. Check chapter 4 — but note that a <strong>stopped</strong> Pro Tools sends MTC only when it locates. Stale while stopped is normal.</td></tr>
+          </tbody>
+        </table></div>
+        <div class="tip"><span class="tag">DIVISION OF LABOUR</span> — PTSL carries structure (markers, tracks, transport state). MTC carries position. You want both green.</div>
+      </section>
+
+      <!-- ═══════════ 04 ═══════════ -->
+      <section id="mtc">
+        <h2>04 — MTC</h2>
+        <p class="intro">MIDI Time Code is how Pro Tools tells Prossible where the playhead is. It travels over the IAC bus built into macOS. Set once per Mac; it stays set.</p>
+
+        <h3>macOS — bring the IAC driver online</h3>
+        <ol>
+          <li><code>⌘Space</code> → <code>Audio MIDI Setup</code> → Return.</li>
+          <li>Menu bar → <code>Window → Show MIDI Studio</code>.</li>
+          <li>Double-click <code>IAC Driver</code> and tick <code>Device is online</code>.</li>
+          <li>The default <code>Bus 1</code> is enough. Add a port with <code>+</code> if the list is empty.</li>
+        </ol>
+
+        <h3>Pro Tools — point the generator at it</h3>
+        <ol>
+          <li><code>Setup → Peripherals…</code> → <code>Synchronization</code> tab.</li>
+          <li>In <code>MTC Reader And Generator</code>, set <code>MTC Generator Port</code> to your IAC bus. Pro Tools names it device-then-port, so <code>Bus 1</code> reads as <code>IAC Driver, Bus 1</code>.</li>
+          <li>Leave <code>MTC Reader Port</code> alone — that is Pro Tools listening, and Prossible has no use for it.</li>
+        </ol>
+
+        <h3>Prossible — listen to the same bus</h3>
+        <ol>
+          <li>Settings → <code>CONNECTION</code> → confirm <code>SOURCE</code> is <code>Real (PTSL+MTC)</code>.</li>
+          <li><code>MIDI Input</code> → the same IAC port you just set in Pro Tools.</li>
+          <li><code>Reconnect</code>, then roll Pro Tools and check that <code>MTC: Normal</code> comes up and the stage playhead moves.</li>
+        </ol>
+        <div class="tip"><span class="tag">TIP</span> — no IAC port in the list? Press <code>Refresh</code>. Still nothing, and it is almost always the <code>Device is online</code> tick.</div>
+        <p>Screenshots of the Pro Tools window are in the <a href="./setup.html#mtc-ptsl">Setup Guide</a>.</p>
+      </section>
+
+      <!-- ═══════════ 05 ═══════════ -->
+      <section id="songs-sections">
+        <h2>05 — Songs &amp; Sections</h2>
+        <p class="intro">Everything on both screens comes from your session. <strong>Songs</strong> are memory locations. <strong>Sections</strong> are clips on an audio track named <code>Sections</code>. That split is deliberate: two names per song keeps the Memory Locations window auditable, and the section map ends up somewhere you can see it.</p>
+
+        <h3>Marker syntax</h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th style="width:32%">Marker name</th><th>What it does</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><code>03.Runaway/120/Am</code></td>
+              <td><strong>Song start.</strong> <code>NN.Title/BPM/KEY</code> — exactly <strong>two digits (00–99) and a period</strong>, then title, tempo and key separated by slashes. One digit (<code>3.</code>) or three (<code>100.</code>) is not a song.</td>
+            </tr>
+            <tr><td><code>07.Ballad/96</code></td><td>Song with tempo only — the display shows <code>♩96</code> and no key.</td></tr>
+            <tr><td><code>12.Jam</code></td><td>Title alone is valid. Tempo and key are optional; omitted fields simply don't appear.</td></tr>
+            <tr><td><code>12.Jam//Am</code></td><td>Empty fields are allowed — two slashes give you a key with no tempo.</td></tr>
+            <tr>
+              <td><code>SongEnd</code></td>
+              <td><strong>Song end.</strong> Case-insensitive. Put one on every song: song length, the auto-stop and the <code>■</code>/<code>↓</code> behaviour all key off it.</td>
+            </tr>
+            <tr><td>(unnamed marker)</td><td>Ignored silently. Cue markers left over from production do no harm.</td></tr>
+            <tr><td>anything else</td><td>Ignored, and listed as an <code>Unrecognized</code> warning so you can spot a typo.</td></tr>
+          </tbody>
+        </table></div>
+        <ul>
+          <li><strong>Slashes, not spaces.</strong> <code>03.Runaway 120</code> makes "Runaway 120" the whole title.</li>
+          <li>A non-numeric tempo field is dropped rather than guessed at.</li>
+          <li>Whatever you type in a marker's <strong>comments</strong> field is read as that song's note and shown on the ready screen.</li>
+          <li>Marker <strong>colour</strong> is yours to use as you like — Prossible does not read it, and the session behaves identically without it.</li>
+        </ul>
+
+        <h3>The Sections track</h3>
+        <p>Add one <strong>audio</strong> track named <code>Sections</code>. Drop a short silent clip at the start of every section and rename each clip to the section name. That is the whole convention:</p>
+        <div class="code-block">
+          <div><span class="c-dim">TRACK  </span><span class="c-green">Sections</span><span class="c-dim">   (audio — not MIDI)</span></div>
+          <div><span class="c-dim">  │</span></div>
+          <div><span class="c-dim">  ├─</span> <span class="c-amber">Intro</span><span class="c-dim">      ← clip start = section start</span></div>
+          <div><span class="c-dim">  ├─</span> <span class="c-amber">Verse 1</span><span class="c-dim">    ← clip name  = section name</span></div>
+          <div><span class="c-dim">  ├─</span> <span class="c-amber">Chorus 1</span></div>
+          <div><span class="c-dim">  └─</span> <span class="c-amber">Outro</span><span class="c-dim">      ← last clip before SongEnd</span></div>
+        </div>
+        <ul>
+          <li><strong>Track name.</strong> Matched case-insensitively, ignoring leading and trailing spaces — <code>sections</code> and <code>SECTIONS</code> both count. It has to be that one word.</li>
+          <li><strong>Audio, not MIDI.</strong> Pro Tools' session-info export never lists MIDI tracks, so a MIDI <code>Sections</code> track reads to Prossible as no track at all. This is not a preference; it is the only thing that works.</li>
+          <li><strong>Clip length is ignored.</strong> Only the start matters — a section runs until the next one starts, or until the song ends.</li>
+          <li><strong>Stay inside the song.</strong> Every clip must sit between a song marker and that song's <code>SongEnd</code> (or, with no <code>SongEnd</code>, the next song marker). A clip in the gap between songs belongs to nobody, so it is dropped and reported.</li>
+          <li><strong>Name every clip.</strong> An unnamed clip has no section name to show, so it is skipped and reported.</li>
+          <li><strong>Section colours are automatic</strong> — assigned by role and position, not inherited from Pro Tools. Nothing to configure.</li>
+        </ul>
+        <div class="tip"><span class="tag">NO SECTIONS TRACK?</span> — not an error. The setlist, transport, auto-stop and stage display all keep working at song level; you lose section names and bar countdowns, and the sync card says so once.</div>
+
+        <div class="warn">
+          <span class="tag">THE OLD <code>&gt;</code> SYNTAX IS GONE</span><br>
+          Markers whose names begin with <code>&gt;</code> used to make sections. They no longer do anything. If a session still contains them, Prossible says <code>'&gt;' markers are no longer used for sections — Prossible now reads the 'Sections' track</code> once per resync. Rebuild those sections as clips and delete the markers.
+        </div>
+
+        <h3>A correct session, end to end</h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th style="width:34%">In the session</th><th>On screen</th></tr></thead>
+          <tbody>
+            <tr><td>Marker <code>01.Midnight Run/107</code></td><td>Setlist song 1, <code>♩107</code>. Entering this range puts the title, tempo and song form on the stage.</td></tr>
+            <tr><td><code>Sections</code> clip "Intro"</td><td>First segment of the song-form timeline; during playback, <code>Intro · N BARS LEFT</code>.</td></tr>
+            <tr><td><code>Sections</code> clip "Chorus 1"</td><td>Second segment.</td></tr>
+            <tr><td>Marker <code>SongEnd</code></td><td>End of song 1 — song length, and the target for <code>■</code>/<code>↓</code>.</td></tr>
+            <tr><td>Marker <code>02.Glass Houses/128/Am</code></td><td>Setlist song 2, <code>♩128</code>, key Am.</td></tr>
+            <tr><td>Marker <code>SongEnd</code></td><td>End of song 2.</td></tr>
+          </tbody>
+        </table></div>
+        <div class="tip"><span class="tag">TALK BREAKS NEED NO MARKER</span> — in the gap between a <code>SongEnd</code> and the next song, the stage screen goes quiet on its own and previews what's next. If you want a visible row in the setlist for it, use <code>Add Note Below</code> (<a href="#running-a-show">chapter 6</a>).</div>
+
+        <h3>Warnings, and what each one means</h3>
+        <p>When something looks wrong, a <code>⚠︎ N</code> chip appears in the Control Panel status bar; clicking it opens the <code>SESSION SYNC</code> card with the list. The app keeps working with warnings outstanding — but clear them before the doors open.</p>
+        <div class="tablewrap"><table>
+          <thead><tr><th style="width:40%">Warning</th><th>Cause and fix</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><code>'…' has no SongEnd marker</code></td>
+              <td>A song start with no <code>SongEnd</code> before the next song. Add one on the downbeat where playback should stop, then resync.</td>
+            </tr>
+            <tr>
+              <td><code>Duplicate song title</code></td>
+              <td>Two song markers with the same title. Make them distinguishable — otherwise "the ballad" is ambiguous on comms.</td>
+            </tr>
+            <tr>
+              <td><code>Duplicate track number</code></td>
+              <td>Two markers claim the same <code>NN.</code>. Renumber: the number is how the band talks to you.</td>
+            </tr>
+            <tr>
+              <td><code>'&gt;' markers are no longer used for sections</code></td>
+              <td>Legacy section markers found and ignored. Move those sections onto the <code>Sections</code> track and delete the markers.</td>
+            </tr>
+            <tr>
+              <td><code>No 'Sections' track found</code></td>
+              <td>No audio track by that name. Expected and harmless if you don't use sections; otherwise check the spelling and that it is an audio track.</td>
+            </tr>
+            <tr>
+              <td><code>Track data unavailable from this session export</code></td>
+              <td>Prossible could not read the track list at all, so whether a <code>Sections</code> track exists is unknown — different from "there isn't one". Resync; if it persists, confirm the session actually has audio tracks.</td>
+            </tr>
+            <tr>
+              <td><code>Sections track: N clips outside any song range</code></td>
+              <td>A clip is stranded in a gap, or starts a few samples ahead of its song marker after a nudge. Move it between the song marker and its <code>SongEnd</code>.</td>
+            </tr>
+            <tr>
+              <td><code>Sections track: N unnamed clips skipped</code></td>
+              <td>The clip name is the section name, so an unnamed clip has nothing to show. Rename or delete it.</td>
+            </tr>
+            <tr>
+              <td><code>Unrecognized marker</code></td>
+              <td>A name that matches nothing — a typo, a decorative marker, or an old-convention leftover such as <code>End</code> or <code>ENC.</code>. Ignored; worth a look.</td>
+            </tr>
+            <tr>
+              <td><code>BPM mismatch</code></td>
+              <td>The tempo written on the marker disagrees with the tempo measured across the song by more than 5%. Either the number is a typo or a marker moved.</td>
+            </tr>
+            <tr>
+              <td><code>Marker excluded during resync</code></td>
+              <td>The name parsed but the position didn't. Usually clears on a second <code>RESYNC</code>; if the message asks you to set the Pro Tools main counter to <code>Samples</code> or <code>Bars|Beats</code>, do that and resync. Prossible never changes your counter itself.</td>
+            </tr>
+            <tr>
+              <td><code>Flagged: …</code></td>
+              <td>Not an error — you flagged that song yourself with <code>Flag for Review</code>. Clear it from the same right-click menu.</td>
+            </tr>
+          </tbody>
+        </table></div>
+
+        <h3>RESYNC</h3>
+        <ul>
+          <li>After editing markers or section clips in Pro Tools, <strong>stop the transport</strong>, then Settings → <code>SESSION SYNC</code> → <code>RESYNC</code>.</li>
+          <li>While stopped, Prossible also polls for changes on its own and catches up within seconds. <code>RESYNC</code> is the "now, and definitely" button.</li>
+          <li><strong>Resync does nothing during playback.</strong> That is deliberate — the drummer's screen must not reshuffle mid-song. It lands at the next stop.</li>
+          <li>Resync reads the session <strong>without moving your cursor, counter or playhead</strong>, so it is safe between songs.</li>
+          <li><code>RESYNC</code> is locked in SHOW mode (<a href="#running-a-show">chapter 6</a>).</li>
+          <li>Your running order and per-song settings are reconciled onto the new markers, not thrown away.</li>
+        </ul>
+
+        <h3>Mistakes people actually make</h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th style="width:38%">Mistake</th><th>What happens</th></tr></thead>
+          <tbody>
+            <tr><td><code>3.Runaway</code> / <code>03 Runaway</code></td><td>Not a song. Exactly two digits and a period: <code>03.Runaway</code>.</td></tr>
+            <tr><td><code>03.Runaway 120</code></td><td>Tempo never appears — the title becomes "Runaway 120". Use a slash.</td></tr>
+            <tr><td>No <code>SongEnd</code></td><td>Warning, plus inaccurate song length and an auto-stop with nothing to fire on.</td></tr>
+            <tr><td>Two <code>03.</code> markers</td><td>Duplicate-number warning, and "song three" stops meaning one thing.</td></tr>
+            <tr><td>Section clips on a MIDI track</td><td>Reads as no <code>Sections</code> track at all — the export omits MIDI. Use an audio track.</td></tr>
+            <tr><td>A section clip left in a gap</td><td>Dropped, with a warning. Move it inside the song.</td></tr>
+            <tr><td>Editing without resyncing, or resyncing mid-playback</td><td>The setlist stays as it was. Stop, then resync.</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <!-- ═══════════ 06 ═══════════ -->
+      <section id="running-a-show">
+        <h2>06 — Running a Show</h2>
+
+        <h3>PLAY / STOP / NEXT</h3>
+        <p>The transport row carries three equal buttons: <code>PLAY</code> (green and reading <code>PLAYING</code> while rolling), a square <code>STOP</code>, and <code>NEXT</code>. <strong>They are one-way, not toggles</strong> — pressing <code>PLAY</code> while playing, or <code>STOP</code> while stopped, does nothing at all. Alongside them: the current title, <code>Section · N BARS LEFT</code>, and elapsed / total time.</p>
+        <p><code>NEXT</code> targets <strong>the next song in the running order</strong>. Stopped, it jumps there and stands by as <code>READY</code>. Playing, it leaves the current song alone and books that song as where the next stop lands — a blue <code>NEXT</code> badge marks it. At the end of the set the button greys out.</p>
+
+        <div class="warn">
+          <span class="tag">PLAYBACK IS SACRED</span><br>
+          Clicking a setlist row while playing does <strong>nothing</strong>. It does not jump and it does not book a next song; the Control Panel flashes <code>Playback is sacred — use NEXT or stop first.</code> and carries on. The only way to change what comes next mid-song is the <code>NEXT</code> button. Decide the order before you start, in the setlist.
+        </div>
+        <div class="tip"><span class="tag">DOUBLE-TRIGGER PROTECTION</span> — hammering <code>PLAY</code>/<code>STOP</code>/<code>NEXT</code>/jump makes the second press bounce and the button flash red. Settings → <code>SAFETY</code> → <code>Minimum interval between PLAY/STOP/jump</code> sets the window; 0 turns it off.</div>
+
+        <h3>The spacebar</h3>
+        <p>With the setlist focused — which it is when the window opens — <code>Space</code> does exactly what <code>PLAY</code>/<code>STOP</code> do. It is deliberately dead while you are typing: in the quick-message field, in song search (<code>⌘K</code>), while renaming a note, and whenever Settings, Setlist Appearance or a dialog is open. If the spacebar stops responding after you send a message, click any setlist row to hand focus back.</p>
+
+        <h3>The setlist</h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th style="width:26%">State</th><th>Clicking a song, or cursor + <code>Return</code></th></tr></thead>
+          <tbody>
+            <tr><td><strong>Stopped</strong></td><td>Jumps straight there and stands by as <code>READY</code>.</td></tr>
+            <tr><td><strong>Playing</strong></td><td>Nothing happens, by design. See the banner above.</td></tr>
+          </tbody>
+        </table></div>
+        <p>The list is fully keyboard-operable, and the hint line under it says so: <code>␣ Play/Stop · ↑↓ Move · ⏎ Select · Right-click for more</code>.</p>
+        <ul>
+          <li><code>↑</code> <code>↓</code> move the cursor ring one visible row at a time, skipping the sections of collapsed songs. At either end it <strong>stops</strong> rather than wrapping — nobody wants the cursor back at song 1 mid-show.</li>
+          <li><code>Return</code> fires the row under the cursor, by the rules in the table. On a note row it does nothing (there is nowhere to jump to).</li>
+          <li><code>⌘K</code> or the magnifier searches titles.</li>
+          <li>Right-click a song for <code>Song Color</code>, <code>Flag for Review</code>, <code>Skip This Song</code> (struck through for tonight), <code>Count-In Bars</code>, <code>Play From…</code> (REHEARSAL, stopped only), <code>Move Up</code> / <code>Move Down</code>, <code>Add Note Below</code>.</li>
+          <li>Turning off <code>Click to jump</code> (<a href="#setlist-appearance">chapter 7</a>) makes row clicks view-only while leaving the right-click menu live.</li>
+        </ul>
+
+        <h3>Reordering</h3>
+        <ul>
+          <li>In <strong>REHEARSAL</strong>, every song row carries a faint <code>☰</code> handle at its left edge. Drag the handle to move the song. The handle exists precisely so that dragging is never something you do by accident while aiming for a jump.</li>
+          <li><code>Move Up</code> / <code>Move Down</code> in the right-click menu do the same thing one row at a time.</li>
+          <li>Reordering changes <strong>Prossible's order only</strong>. Your markers, numbering and audio positions are untouched, and the order survives a resync and a restart.</li>
+          <li>In <strong>SHOW</strong> mode the handles disappear entirely — the column is reclaimed — and <code>Move Up</code>/<code>Move Down</code> grey out.</li>
+        </ul>
+
+        <h3>Sections in the list</h3>
+        <ul>
+          <li>Rows show titles only until you click the <code>▸</code> arrow on a song that has sections.</li>
+          <li>Stopped, clicking an expanded section jumps to it. Playing, it does nothing — same rule as songs.</li>
+          <li>While playing, the section you are actually in is highlighted, and repeated section names inside one song are told apart by position.</li>
+        </ul>
+
+        <h3>Song end behaviour — <code>■</code> / <code>↓</code></h3>
+        <ul>
+          <li>The button at the right edge of each row decides what happens at that song's <code>SongEnd</code>: <strong><code>■</code> stop</strong> (default) or <strong><code>↓</code> run straight into the next song</strong>.</li>
+          <li>It toggles on click and is remembered per song across restarts.</li>
+          <li>A song set to <code>■</code> raises an <code>AUTO-STOP in N…</code> countdown five seconds out, with a <code>CANCEL</code> beside it that skips the stop this once. The arming resets every pass, so the next time through the same song it stops again.</li>
+        </ul>
+
+        <h3>Count-in bars</h3>
+        <p>Right-click a song → <code>Count-In Bars</code> → 0 to 4 (default <code>Off</code>). Fixed choices rather than a text field, because this gets adjusted mid-rehearsal with a drummer waiting. Songs with a count-in wear a grey <code>−N</code> badge — grey and not amber, because a count-in is preparation, not a hazard.</p>
+
+        <h3>Note rows</h3>
+        <ul>
+          <li>Right-click → <code>Add Note Below</code> inserts a free-text row (default <code>MENT</code>) for talk breaks, encore standbys and running notes.</li>
+          <li>Notes are not playable, are not counted as songs, and <strong>survive a resync</strong>.</li>
+          <li>Click the text to edit; right-click for <code>Move Up</code>, <code>Move Down</code>, <code>Delete Note</code>.</li>
+        </ul>
+
+        <h3>REHEARSAL / SHOW</h3>
+        <p>Settings → the <code>MODE</code> card at the very top. The current mode is always visible at the right of the status bar.</p>
+        <div class="tablewrap"><table>
+          <thead><tr><th style="width:24%">Mode</th><th>Behaviour</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><code>REHEARSAL</code></td>
+              <td>Everything available. Reordering only happens here, and <code>Play From…</code> — a rehearsal-only right-click item — starts a few bars early with a count-in.</td>
+            </tr>
+            <tr>
+              <td><code>SHOW</code></td>
+              <td><strong>Locked against accidents.</strong> Layout editing, <code>RESYNC</code>, source switching, safety settings and setlist reordering all freeze. Jumping, <code>PLAY</code>/<code>STOP</code>/<code>NEXT</code>, the dimmer and quick messages stay live. Switching into SHOW runs a <strong>Pre-Show Check</strong> (connection, marker warnings, dimmer, auto-stop, displays); anything it dislikes raises a confirmation you have to clear with <code>Proceed to SHOW</code>.</td>
+            </tr>
+          </tbody>
+        </table></div>
+        <p>The way out is the same card — it never locks. A standby console in a redundant pair carries similar locks for a different reason; see <a href="#redundancy">chapter 11</a>.</p>
+
+        <h3>Dimmer</h3>
+        <p>Settings → <code>STAGE DISPLAY</code> → <code>DIMMER</code>, 15% to 100%, with <code>100 / 70 / 40 / 15</code> snap buttons. It will not go below 15%, so the stage screen can never be dimmed to nothing by accident. Available in SHOW mode.</p>
+
+        <h3>Quick messages</h3>
+        <ul>
+          <li>The only place to type one is the bar under the setlist in the Control Panel: a field, <code>SEND</code>, and a <code>BIG</code> toggle. Maximum 20 characters.</li>
+          <li>Settings → <code>QUICK MESSAGE</code> holds exactly one control — the toggle that shows or hides that bar. There is no input field in Settings, on purpose. Hiding the bar removes the ability to send.</li>
+          <li>On stage the message appears as a <code>MEMO</code> banner and clears itself: 4 seconds for short text, 8 for long.</li>
+          <li><code>BIG</code> puts it across the middle of the screen for 8 seconds, for when it has to land.</li>
+        </ul>
+
+        <h3>Presets and windows</h3>
+        <ul>
+          <li>Two presets ship: <strong>Timeline Focus</strong> (<code>⌘1</code>) and <strong>Drummer Focus</strong> (<code>⌘2</code>), from the <code>Layout</code> menu or Settings → <code>STAGE DISPLAY</code> → <code>Preset</code>. Your own saved presets join the same list. Switching cross-fades rather than cutting.</li>
+          <li>The stage window is windowed by default; <code>⌘F</code> makes it full screen.</li>
+          <li><code>Window → Show/Hide Stage Display</code> (<code>⌘⇧D</code>) brings it back if you closed it. If you never want it, turn off <code>Open Stage Display at launch</code> — every operator feature works without it.</li>
+          <li>Settings → <code>STAGE DISPLAY</code> → <code>OUTPUT</code> moves the stage window to a chosen display and goes full screen in one action.</li>
+          <li>Settings → <code>DISPLAY</code> → <code>Auto-move stage to external display</code> (on by default) does that automatically the moment a monitor is connected, and returns to a window when it is unplugged — built for moving one cable to the backup Mac mid-show.</li>
+        </ul>
+        <div class="tip"><span class="tag">THE STAGE SCREEN NEVER GOES BLANK</span> — if the connection drops, the last frame <strong>freezes</strong> and only a small status light in the corner turns red. Technical errors are shown in the Control Panel and never on stage: a wrong number in front of a player is worse than no number.</div>
+      </section>
+
+      <!-- ═══════════ 07 ═══════════ -->
+      <section id="setlist-appearance">
+        <h2>07 — Setlist Appearance</h2>
+        <p class="intro">Type size and state colours for the Control Panel's setlist. These are per-Mac display settings — nothing here touches your session, and a paired backup console does not inherit them.</p>
+        <p>Open it from the slider icon at the right of the <code>SETLIST</code> header — a different control from the <strong>⚙</strong> Settings button. It replaces the contents of the Control Panel window; <code>✕</code> at the top right goes back.</p>
+
+        <h3>Text size</h3>
+        <p>Five steps, applying to the setlist only. Row height and padding scale with the type. Titles and state badges are never truncated: when space runs short, tags give way first, then durations.</p>
+        <div class="tablewrap"><table>
+          <thead><tr><th>Step</th><th>1</th><th>2</th><th>3 (default)</th><th>4</th><th>5</th></tr></thead>
+          <tbody><tr><td>Scale</td><td>1.00×</td><td>1.08×</td><td>1.18×</td><td>1.38×</td><td>1.62×</td></tr></tbody>
+        </table></div>
+
+        <h3>State colours</h3>
+        <p><code>PLAYING</code>, <code>READY</code> and <code>NEXT</code> can each be left on <code>AUTO</code> or set to one of eight hues. <strong>Only the hue changes</strong> — lightness and saturation stay fixed by the app, so no combination can make two states hard to tell apart. Warning and caution colours are not customisable.</p>
+        <p>The cursor ring (<code>SELECTED</code>) offers <code>AUTO</code> or three brightness steps and no hue at all — it is deliberately neutral so it can never be mistaken for a transport state.</p>
+
+        <h3>Preview and reset</h3>
+        <p>A live three-row sample, unrelated to the loaded session, updates as you change things — cursor ring included. <code>Reset Colors &amp; Text Size</code> resets <strong>this card only</strong>; song colours, flags, skips and count-ins are stored separately and are not touched.</p>
+
+        <h3>Setlist options</h3>
+        <ul>
+          <li><code>Show song notes</code> — marker comments in the setlist.</li>
+          <li><code>Show song durations</code> — per-song length.</li>
+        </ul>
+        <div class="warn"><span class="tag">LOCKED IN SHOW MODE</span> — this card only. Text size, state colours and the panel options below stay adjustable mid-show, because they are display-only.</div>
+
+        <h3>Panel options</h3>
+        <ul>
+          <li><code>Click to jump</code> — off makes setlist rows view-only. The right-click menu keeps working.</li>
+          <li><code>Show progress bar (transport row)</code></li>
+          <li><code>Show timecode (transport row)</code></li>
+        </ul>
+      </section>
+
+      <!-- ═══════════ 08 ═══════════ -->
+      <section id="edit-layout">
+        <h2>08 — Edit Layout</h2>
+        <p class="intro">Everything on the stage screen is a widget you can move, resize, recolour or switch off. Open the editor with <code>⌘E</code>, or Settings → <code>STAGE DISPLAY</code> → <code>EDIT LAYOUT</code>. The stage screen holds its last frame while you edit and cross-fades to the new layout on <code>APPLY</code>. Locked in SHOW mode — build layouts at rehearsal.</p>
+
+        <h3>Handling</h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th style="width:32%">Action</th><th>How</th></tr></thead>
+          <tbody>
+            <tr><td>Select / multi-select</td><td>Click, <code>Shift</code>-click, or drag a marquee on empty canvas.</td></tr>
+            <tr><td>Move</td><td>Drag. Snaps to an 8pt grid, with blue smart guides when edges line up.</td></tr>
+            <tr><td>Resize</td><td>Drag any of the eight handles — type inside the widget scales with it.</td></tr>
+            <tr><td>Align / distribute</td><td>Inspector, with 2+ (align) or 3+ (distribute) selected.</td></tr>
+            <tr><td>Undo / redo</td><td><code>⌘Z</code> / <code>⇧⌘Z</code></td></tr>
+            <tr><td>Modifiers</td><td><code>⌥</code> bypasses snapping · <code>⇧</code> keeps the aspect ratio while resizing.</td></tr>
+            <tr><td>Finish</td><td><code>APPLY</code> pushes to the stage · <code>CANCEL</code> discards the whole session of edits after a confirmation.</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3>Widgets</h3>
+        <p>The inspector's <code>WIDGETS</code> list holds every widget, each with an eye icon for show/hide.</p>
+        <ul>
+          <li><strong>Available:</strong> Song Title · Song Form Timeline · Bar/Beat Count · Elapsed Time · Remaining Time · Tempo · Next Song · Current Section · Next Section · BPM Pulse Dot · Count Stem Lane · <strong>Track Lane</strong> · Custom Text · Custom Image · Lyrics (in development, disabled).</li>
+          <li><strong>Bar/Beat Count</strong> has a <code>Display</code> segment — <code>BAR</code> (bars remaining), <code>BEAT</code> (beat only) or <code>BOTH</code> — and a <code>Large Countdown</code> option that promotes the number to hero size.</li>
+          <li><strong>BPM Pulse Dot</strong> is a visual metronome, hidden by default.</li>
+          <li><strong>Labels:</strong> <code>Show Label</code> and <code>Label Size</code> per widget.</li>
+          <li><strong>Colour:</strong> with one widget selected, <code>Color</code> changes its text or numbers and <code>Auto</code> restores it. Per-song palette colours and warning colours are fixed in meaning and cannot be recoloured.</li>
+          <li><strong>Custom Text / Custom Image:</strong> add as many as you like from <code>+ ADD</code>.</li>
+        </ul>
+
+        <h3>Track Lane</h3>
+        <p>New in v1.1. A Track Lane draws <strong>one Pro Tools track's clips across the whole current song</strong>, on the same time axis as the song-form timeline — which recreates, on the stage screen, what a drummer already knows how to read from watching the click and count tracks in the Edit Window.</p>
+        <ul>
+          <li>Add one from <code>+ ADD</code>. <strong>You can place as many as you want</strong> — a click lane and a count lane, sized and positioned independently, is the common setup.</li>
+          <li>With a lane selected, pick its <code>Source track</code> in the inspector. <strong>Any audio track in the session</strong> is eligible; likely candidates (names containing "click" or "count", plus <code>Sections</code> itself) float to the top of the list as suggestions, and the choice is always yours.</li>
+          <li>The list row names the lane by its track — <code>Track Lane: BAND CLICK</code> — so multiple lanes stay identifiable.</li>
+          <li>Size and position are free, like any other widget. A lane stacked directly under the song-form timeline lines up with it exactly, because both derive x from the same song time axis.</li>
+          <li>The source-track choice is stored <strong>per session</strong>, alongside the Count Stem Lane's, rather than inside the layout preset — track names belong to the session, not the layout. It follows that the pick is not part of undo, and that a preset carried to another rig arrives with the lane empty until you choose a track.</li>
+          <li>Lanes draw inside a song. In a gap between songs, or in a song with no confirmed <code>SongEnd</code>, the lane stays empty rather than inventing an axis.</li>
+        </ul>
+        <div class="tip"><span class="tag">STAGE DISPLAY ONLY</span> — Track Lane, Count Stem Lane, BPM Pulse Dot, Custom Image and Lyrics are not rendered in the LAN browser view (<a href="#lan-view">chapter 10</a>). Everything else in a preset appears on a phone as usual.</div>
+
+        <h3>Presets</h3>
+        <ul>
+          <li>Toolbar <code>PRESET</code> area: <code>SAVE</code> (overwrite), <code>Save As New…</code>, <code>Rename…</code>. Saved presets appear in Settings → <code>STAGE DISPLAY</code> → <code>Preset</code>.</li>
+          <li><code>EXPORT</code> / <code>IMPORT</code> move a layout between Macs as a JSON file. Two things do not travel with it: image files used by Custom Image widgets, and Track Lane source-track picks — both live outside the preset.</li>
+        </ul>
+      </section>
+
+      <!-- ═══════════ 09 ═══════════ -->
+      <section id="licensing">
+        <h2>09 — Purchase &amp; Licensing</h2>
+        <p class="intro">Prossible starts as a trial and unlocks in two tiers, <code>Stage</code> and <code>Pro</code>. One-time in-app purchases — a perpetual licence, no renewal, no licence server at the gig. Current prices are on the <a href="./pricing.html">Pricing page</a> and in the app.</p>
+
+        <h3>The trial</h3>
+        <p>Every feature is open; the setlist shows the <strong>first 3 songs of each session</strong> — first by position in the session, not a choice of which three. Song four onwards is simply absent from the list rather than shown as a locked row. Settings → <code>SESSION SYNC</code> carries a chip: <code>Trial: N of M songs shown</code>.</p>
+        <div class="tip"><span class="tag">SAFETY IS NOT GATED</span> — transport, double-trigger protection, the frozen stage screen on disconnect, the show log, the dimmer and quick messages all work at 100% in the trial. The only limit is how many songs the setlist shows.</div>
+
+        <h3>Buying</h3>
+        <p>Settings → <code>UNLOCK</code>, directly under <code>SESSION SYNC</code>.</p>
+        <div class="tablewrap"><table>
+          <thead><tr><th style="width:22%">Product</th><th>What it unlocks</th></tr></thead>
+          <tbody>
+            <tr><td><code>Stage</code></td><td>Unlimited songs and sessions on this Mac.</td></tr>
+            <tr><td><code>Pro</code></td><td>Everything in Stage, plus LAN View (<a href="#lan-view">chapter 10</a>) and main/backup redundancy (<a href="#redundancy">chapter 11</a>).</td></tr>
+            <tr><td><code>Pro Upgrade</code></td><td>Shown only to owners of <code>Stage</code> — a discounted step up that adds LAN View and redundancy.</td></tr>
+          </tbody>
+        </table></div>
+        <p>Prices are fetched live from the App Store. With no internet you get <code>Prices unavailable — purchasing needs an internet connection.</code> and a <code>Retry</code> button. <code>BUY</code> hands off to the standard macOS purchase sheet; a family-approval hold reports <code>Purchase pending approval — it unlocks automatically once approved.</code></p>
+
+        <h3>Restore</h3>
+        <p>New Mac, or a reinstall: <code>Restore Purchases</code> in the same card. Needs the same Apple Account and an internet connection.</p>
+
+        <div class="tip"><span class="tag">OFFLINE</span> — venues lose internet. Once bought or restored, the unlock <strong>persists with no connection at all</strong>: the app reads the signed receipt Apple left on that Mac, so there is no "offline mode" to remember to turn on. Internet is needed only to buy or to restore.</div>
+      </section>
+
+      <!-- ═══════════ 10 ═══════════ -->
+      <section id="lan-view">
+        <h2>10 — LAN View <span class="mono" style="font-size:13px; color:var(--green)">(PRO)</span></h2>
+        <p class="intro">The stage display served to every phone and tablet on the local network, with nothing for the band to install. Local only — this is not remote access over the internet — and it works on a router with no uplink at all.</p>
+        <p>Requires the <code>Pro</code> unlock. Without it the <code>LAN VIEW</code> toggle is locked with an explanatory line, and the <code>REDUNDANCY</code> card does not appear in Settings at all.</p>
+
+        <h3>Starting the server</h3>
+        <ol>
+          <li>Settings → <code>LAN VIEW</code> → turn on <code>LAN view server</code>. <strong>It stops when the app quits</strong>, so it belongs in your show-day routine.</li>
+          <li>The card shows the port (with a note if it had to fall back from the default), Bonjour status, a QR code and the plain address. On a network that blocks Bonjour the QR and address still work.</li>
+          <li>If the Mac is on no network, you get <code>No usable network address — connect this Mac to Wi-Fi or Ethernet.</code> Join a network first.</li>
+        </ol>
+
+        <h3>Connecting a phone</h3>
+        <ol>
+          <li>Scan the QR in Safari or Chrome on the same network, or type the address. With <code>Require PIN</code> on (the default) the QR carries the PIN, so scanning is enough; typing the address asks for it once.</li>
+          <li>Pick a view — the stage mirror by default, or any other preset, with the one currently on stage marked. The device remembers its choice.</li>
+          <li>Leave it as a browser tab rather than a home-screen icon: some iOS versions do not hold the screen awake reliably from a saved icon.</li>
+        </ol>
+        <p>The page updates live, with position interpolated smoothly between updates. If the network drops it freezes on the last frame and shows <code>RECONNECTING…</code>, then picks up on its own — the same principle as the stage window.</p>
+        <p>Up to <strong>24 devices</strong> at once; beyond that a new connection is told <code>Maximum viewers reached</code>.</p>
+
+        <h3>Controlling from a phone</h3>
+        <p>Viewers are read-only. One device — in practice your own phone — can be promoted to run the transport.</p>
+        <ol>
+          <li>The phone presses <code>CONTROL</code>, bottom left; the button goes to <code>REQUESTING…</code>.</li>
+          <li>A <code>LAN Controller Request</code> alert appears on the Mac, naming the device. If another device already holds control, the alert says so.</li>
+          <li>You press <code>Approve</code> (or <code>Approve and Switch</code>). Unanswered requests expire after 60 seconds; <code>Deny</code> ends it.</li>
+          <li>The phone gains <code>PLAY</code> / <code>STOP</code> / <code>NEXT</code> and nothing else. They run down <strong>exactly the same path</strong> as the Control Panel's — same double-trigger protection, same "playback is sacred" rule, same logging.</li>
+        </ol>
+        <p>One controller at a time; approving a new device demotes the old one to view-only. Transport is not locked in SHOW mode, so requests and control both work mid-show.</p>
+
+        <h3>Security</h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th style="width:30%">Control</th><th>Behaviour</th></tr></thead>
+          <tbody>
+            <tr><td><code>Require PIN</code></td><td>On by default. Off, anyone on the network can view, and the card warns you so.</td></tr>
+            <tr><td><code>Regenerate PIN</code></td><td>Issues a new PIN. Confirming with <code>Regenerate &amp; Disconnect All</code> drops every connected device and revokes control — everyone reconnects with the new PIN.</td></tr>
+            <tr><td>Device list</td><td>Name, chosen view, <code>CONTROLLER</code> badge and last activity.</td></tr>
+            <tr><td><code>Revoke</code></td><td>Takes control back from that device instantly; it keeps viewing.</td></tr>
+          </tbody>
+        </table></div>
+        <div class="warn"><span class="tag">LOCKED IN SHOW MODE</span> — the server toggle and PIN regeneration, so neither can be knocked over mid-show. A server already running keeps serving. <code>Revoke</code> is never locked: it is an emergency control.</div>
+
+        <h3>In practice</h3>
+        <ul>
+          <li>House Wi-Fi is house Wi-Fi. Carry your own small router if the show depends on this.</li>
+          <li>Same network only. There is no path in from outside.</li>
+          <li>Some widgets do not render on a phone — see the note in <a href="#edit-layout">chapter 8</a>.</li>
+        </ul>
+      </section>
+
+      <!-- ═══════════ 11 ═══════════ -->
+      <section id="redundancy">
+        <h2>11 — Redundancy <span class="mono" style="font-size:13px; color:var(--green)">(PRO)</span></h2>
+        <p class="intro">Two Macs, one show. Each runs its own Pro Tools and chases its own timecode; the pairing syncs your <em>decisions</em> — running order, colours, skips, mode, dimmer — so the backup mirrors the operator, not the playback. Audio and MIDI redundancy stay with your existing failover rig.</p>
+
+        <div class="warn">
+          <span class="tag">PREREQUISITES — ALL OF THEM</span><br>
+          Both Macs on the same network. Both with the same session open, markers identical. Both on <code>SOURCE = Real</code> showing <code>Pro Tools: Connected</code> and <code>MTC: Normal</code>. Both with <code>LAN view server</code> on, because pairing and reconnection run over it. Miss one and you do not have redundancy, you have two Macs.
+        </div>
+
+        <h3>Pairing</h3>
+        <ol>
+          <li>On the main Mac: Settings → <code>REDUNDANCY</code> → <code>Pair Consoles…</code> → <code>Show Code</code>. A one-time six-digit code, valid five minutes.</li>
+          <li>On the backup: same card → <code>Pair Consoles…</code> → <code>Enter Code</code> → pick the main Mac from the list, type the six digits, <code>Pair</code>.</li>
+          <li>Both cards show the other console and <code>CONNECTED</code>. The Mac that <em>showed</em> the code becomes <code>PRIMARY</code>, the one that entered it <code>BACKUP</code>. Swap them with the <code>PRIMARY / BACKUP</code> segment if that landed the wrong way round.</li>
+        </ol>
+        <p>Pairing survives reboots and re-finds the partner over Bonjour even when IP addresses change.</p>
+
+        <h3>Role badges</h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th style="width:34%">Badge</th><th>Meaning</th></tr></thead>
+          <tbody>
+            <tr><td><code>ACTIVE</code></td><td>This console holds the controls. Normal.</td></tr>
+            <tr><td><code>STANDBY (linked)</code></td><td>Standby, link healthy — plays its own session, editing locked.</td></tr>
+            <tr><td><code>STANDBY — LINK LOST</code></td><td>Lost contact with the active console. <code>Promote to Active</code> is emphasised.</td></tr>
+            <tr><td><code>SPLIT BRAIN</code></td><td>Both consoles claim Active. Rare — see below.</td></tr>
+          </tbody>
+        </table></div>
+
+        <h3>On standby</h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th style="width:22%"></th><th></th></tr></thead>
+          <tbody>
+            <tr><td><strong>Still works</strong></td><td><code>PLAY</code> / <code>STOP</code> / <code>NEXT</code> and <code>RESYNC</code>. Its playback is its own — it follows its own Pro Tools, which is why the music does not stop when the main Mac does.</td></tr>
+            <tr><td><strong>Locked</strong></td><td>Setlist reordering (the drag handles are simply absent), the colour/skip/move right-click items, the master dimmer and the <code>MODE</code> segment. All greyed, with a line explaining that editing belongs to the active console.</td></tr>
+          </tbody>
+        </table></div>
+        <p>Reorders, colours, skips, dimmer and mode changes on the active console reach the standby within about a second.</p>
+
+        <h3>Failover</h3>
+        <ol>
+          <li>If the main Mac dies, the backup's badge flips to <code>STANDBY — LINK LOST</code> within five seconds. <strong>Music and stage display never stop</strong> — it was already following its own session.</li>
+          <li>Press <code>Promote to Active</code>. The badge becomes <code>ACTIVE</code> and editing, dimmer and mode unlock.</li>
+          <li>Promotion is <strong>never automatic</strong>, and it is never locked — not even in SHOW mode. It ranks with <code>STOP</code> as a recovery action.</li>
+        </ol>
+        <p>When the old main comes back it reconnects and settles quietly into <code>STANDBY (linked)</code> with no popup, inheriting whatever changed while it was gone.</p>
+
+        <h3>Split brain</h3>
+        <p>If both consoles were promoted while disconnected from each other, neither is demoted automatically on reconnection: both show a red <code>SPLIT BRAIN</code> badge and a line saying both claim Active. Press <code>Promote to Active</code> once more on the console that should lead; the other stands down quietly. The ordinary case — one side promoted — resolves itself silently.</p>
+
+        <h3>Push State Now / Unpair</h3>
+        <ul>
+          <li><code>Push State Now</code> forces a full state resend from the active console. It does not touch playback; it is there for peace of mind.</li>
+          <li><code>Unpair</code> breaks the pairing, needs confirmation, and is locked in SHOW mode. Leave the pair intact until the run is over.</li>
+        </ul>
+      </section>
+
+      <!-- ═══════════ 12 ═══════════ -->
+      <section id="troubleshooting">
+        <h2>12 — Troubleshooting</h2>
+
+        <h3>Nothing connects — check in this order</h3>
+        <ol>
+          <li>Is Pro Tools running with a <strong>session open</strong>? Without one there is nothing to attach to.</li>
+          <li>Is Prossible on the <strong>same Mac</strong> as Pro Tools?</li>
+          <li>Is <code>SOURCE</code> set to <code>Real (PTSL+MTC)</code>, and did you press <code>Reconnect</code>?</li>
+          <li>PTSL fine but no timecode? Walk chapter 4 in order: IAC online, <code>MTC Generator Port</code>, then <code>MIDI Input</code>.</li>
+          <li>Still stuck: capture the red error line under the <code>CONNECTION</code> card and send it to us.</li>
+        </ol>
+
+        <h3>Common questions</h3>
+        <div class="tablewrap"><table>
+          <thead><tr><th style="width:40%">Symptom</th><th>Answer</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><code>Disconnected</code> after pressing <code>Reconnect</code></td>
+              <td>Nine times out of ten, no session is open. Then the checklist above.</td>
+            </tr>
+            <tr>
+              <td><code>Connected</code> but <code>MTC: Stale</code></td>
+              <td>Check <code>MTC Generator Port</code> really names the IAC bus Prossible is listening on — then check Pro Tools is actually rolling. Stopped, it only emits MTC when it locates.</td>
+            </tr>
+            <tr>
+              <td>No IAC port in <code>MIDI Input</code></td>
+              <td><code>Refresh</code>. Still missing: the <code>Device is online</code> tick in Audio MIDI Setup.</td>
+            </tr>
+            <tr>
+              <td><code>RESYNC</code> changes nothing</td>
+              <td>Pro Tools must be <strong>stopped</strong> — resync is disabled during playback by design. Also check you are not in SHOW mode, where it is locked.</td>
+            </tr>
+            <tr>
+              <td>Settings, <code>RESYNC</code> or <code>SOURCE</code> do not respond</td>
+              <td>You are in <code>SHOW</code> mode. Settings → the <code>MODE</code> card at the very top → <code>REHEARSAL</code>. (If it is a standby console instead, see chapter 11.)</td>
+            </tr>
+            <tr>
+              <td>Clicking a song mid-playback books nothing</td>
+              <td>By design. The <code>Playback is sacred</code> banner is the explanation; use <code>NEXT</code>.</td>
+            </tr>
+            <tr>
+              <td>Clicking a song does nothing at all</td>
+              <td><code>Click to jump</code> is off (chapter 7). Or you double-tapped and double-trigger protection bounced the second press — the row flashes red. Wait a beat.</td>
+            </tr>
+            <tr>
+              <td>Only some of the session's songs appear</td>
+              <td>You are on the trial: first 3 songs per session. See the chip on the <code>SESSION SYNC</code> card and chapter 9.</td>
+            </tr>
+            <tr>
+              <td>Song form is empty, or no section names</td>
+              <td>No <code>Sections</code> track was read. Check that the track is <strong>audio</strong>, named <code>Sections</code>, and that its clips sit inside a song's range — the warning list will say which of those it is.</td>
+            </tr>
+            <tr>
+              <td>A section vanished after being fine yesterday</td>
+              <td>Its clip was probably nudged out of the song's range, or lost its name. Both raise a warning on the <code>SESSION SYNC</code> card naming the count.</td>
+            </tr>
+            <tr>
+              <td>A Track Lane is blank</td>
+              <td>No source track picked yet (the pick does not travel inside an exported preset), or the playhead is in a gap between songs, or the song has no <code>SongEnd</code> so the lane has no axis to draw on.</td>
+            </tr>
+            <tr>
+              <td><code>LAN VIEW</code> won't toggle · no <code>REDUNDANCY</code> card</td>
+              <td>Both need the <code>Pro</code> unlock. LAN View shows a locked note; the redundancy card is hidden entirely until you own Pro.</td>
+            </tr>
+            <tr>
+              <td>Red <code>SPLIT BRAIN</code> badge</td>
+              <td>Both consoles were promoted while disconnected. Press <code>Promote to Active</code> once on the console that should lead (chapter 11).</td>
+            </tr>
+            <tr>
+              <td>The stage window disappeared</td>
+              <td><code>Window → Show/Hide Stage Display</code>, or <code>⌘⇧D</code>.</td>
+            </tr>
+            <tr>
+              <td>The stage screen is frozen</td>
+              <td>Intended. On disconnect the last frame is held and only the corner status light turns red — check the Control Panel and work the checklist above. The stage also freezes while the layout editor is open, and resumes on <code>APPLY</code> or <code>CANCEL</code>.</td>
+            </tr>
+          </tbody>
+        </table></div>
+
+        <div class="tip">
+          <span class="tag">STILL STUCK?</span><br>
+          Send us your macOS and Pro Tools versions, a screenshot of the <code>CONNECTION</code> and <code>SESSION SYNC</code> cards, and the session if you can spare it — <a href="mailto:sound.shs@gmail.com">sound.shs@gmail.com</a>. Show weeks get answered first.
+        </div>
+      </section>
+
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="brand">
+      <span class="dot"></span>
+      <span class="name">Prossible</span>
+      <span class="legal">© 2026 Prossible · MADE FOR THE BOOTH</span>
+    </div>
+    <div class="links">
+      <a href="./setup.html">Setup Guide</a>
+      <a href="./guides/index.html">Guides</a>
+      <a href="./manual.html">Manual</a>
+      <a href="./pricing.html">Pricing</a>
+      <a href="./faq.html">FAQ</a>
+      <a href="https://shinzzang4523.github.io/prossible-support/privacy.html" target="_blank" rel="noopener">Privacy</a>
+      <a href="mailto:sound.shs@gmail.com">sound.shs@gmail.com</a>
+    </div>
+    <div class="licensing">
+      Volume / production licensing &mdash; invoicing, multi-rig, offline activation:
+      <a href="mailto:sound.shs@gmail.com?subject=Prossible%20volume%20licensing">sound.shs@gmail.com</a>
+    </div>
+  </footer>
+
+</div>
+<script src="./assets/site.js"></script>
+</body>
+</html>
