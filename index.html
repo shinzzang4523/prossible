@@ -116,7 +116,7 @@
   <section class="section sacred">
     <div class="copy">
       <h2>Playback is sacred.</h2>
-      <p>The operator panel never sends a transport command you didn't ask for. Play is confirmed, stop is armed, and everything you press is logged with timecode.</p>
+      <p>The operator panel never sends a transport command you didn't ask for. While a song is playing, clicking another song in the setlist is refused — you move on with NEXT or stop first. SHOW mode locks editing and resync, and every play, stop and jump lands in a time-stamped show log.</p>
       <div class="autostop-title">■ It stops itself at song end.</div>
       <p class="autostop-body">A SongEnd marker arms an automatic stop — the session halts cleanly on the downbeat, every night, without a human finger on the spacebar.</p>
     </div>
@@ -126,12 +126,12 @@
       </div>
       <div class="btns">
         <div class="play">▶ PLAY 01</div>
-        <div class="stop">■ STOP — ARMED</div>
+        <div class="stop">■ STOP</div>
       </div>
       <div class="log">
-        <div><span class="t-green">00:14:28:00</span>&nbsp;&nbsp;PLAY · 01 Midnight Run</div>
-        <div><span class="t-amber">00:18:04:12</span>&nbsp;&nbsp;AUTO-STOP · SongEnd</div>
-        <div><span class="t-green">00:18:09:00</span>&nbsp;&nbsp;LOCATE · 02 Glass Houses</div>
+        <div><span class="t-green">21:14:28</span>&nbsp;&nbsp;PLAY</div>
+        <div><span class="t-amber">21:18:04</span>&nbsp;&nbsp;AUTO-STOP fired after '01 Midnight Run'</div>
+        <div><span class="t-green">21:18:09</span>&nbsp;&nbsp;JUMP → 02 Glass Houses</div>
       </div>
     </div>
   </section>
